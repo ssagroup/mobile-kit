@@ -1,5 +1,4 @@
-# mobile-kit
-SSA Mobile kit
+# SSA Mobile kit
  
 SSA Mobile kit accelerates the development of Control apps delivering compact mobile dashboards and administrative panels for essential monitoring and emergency control of business-critical software platforms running 24*7.
 
