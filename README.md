@@ -8,6 +8,7 @@ SSA Mobile kit is an open-source software that was founded and is supported by S
 
 ## Core technologies
 
+The project is built using the following tools and technologies.
 - [Flutter](https://flutter.dev)
 - [Firebase](https://firebase.google.com)
 - [Dart](https://dart.dev)
