@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_kit_demo/feature/home/screen/home_screen.dart';
+import 'package:mobile_kit_demo/feature/home/screen/bottom_tab_screen.dart';
 import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
 import 'package:mobile_kit_demo/feature/login/presentation/login/screen/login_screen.dart';
 
@@ -88,7 +88,7 @@ GoRouter setupRouter(AuthenticationBloc authenticationBloc) {
         name: homeRouteName,
         pageBuilder: (context, state) => const NoTransitionPage<void>(
           // key: state.pageKey,
-          child: HomeScreen(),
+          child: BottomTabScreen(),
         ),
         routes: [
           GoRoute(

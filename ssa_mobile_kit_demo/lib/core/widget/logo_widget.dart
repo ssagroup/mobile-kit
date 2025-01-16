@@ -9,22 +9,29 @@ class AppLogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SvgPicture.asset(
-          Assets.ssaLogoSmall,
-          height: 48,
-          width: 55,
-        ),
-        const Text(
-          'Mobile Kit',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 21,
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: SvgPicture.asset(
+        Assets.ssaLogoSmall,
+      ),
     );
+    // return Column(
+    //   crossAxisAlignment: CrossAxisAlignment.start,
+    //   children: [
+    //     SvgPicture.asset(
+    //       Assets.ssaLogoSmall,
+    //       // height: 10,
+    //       // width: 30,
+    //     ),
+    //     const Text(
+    //       'Mobile Kit',
+    //       style: TextStyle(
+    //         fontWeight: FontWeight.bold,
+    //         fontSize: 11,
+    //         color: Colors.black
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 }
