@@ -1,4 +1,4 @@
-part of 'auth_bloc.dart';
+part of 'auth_notifier.dart';
 
 @freezed
 class AuthenticationState with _$AuthenticationState {
@@ -8,5 +8,4 @@ class AuthenticationState with _$AuthenticationState {
   const factory AuthenticationState.createPin() = _CreatePin;
   const factory AuthenticationState.verifyUser() = _VerifyUser;
   const factory AuthenticationState.authenticated() = _Authenticated; //User is logged into the system
-
 }

@@ -3,7 +3,7 @@ import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit_demo/shared/domain/entity/failure.dart';
 
 /// Class provides helper methods to read/write data to the [LocalStorage] and correct exception handling
-mixin BaseLocalDataSourceMixin {
+mixin HiveBaseLocalDataSourceMixin {
   /// Read data from [LocalStorage] (asynchronously)
   ///
   /// [storage] - [LocalStorage] instance to operate on

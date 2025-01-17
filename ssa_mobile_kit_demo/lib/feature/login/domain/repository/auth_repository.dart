@@ -1,34 +1,24 @@
 import 'package:mobile_kit_demo/feature/login/domain/model/user_model.dart';
 import 'package:mobile_kit_demo/feature/login/domain/request/auth_request.dart';
+import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
 
+/// FIREBASE AUTHENTICATION
 abstract class AuthenticationRepository {
 
-  /// AUTHENTICATION
   Future<void> signIn({required AuthRequest request});
 
   Future<void> logout();
 
-  // Future<String> get token;
+  Future<bool> get isLoggedIn;
 
-  Future<bool> isLoggedIn();
+  void setState(AuthenticationState state);
 
-  Stream<UserModel?> authStateChanges();
+  Future<AuthenticationState> get currentState;
+
+  Stream<UserModel?> get userStream;
+
+  late bool isInBackground;
 
   Future<void> clear();
-
-  /// SECURITY AND BIOMETRICS
-  Future<bool> isPinSetup();
-
-  Future<void> setupPin({required String pin});
-
-  Future<void> enableBioAuth();
-
-  Future<bool> authenticateBio();
-
-  Future<String> get userPin;
-
-  Future<bool> get isBioAvailable;
-
-  Future<bool> get isBioEnabled;
 
 }

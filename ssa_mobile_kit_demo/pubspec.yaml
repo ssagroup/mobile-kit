@@ -27,7 +27,6 @@ dependencies:
   local_auth: ^2.3.0
   logger: ^2.5.0
   path_provider: ^2.1.5
-  provider: ^6.0.5
   firebase_auth: ^5.4.0
 
 dev_dependencies:

@@ -3,18 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_kit_demo/feature/login/domain/model/auth_status.dart';
 import 'package:mobile_kit_demo/feature/login/domain/request/auth_request.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
+import 'package:mobile_kit_demo/feature/login/domain/usecase/login_usecase.dart';
 
 part 'login_bloc.freezed.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Cubit<LoginState> {
-  LoginBloc(AuthenticationBloc authBloc)
+  LoginBloc(LoginUseCase loginUseCase)
       : super(LoginState.initial()) {
-    _authBloc = authBloc;
+    _loginUseCase = loginUseCase;
   }
 
-  late final AuthenticationBloc _authBloc;
+  late final LoginUseCase _loginUseCase;
 
   void emailChanged(String email) {
     emit(
@@ -87,7 +87,7 @@ class LoginBloc extends Cubit<LoginState> {
         password: state.password.orEmpty,
         rememberMe: state.rememberMe);
     final AuthStatus status =
-        (await _authBloc.signIn(request: request)).fold(
+        (await _loginUseCase.signIn(request: request)).fold(
       (failure) => AuthStatus.failure(failure.errorDescription, false),
       (_) => AuthStatus.success(request),
     );

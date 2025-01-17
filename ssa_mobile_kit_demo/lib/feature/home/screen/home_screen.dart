@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
 import 'package:mobile_kit_demo/core/resources/colors.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:mobile_kit_demo/feature/login/domain/usecase/logout_usecase.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,12 +12,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final AuthenticationBloc _authBloc;
+  late final LogoutUseCase _logoutUseCase;
 
   @override
   void initState() {
     super.initState();
-    _authBloc = Provider.of<AuthenticationBloc>(context, listen: false);
+    _logoutUseCase = LogoutUseCase(DataProvider.instance.authRep);
   }
 
   @override
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final isOk = await showDialogWithCancel(
               context: context, title: 'Logout', message: 'Are you sure you want to logout?', isDestructive: true);
           if (isOk) {
-            await _authBloc.logout();
+            await _logoutUseCase.logout();
           }
         },
         child: const Text(

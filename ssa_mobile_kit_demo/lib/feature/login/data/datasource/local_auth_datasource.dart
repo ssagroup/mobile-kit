@@ -4,16 +4,20 @@ import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 
 class LocalAuthDatasource {
-  final LocalAuthentication auth = LocalAuthentication();
+  LocalAuthDatasource({
+    LocalAuthentication? auth,
+}) : _auth = auth ?? LocalAuthentication();
+
+  final LocalAuthentication _auth;
 
   Future<bool> get canAuthenticate async {
 
-    final List<BiometricType> availableBiometrics = await auth.getAvailableBiometrics();
+    final List<BiometricType> availableBiometrics = await _auth.getAvailableBiometrics();
     final isSetupDone = availableBiometrics.isNotEmpty;
 
     if (!isSetupDone && Platform.isAndroid) {
       try {
-        await auth.authenticate(
+        await _auth.authenticate(
           localizedReason: 'Face Id Check',
           options: const AuthenticationOptions(
             biometricOnly: true,
@@ -31,7 +35,7 @@ class LocalAuthDatasource {
 
   Future<bool> authenticateBio() async {
     try {
-      final didAuthenticate = await auth.authenticate(
+      final didAuthenticate = await _auth.authenticate(
         localizedReason: 'Please authenticate',
         options: const AuthenticationOptions(
           biometricOnly: true,

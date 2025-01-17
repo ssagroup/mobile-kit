@@ -4,7 +4,6 @@ String? validatePassword(String? value) {
   return value?.isNotEmpty == true ? null : '*Password is required';
 }
 
-// Validate amount of balance
 String? validateEmail(String? value, {bool optional = false}) {
   if (optional && value.orEmpty.isEmpty) {
     return null;
