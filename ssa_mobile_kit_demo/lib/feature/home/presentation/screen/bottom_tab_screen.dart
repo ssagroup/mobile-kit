@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit_demo/core/resources/colors.dart';
-import 'package:mobile_kit_demo/feature/home/screen/alerts_screen.dart';
-import 'package:mobile_kit_demo/feature/home/screen/home_screen.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:provider/provider.dart';
+import 'package:mobile_kit_demo/feature/home/presentation/screen/alerts_screen.dart';
+import 'package:mobile_kit_demo/feature/home/presentation/screen/home_screen.dart';
 
 class BottomTabScreen extends StatefulWidget {
   const BottomTabScreen({super.key});
@@ -16,13 +13,11 @@ class BottomTabScreen extends StatefulWidget {
 }
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
-  late final AuthenticationBloc _authBloc;
   late PersistentTabController _controller;
 
   @override
   void initState() {
     super.initState();
-    _authBloc = Provider.of<AuthenticationBloc>(context, listen: false);
     _controller = PersistentTabController(initialIndex: 0);
   }
 

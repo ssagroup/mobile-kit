@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
 import 'package:mobile_kit_demo/core/resources/assets.dart';
 import 'package:mobile_kit_demo/core/resources/colors.dart';
 import 'package:mobile_kit_demo/core/widget/action_button.dart';
 import 'package:mobile_kit_demo/core/widget/logo_widget.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
+import 'package:mobile_kit_demo/feature/login/domain/usecase/login_usecase.dart';
+import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
 import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/login/login_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,8 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-
-    _bloc = LoginBloc(Provider.of<AuthenticationBloc>(context, listen: false));
+    final loginUseCase = LoginUseCase(DataProvider.instance.authRep);
+    _bloc = LoginBloc(loginUseCase);
 
     _emailTC.addListener(() => _bloc.emailChanged(_emailTC.text));
     _emailTC.text = _bloc.state.email.orEmpty;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_kit_demo/feature/home/screen/bottom_tab_screen.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_bloc.dart';
+import 'package:mobile_kit_demo/feature/home/presentation/screen/bottom_tab_screen.dart';
+import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
+import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
 import 'package:mobile_kit_demo/feature/login/presentation/login/screen/login_screen.dart';
 
 // Auth
@@ -13,9 +14,10 @@ const verifyPinRouteName = 'verifyPin';
 const homeRouteName = 'home';
 const notificationListRouteName = 'notificationList';
 
-GoRouter setupRouter(AuthenticationBloc authenticationBloc) {
+GoRouter setupRouter() {
+  final authNotifier = DataProvider.instance.authNotifier;
   final GoRouter router = GoRouter(
-    refreshListenable: authenticationBloc,
+    refreshListenable: authNotifier,
     debugLogDiagnostics: true,
     errorPageBuilder: (context, state) =>
         MaterialPage<void>(
@@ -28,27 +30,27 @@ GoRouter setupRouter(AuthenticationBloc authenticationBloc) {
         ),
     redirect: (context, state) {
       final isLoginScreen = state.fullPath == '/';
-      final isLoginState = authenticationBloc.state == const AuthenticationState.login();
+      final isLoginState = authNotifier.state == const AuthenticationState.login();
 
       if (isLoginState && !isLoginScreen) {
         return state.namedLocation(loginRouteName);
       }
 
       final isCreatePinScreen = state.fullPath == '/setup_pin';
-      final isCreatePinState = authenticationBloc.state == const AuthenticationState.createPin();
+      final isCreatePinState = authNotifier.state == const AuthenticationState.createPin();
 
       if (isCreatePinState && !isCreatePinScreen) {
         return state.namedLocation(setupPinRouteName);
       }
 
       final isVerifyPinScreen = state.fullPath == '/verify_pin';
-      final isVerifyPinState = authenticationBloc.state == const AuthenticationState.verifyUser();
+      final isVerifyPinState = authNotifier.state == const AuthenticationState.verifyUser();
 
       if (isVerifyPinState && !isVerifyPinScreen) {
         return state.namedLocation(verifyPinRouteName);
       }
 
-      final isMainState = authenticationBloc.state == const AuthenticationState.authenticated();
+      final isMainState = authNotifier.state == const AuthenticationState.authenticated();
       if (isMainState) {
         return state.namedLocation(homeRouteName);
       }
