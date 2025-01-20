@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "154391430605",
+    "firebase_url": "https://ssa-mobile-kit-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ssa-mobile-kit",
+    "storage_bucket": "ssa-mobile-kit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154391430605:android:3a1575cedc895649e57084",
+        "android_client_info": {
+          "package_name": "com.ssa.mobile.kit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARSwreqZBkqNGlVpBMqwC9R2o5C2yNOvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

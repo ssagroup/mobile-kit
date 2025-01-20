@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCc6Aw_k45Use2IlEBuqumBdmAbkInmCdU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>154391430605</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ssa.mobile.kit</string>
+	<key>PROJECT_ID</key>
+	<string>ssa-mobile-kit</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ssa-mobile-kit.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:154391430605:ios:80c5dcad00942253e57084</string>
+	<key>DATABASE_URL</key>
+	<string>https://ssa-mobile-kit-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
