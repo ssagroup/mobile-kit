@@ -24,6 +24,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:
@@ -55,3 +56,5 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
+flutter_intl:
+  enabled: true

@@ -57,8 +57,8 @@ class LoginBloc extends Cubit<LoginState> {
       loginStatus: const AuthStatus.none(),
     ));
 
-    final emailError = validateEmail(state.email);
-    final passwordError = validatePassword(state.password);
+    final emailError = await validateEmail(state.email);
+    final passwordError = await validatePassword(state.password);
 
     if (emailError != null) {
       emit(

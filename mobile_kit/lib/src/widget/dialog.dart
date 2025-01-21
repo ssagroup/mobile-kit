@@ -28,6 +28,21 @@ Future<bool> showDialogWithCancel({
   return result == OkCancelResult.ok;
 }
 
+Future<bool> showYesNoDialog({
+  required BuildContext context,
+  required String? title,
+  required String? message,
+}) async {
+  final OkCancelResult result = await showOkCancelAlertDialog(
+    context: context,
+    title: title,
+    message: message,
+    okLabel: 'Yes',
+    cancelLabel: 'No',
+  );
+  return result == OkCancelResult.ok;
+}
+
 Future<void> showConfirmationAlert(
     BuildContext context,
     String? title,

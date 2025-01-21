@@ -1,7 +1,7 @@
 import 'package:mobile_kit_demo/feature/login/domain/repository/auth_repository.dart';
 
-class LogoutUseCase {
-  LogoutUseCase(
+class LogoutUsecase {
+  LogoutUsecase(
       AuthenticationRepository authRepository,
       )   : _authenticationRepository = authRepository,
         super();

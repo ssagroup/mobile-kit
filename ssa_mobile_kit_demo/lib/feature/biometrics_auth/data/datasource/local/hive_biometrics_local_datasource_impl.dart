@@ -1,6 +1,6 @@
 import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit_demo/core/helper/datasource_mixin/hive_base_local_datasource.dart';
-import 'package:mobile_kit_demo/feature/login/data/datasource/local/biometrics_local_datasource.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/biometrics_local_datasource.dart';
 
 const String _authUserPinKey = '___/pin___';
 const String _authBioEnabledKey = '___/bio_enabled___';

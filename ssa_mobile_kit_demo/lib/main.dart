@@ -11,6 +11,7 @@ import 'package:mobile_kit_demo/feature/login/domain/usecase/enter_background_us
 import 'package:mobile_kit_demo/feature/login/domain/usecase/launch_usecase.dart';
 import 'package:mobile_kit_demo/shared/bloc/lifecycle_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -73,7 +74,8 @@ class SSAMobileKitApp extends StatelessWidget {
       routerDelegate: router.routerDelegate,
       debugShowCheckedModeBanner: false,
       locale: const Locale('en'),
-      supportedLocales: const [Locale('en')],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(fontFamily: 'Manrope', useMaterial3: false),
     );
   }

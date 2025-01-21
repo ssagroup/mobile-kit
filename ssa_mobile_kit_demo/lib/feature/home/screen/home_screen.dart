@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/mobile_kit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
 import 'package:mobile_kit_demo/core/resources/colors.dart';
 import 'package:mobile_kit_demo/feature/login/domain/usecase/logout_usecase.dart';
@@ -12,12 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final LogoutUseCase _logoutUseCase;
+  late final LogoutUsecase _logoutUseCase;
 
   @override
   void initState() {
     super.initState();
-    _logoutUseCase = LogoutUseCase(DataProvider.instance.authRep);
+    _logoutUseCase = LogoutUsecase(DataProvider.instance.authRep);
   }
 
   @override
@@ -36,7 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
       TextButton(
         onPressed: () async {
           final isOk = await showDialogWithCancel(
-              context: context, title: 'Logout', message: 'Are you sure you want to logout?', isDestructive: true);
+            context: context,
+            title: AppLocalizations.of(context)!.logoutAlertTitle,
+            message: AppLocalizations.of(context)!.logoutAlertMessage,
+            isDestructive: true,
+          );
           if (isOk) {
             await _logoutUseCase.logout();
           }

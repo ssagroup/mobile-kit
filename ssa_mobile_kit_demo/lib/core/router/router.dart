@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/presentation/setup_pin/presentation/screen/setup_pin_screen.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
 import 'package:mobile_kit_demo/feature/home/screen/home_screen.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/screen/login_screen.dart';
+import 'package:mobile_kit_demo/feature/login/presentation/screen/login_screen.dart';
+import 'package:mobile_kit_demo/feature/login/domain/repository/auth_notifier.dart';
 
 // Auth
 const loginRouteName = 'login';
@@ -71,18 +73,18 @@ GoRouter setupRouter() {
         path: '/setup_pin',
         name: setupPinRouteName,
         pageBuilder: (context, state) =>
-            NoTransitionPage<void>(
+            const NoTransitionPage<void>(
               // key: state.pageKey,
-              child: Container(),
+              child: SetupPinScreen(),
             ),
       ),
       GoRoute(
         path: '/verify_pin',
         name: verifyPinRouteName,
         pageBuilder: (context, state) =>
-            NoTransitionPage<void>(
+            const NoTransitionPage<void>(
               // key: state.pageKey,
-              child: Container(),
+              child: VerifyPinScreen(),
             ),
       ),
       GoRoute(

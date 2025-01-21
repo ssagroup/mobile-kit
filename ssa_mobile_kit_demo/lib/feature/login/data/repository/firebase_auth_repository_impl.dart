@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
-import 'package:mobile_kit_demo/feature/login/data/datasource/local/biometrics_local_datasource.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/biometrics_local_datasource.dart';
 import 'package:mobile_kit_demo/feature/login/domain/model/user_model.dart';
 import 'package:mobile_kit_demo/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit_demo/feature/login/domain/request/auth_request.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
 import 'package:mobile_kit_demo/shared/domain/entity/failure.dart';
+import 'package:mobile_kit_demo/feature/login/domain/repository/auth_notifier.dart';
+
 
 class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   FirebaseAuthenticationRepositoryImpl({

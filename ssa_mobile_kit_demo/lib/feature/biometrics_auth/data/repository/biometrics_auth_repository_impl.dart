@@ -1,6 +1,6 @@
-import 'package:mobile_kit_demo/feature/login/data/datasource/local/biometrics_local_datasource.dart';
-import 'package:mobile_kit_demo/feature/login/data/datasource/local_auth_datasource.dart';
-import 'package:mobile_kit_demo/feature/login/domain/repository/biometrics_auth_repository.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/biometrics_local_datasource.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local_auth_datasource.dart';
+import 'package:mobile_kit_demo/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
 import 'package:mobile_kit_demo/shared/domain/entity/failure.dart';
 
 class BiometricsAuthRepositoryImpl implements BiometricsAuthRepository {
@@ -22,6 +22,7 @@ class BiometricsAuthRepositoryImpl implements BiometricsAuthRepository {
     } on StorageException {
       return Future.value(false);
     } catch (error) {
+      print('Read User Pin Error $error');
       return Future.value(false);
     }
   }

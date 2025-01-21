@@ -9,6 +9,7 @@ export 'package:mobile_kit/src/widget/progress_indicator.dart';
 export 'package:mobile_kit/src/widget/lifecycle_widget.dart';
 export 'package:mobile_kit/src/widget/text_field.dart';
 export 'package:mobile_kit/src/widget/dialog.dart';
+export 'package:mobile_kit/src/widget/pin_code_widget.dart';
 
 // Data
 export 'package:mobile_kit/src/data/hive_local_storage.dart';

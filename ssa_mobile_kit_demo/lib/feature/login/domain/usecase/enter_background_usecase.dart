@@ -1,6 +1,6 @@
+import 'package:mobile_kit_demo/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
 import 'package:mobile_kit_demo/feature/login/domain/repository/auth_repository.dart';
-import 'package:mobile_kit_demo/feature/login/domain/repository/biometrics_auth_repository.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
+import 'package:mobile_kit_demo/feature/login/domain/repository/auth_notifier.dart';
 
 class EnterBackgroundUseCase {
   EnterBackgroundUseCase(

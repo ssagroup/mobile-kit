@@ -1,6 +1,6 @@
 import 'package:mobile_kit_demo/feature/login/domain/model/user_model.dart';
 import 'package:mobile_kit_demo/feature/login/domain/request/auth_request.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
+import 'package:mobile_kit_demo/feature/login/domain/repository/auth_notifier.dart';
 
 /// FIREBASE AUTHENTICATION
 abstract class AuthenticationRepository {

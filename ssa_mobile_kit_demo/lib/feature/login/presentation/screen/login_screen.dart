@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobile_kit_demo/core/data_provider/data_provider.dart';
 import 'package:mobile_kit_demo/core/resources/assets.dart';
-import 'package:mobile_kit_demo/core/resources/colors.dart';
 import 'package:mobile_kit_demo/core/widget/action_button.dart';
 import 'package:mobile_kit_demo/core/widget/logo_widget.dart';
 import 'package:mobile_kit_demo/feature/login/domain/usecase/login_usecase.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/login/login_bloc.dart';
 import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit_demo/feature/login/presentation/bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -95,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               order: const NumericFocusOrder(1.0),
               child: AppTextField(
                 controller: _emailTC,
-                hint: 'Email*',
+                hint: AppLocalizations.of(context)!.emailPlaceholder,
                 textInputAction: TextInputAction.next,
                 errorText: _bloc.state.emailError,
                 prefixIconName: Assets.envelopIcon,
@@ -109,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
               order: const NumericFocusOrder(2.0),
               child: AppTextField(
                 controller: _passwordTC,
-                hint: 'Password*',
+                hint: AppLocalizations.of(context)!.passwordPlaceholder,
                 textInputAction: TextInputAction.next,
                 errorText: _bloc.state.passwordError,
                 shouldShowEyeIcon: true,
@@ -126,32 +125,9 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Widget _buildRememberMe() {
-    return Builder(builder: (context) {
-      return Center(
-        child: Row(
-          children: [
-            Checkbox(
-              value: _bloc.state.rememberMe,
-              activeColor: ColorPalette.bluishAction,
-              side: const BorderSide(width: 0.5),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-              ),
-              onChanged: (bool? value) {
-                _bloc.changeRememberMe();
-              },
-            ),
-            const Text('Remember Me'),
-          ],
-        ),
-      );
-    });
-  }
-
   Widget _buildLoginButton() {
     return Builder(builder: (context) {
-      return ActionButton(title: 'Log In',
+      return ActionButton(title: AppLocalizations.of(context)!.loginButton,
         onPressed: () => _bloc.loginAction(),
       );
     });
