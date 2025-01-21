@@ -1,7 +1,4 @@
-import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/biometrics_local_datasource.dart';
-import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local_auth_datasource.dart';
-import 'package:mobile_kit_demo/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
-import 'package:mobile_kit_demo/shared/domain/entity/failure.dart';
+import 'package:mobile_kit/mobile_kit.dart';
 
 class BiometricsAuthRepositoryImpl implements BiometricsAuthRepository {
 

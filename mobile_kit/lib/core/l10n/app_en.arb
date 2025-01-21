@@ -1,5 +1,0 @@
-{
-  "validationPasswordRequired": "*Password is required",
-  "validationEmailRequired": "*Email is required",
-  "validationEmailWrongFormat": "Email must be in the format \\'name@domain.com"
-}
