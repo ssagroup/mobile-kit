@@ -4,12 +4,12 @@ import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/do
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/setup_pin_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
-part 'setup_pin_bloc.freezed.dart';
+part 'setup_pin_cubit.freezed.dart';
 
 part 'setup_pin_state.dart';
 
-class SetupPinBloc extends Cubit<SetupPinState> {
-  SetupPinBloc({
+class SetupPinCubit extends Cubit<SetupPinState> {
+  SetupPinCubit({
     required BiometricsUsecase biometricUsecase,
     required SetupPinUsecase setupPinUsecase,
     required LogoutUsecase logoutUsecase,

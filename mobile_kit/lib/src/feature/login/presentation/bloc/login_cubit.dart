@@ -6,11 +6,11 @@ import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 import 'package:mobile_kit/src/feature/login/domain/request/auth_request.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/login_usecase.dart';
 
-part 'login_bloc.freezed.dart';
+part 'login_cubit.freezed.dart';
 part 'login_state.dart';
 
-class LoginBloc extends Cubit<LoginState> {
-  LoginBloc(LoginUseCase loginUseCase)
+class LoginCubit extends Cubit<LoginState> {
+  LoginCubit(LoginUseCase loginUseCase)
       : super(LoginState.initial()) {
     _loginUseCase = loginUseCase;
   }

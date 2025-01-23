@@ -10,7 +10,7 @@ import 'package:mobile_kit/src/core/widget/text_field.dart';
 import 'package:mobile_kit/src/core/util/optional.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/login_usecase.dart';
-import 'package:mobile_kit/src/feature/login/presentation/bloc/login_bloc.dart';
+import 'package:mobile_kit/src/feature/login/presentation/bloc/login_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late final LoginBloc _bloc;
+  late final LoginCubit _bloc;
 
   final TextEditingController _emailTC = TextEditingController();
   final TextEditingController _passwordTC = TextEditingController();
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     final loginUseCase = LoginUseCase(GetIt.instance<AuthenticationRepository>());
-    _bloc = LoginBloc(loginUseCase);
+    _bloc = LoginCubit(loginUseCase);
 
     _emailTC.addListener(() => _bloc.emailChanged(_emailTC.text));
     _emailTC.text = _bloc.state.email.orEmpty;
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocProvider(
       create: (BuildContext context) => _bloc,
       child: Scaffold(
-        body: BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
+        body: BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
           state.loginStatus.whenOrNull(failure: (String message, _) {
             final snackBar = SnackBar(
               content: Text(

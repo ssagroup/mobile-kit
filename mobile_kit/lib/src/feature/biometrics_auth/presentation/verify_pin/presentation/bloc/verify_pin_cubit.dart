@@ -5,36 +5,31 @@ import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/do
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/domain/usecase/verify_pin_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
-part 'verify_pin_bloc.freezed.dart';
+part 'verify_pin_cubit.freezed.dart';
 
 part 'verify_pin_state.dart';
 
-class VerifyPinBloc extends Cubit<VerifyPinState> {
-  VerifyPinBloc({
+class VerifyPinCubit extends Cubit<VerifyPinState> {
+  VerifyPinCubit({
     required VerifyPinUsecase verifyPinUsecase,
     required BiometricsUsecase biometricsUsecase,
     required LogoutUsecase logoutUsecase,
   })  : _verifyPinUsecase = verifyPinUsecase,
         _biometricsUsecase = biometricsUsecase,
         _logoutUsecase = logoutUsecase,
-        super(VerifyPinState.initial()) {
-
-    Future.delayed(const Duration(seconds: 0), () async {
-
-      checkBioIfEnabled();
-      final isActive = await biometricsUsecase.isBioEnabled;
-      emit(state.copyWith(
-        isBioEnabled: isActive,
-      ));
-    });
-  }
+        super(VerifyPinState.initial());
 
   final VerifyPinUsecase _verifyPinUsecase;
   final BiometricsUsecase _biometricsUsecase;
   final LogoutUsecase _logoutUsecase;
 
-  final _clearPinController = StreamController<bool>.broadcast();
-  Stream<bool> get clearPinStream => _clearPinController.stream;
+  Future<void> initialize() async {
+    checkBioIfEnabled();
+    final isActive = await _biometricsUsecase.isBioEnabled;
+    emit(state.copyWith(
+      isBioEnabled: isActive,
+    ));
+  }
 
   Future<void> checkBioIfEnabled() async {
     if (await _biometricsUsecase.isBioEnabled) {
@@ -44,11 +39,6 @@ class VerifyPinBloc extends Cubit<VerifyPinState> {
 
   Future<void> checkCode(String code) async {
     final result = await _verifyPinUsecase.checkPin(code);
-    Future.delayed(const Duration(milliseconds: 400), () {
-      if (!result) {
-        _clearPinController.add(!result);
-      }
-    });
     emit(state.copyWith(
       showError: !result,
     ));
@@ -64,6 +54,5 @@ class VerifyPinBloc extends Cubit<VerifyPinState> {
   @override
   Future<void> close() async {
     super.close();
-    _clearPinController.close();
   }
 }

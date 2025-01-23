@@ -1,4 +1,4 @@
-part of 'verify_pin_bloc.dart';
+part of 'verify_pin_cubit.dart';
 
 @freezed
 class VerifyPinState with _$VerifyPinState {
