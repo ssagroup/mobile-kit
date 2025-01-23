@@ -18,6 +18,8 @@ class Failure with _$Failure {
 
   factory Failure.unknown(Object error) = UnknownFailure;
 
+  factory Failure.wrongCredentials() = WrongCredentialsFailure;
+
   String get errorDescription => map(
     notAuthorized: (_) => 'Your session has expired. Please sign in again.',
     wrongResponse: (_) => 'Our app is under development. Please try again later or contact support',
@@ -25,6 +27,7 @@ class Failure with _$Failure {
     socket: (_) => 'Please check your internet connection',
     storage: (_) => 'Error occurred',
     unknown: (err) => err.error.toString(),
+    wrongCredentials: (_) => 'Invalid credentials. Please try again',
   );
 }
 

@@ -36,7 +36,7 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<void> signIn({required AuthRequest request}) async {
     try {
-      final credential = _firebaseAuthInstance.signInWithEmailAndPassword(
+      final credential = await _firebaseAuthInstance.signInWithEmailAndPassword(
         email: request.email,
         password: request.password,
       );
@@ -47,6 +47,9 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
         throw CredentialsInvalidException();
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
+        throw CredentialsInvalidException();
+      } else if (e.code == 'invalid-credential') {
+        print('The supplied auth credential is malformed or has expired.');
         throw CredentialsInvalidException();
       }
     } catch (e) {

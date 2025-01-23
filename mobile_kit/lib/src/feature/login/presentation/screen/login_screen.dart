@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
+import 'package:mobile_kit/src/core/util/validation.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _emailTC,
                 hint: AppLocalizations.of(context)!.emailPlaceholder,
                 textInputAction: TextInputAction.next,
-                errorText: _bloc.state.emailError,
+                errorText: _bloc.state.emailError?.errorDescription(context),
                 prefixIconName: Assets.envelopIcon,
                 prefixIconColor: Colors.grey,
               ),
@@ -113,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordTC,
                 hint: AppLocalizations.of(context)!.passwordPlaceholder,
                 textInputAction: TextInputAction.next,
-                errorText: _bloc.state.passwordError,
+                errorText: _bloc.state.passwordError?.errorDescription(context),
                 shouldShowEyeIcon: true,
                 onEyePressed: _bloc.changeVisibility,
                 onOffEyeIcon: _bloc.state.showPassword,
