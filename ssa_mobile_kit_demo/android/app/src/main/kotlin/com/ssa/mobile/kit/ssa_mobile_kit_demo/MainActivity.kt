@@ -1,4 +1,4 @@
-package com.ssa.mobile.kit.ssa_mobile_kit_demo
+package com.ssa.mobile.kit
 
 import io.flutter.embedding.android.FlutterActivity
 
