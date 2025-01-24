@@ -1,12 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
-import 'package:mobile_kit/src/core/widget/pin_code_widget.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/domain/usecase/verify_pin_usecase.dart';
-import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/bloc/verify_pin_bloc.dart';
+import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/bloc/verify_pin_cubit.dart';
 
 class VerifyPinScreen extends StatefulWidget {
   const VerifyPinScreen({super.key});
@@ -16,39 +17,51 @@ class VerifyPinScreen extends StatefulWidget {
 }
 
 class _VerifyPinScreenState extends State<VerifyPinScreen> {
-  late final VerifyPinBloc _bloc;
+  late final VerifyPinCubit _bloc;
+  final _clearPinController = StreamController<bool>();
 
   @override
   void initState() {
     super.initState();
 
-    _bloc = VerifyPinBloc(
+    _bloc = VerifyPinCubit(
       verifyPinUsecase: VerifyPinUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
       biometricsUsecase: BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
       logoutUsecase: LogoutUsecase(GetIt.instance<AuthenticationRepository>()),
-    );
+    )
+    ..initialize();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _clearPinController.close();
+    _bloc.close();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => _bloc,
-      child: Scaffold(
-        body: BlocConsumer<VerifyPinBloc, VerifyPinState>(listener: (context, state) async {
-          if (state.showError) {
-            var snackBar = SnackBar(
-              content: Text(
+    return Scaffold(
+      body: BlocConsumer<VerifyPinCubit, VerifyPinState>(
+          bloc: _bloc,
+          listener: (context, state) async {
+            if (state.showError) {
+              Future.delayed(const Duration(milliseconds: 400), () {
+                _clearPinController.add(true);
+              });
+              var snackBar = SnackBar(
+                content: Text(
                   AppLocalizations.of(context)!.invalidPinAlert,
-              ),
-            );
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackBar);
-          }
-        }, builder: (context, state) {
-          return _buildBody();
-        }),
-      ),
+                ),
+              );
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(snackBar);
+            }
+          },
+          builder: (context, state) {
+            return _buildBody();
+          }),
     );
   }
 
@@ -78,7 +91,7 @@ class _VerifyPinScreenState extends State<VerifyPinScreen> {
                 shouldShowLeftWidget: _bloc.state.isBioEnabled,
                 onComplete: _bloc.checkCode,
                 onLeftAction: _bloc.checkBioIfEnabled,
-                clearStream: _bloc.clearPinStream,
+                clearStream: _clearPinController.stream,
                 centerBottomWidget: ActionButton(
                   title: AppLocalizations.of(context)!.verifyPinLogout,
                   onPressed: () => _bloc.logout(),

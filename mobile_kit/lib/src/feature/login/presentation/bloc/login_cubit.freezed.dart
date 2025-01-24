@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_bloc.dart';
+part of 'login_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get emailError => throw _privateConstructorUsedError;
+  ValidationError? get emailError => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  String? get passwordError => throw _privateConstructorUsedError;
+  ValidationError? get passwordError => throw _privateConstructorUsedError;
   AuthStatus get loginStatus => throw _privateConstructorUsedError;
   bool get showPassword => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
@@ -41,9 +41,9 @@ abstract class $LoginStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       String? email,
-      String? emailError,
+      ValidationError? emailError,
       String? password,
-      String? passwordError,
+      ValidationError? passwordError,
       AuthStatus loginStatus,
       bool showPassword,
       bool rememberMe});
@@ -87,7 +87,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       emailError: freezed == emailError
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ValidationError?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -95,7 +95,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       passwordError: freezed == passwordError
           ? _value.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ValidationError?,
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
@@ -133,9 +133,9 @@ abstract class _$$LoginStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String? email,
-      String? emailError,
+      ValidationError? emailError,
       String? password,
-      String? passwordError,
+      ValidationError? passwordError,
       AuthStatus loginStatus,
       bool showPassword,
       bool rememberMe});
@@ -178,7 +178,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
       emailError: freezed == emailError
           ? _value.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ValidationError?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -186,7 +186,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
       passwordError: freezed == passwordError
           ? _value.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ValidationError?,
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
@@ -221,11 +221,11 @@ class _$LoginStateImpl implements _LoginState {
   @override
   final String? email;
   @override
-  final String? emailError;
+  final ValidationError? emailError;
   @override
   final String? password;
   @override
-  final String? passwordError;
+  final ValidationError? passwordError;
   @override
   final AuthStatus loginStatus;
   @override
@@ -277,9 +277,9 @@ abstract class _LoginState implements LoginState {
   const factory _LoginState(
       {required final bool isLoading,
       required final String? email,
-      required final String? emailError,
+      required final ValidationError? emailError,
       required final String? password,
-      required final String? passwordError,
+      required final ValidationError? passwordError,
       required final AuthStatus loginStatus,
       required final bool showPassword,
       required final bool rememberMe}) = _$LoginStateImpl;
@@ -289,11 +289,11 @@ abstract class _LoginState implements LoginState {
   @override
   String? get email;
   @override
-  String? get emailError;
+  ValidationError? get emailError;
   @override
   String? get password;
   @override
-  String? get passwordError;
+  ValidationError? get passwordError;
   @override
   AuthStatus get loginStatus;
   @override

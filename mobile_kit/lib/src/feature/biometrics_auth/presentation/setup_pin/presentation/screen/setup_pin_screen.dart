@@ -9,7 +9,7 @@ import 'package:mobile_kit/src/core/widget/pin_code_widget.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/setup_pin_usecase.dart';
-import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/bloc/setup_pin_bloc.dart';
+import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/bloc/setup_pin_cubit.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
@@ -21,37 +21,46 @@ class SetupPinScreen extends StatefulWidget {
 }
 
 class _SetupPinScreenState extends State<SetupPinScreen> {
-  late final SetupPinBloc _bloc;
+  late final SetupPinCubit _bloc;
 
   @override
   void initState() {
     super.initState();
 
-    _bloc = SetupPinBloc(
-      biometricUsecase: BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
+    _bloc = SetupPinCubit(
+      biometricUsecase: BiometricsUsecase(
+        GetIt.instance<BiometricsAuthRepository>(),
+        GetIt.instance<AuthenticationRepository>(),
+      ),
       setupPinUsecase: SetupPinUsecase(GetIt.instance<BiometricsAuthRepository>()),
       logoutUsecase: LogoutUsecase(GetIt.instance<AuthenticationRepository>()),
     );
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _bloc.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => _bloc,
-      child: Scaffold(
-        body: BlocConsumer<SetupPinBloc, SetupPinState>(listener: (context, state) async {
-          if (state.isBioAvailable) {
-            final shouldEnableResult = await showYesNoDialog(
-              context: context,
-              title: AppLocalizations.of(context)!.setupPinAlertTitle,
-              message: AppLocalizations.of(context)!.setupPinAlertMessage,
-            );
-            shouldEnableResult ? _bloc.acceptBioAuth() : _bloc.rejectBioAuth();
-          }
-        }, builder: (context, state) {
-          return _buildBody();
-        }),
-      ),
+    return Scaffold(
+      body: BlocConsumer<SetupPinCubit, SetupPinState>(
+          bloc: _bloc,
+          listener: (context, state) async {
+            if (state.isBioAvailable) {
+              final shouldEnableResult = await showYesNoDialog(
+                context: context,
+                title: AppLocalizations.of(context)!.setupPinAlertTitle,
+                message: AppLocalizations.of(context)!.setupPinAlertMessage,
+              );
+              shouldEnableResult ? _bloc.acceptBioAuth() : _bloc.rejectBioAuth();
+            }
+          },
+          builder: (context, state) {
+            return _buildBody();
+          }),
     );
   }
 
@@ -82,9 +91,7 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
                 deleteButtonColor: Colors.white,
                 deleteIconColor: Colors.black,
                 shouldShowLeftWidget: false,
-                onComplete: (pin) {
-                  _bloc.setupPin(pin);
-                },
+                onComplete: _bloc.setupPin,
                 centerBottomWidget: ActionButton(
                   title: 'Logout',
                   onPressed: () => _bloc.logout(),

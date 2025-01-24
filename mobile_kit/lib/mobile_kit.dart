@@ -23,7 +23,6 @@ export 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart'
 export 'package:mobile_kit/src/feature/login/domain/usecase/enter_foreground_usecase.dart';
 export 'package:mobile_kit/src/feature/login/domain/usecase/enter_background_usecase.dart';
 export 'package:mobile_kit/src/feature/login/domain/usecase/launch_usecase.dart';
-export 'package:mobile_kit/src/shared/bloc/lifecycle_bloc.dart';
 export 'package:mobile_kit/src/feature/login/domain/repository/auth_notifier.dart';
 export 'package:mobile_kit/src/feature/biometrics_auth/datasource/local_auth_datasource.dart';
 export 'package:mobile_kit/src/feature/biometrics_auth/datasource/biometrics_local_datasource.dart';

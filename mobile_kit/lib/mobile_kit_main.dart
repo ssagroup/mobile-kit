@@ -28,17 +28,13 @@ class SSAMobileKitApp extends StatelessWidget {
       GetIt.instance<AuthenticationRepository>(),
       GetIt.instance<BiometricsAuthRepository>(),
     );
-    final lifeCycleBloc = LifeCycleBloc(
-      enterBackgroundUseCase,
-      enterForegroundUseCase,
-    );
 
     return LifeCycleManager(
       onStateChanged: (AppLifecycleState state) {
         if (state == AppLifecycleState.resumed) {
-          lifeCycleBloc.enterForeground();
+          enterForegroundUseCase.enterForeground();
         } else if (state == AppLifecycleState.paused) {
-          lifeCycleBloc.enterBackground();
+          enterBackgroundUseCase.enterBackground();
         }
       },
       child: MaterialApp.router(

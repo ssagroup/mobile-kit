@@ -1,13 +1,13 @@
-part of 'login_bloc.dart';
+part of 'login_cubit.dart';
 
 @freezed
 class LoginState with _$LoginState {
   const factory LoginState({
     required bool isLoading,
     required String? email,
-    required String? emailError,
+    required ValidationError? emailError,
     required String? password,
-    required String? passwordError,
+    required ValidationError? passwordError,
     required AuthStatus loginStatus,
     required bool showPassword,
     required bool rememberMe,

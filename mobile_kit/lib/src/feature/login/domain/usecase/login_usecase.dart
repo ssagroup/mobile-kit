@@ -18,7 +18,7 @@ class LoginUseCase {
       return const Right(unit);
     } on CredentialsInvalidException catch (_) {
       return Left<Failure, void>(
-        Failure.notAuthorized(),
+        Failure.wrongCredentials(),
       );
     } catch (e) {
       return Left<Failure, void>(

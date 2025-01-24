@@ -1,6 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.ssa.mobile.kit">
+
     <application
-        android:label="ssa_mobile_kit_demo"
+        android:label="SSA Mobile Kit"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

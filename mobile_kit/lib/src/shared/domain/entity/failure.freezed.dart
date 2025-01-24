@@ -24,6 +24,7 @@ mixin _$Failure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$Failure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$Failure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$Failure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$Failure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$Failure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +154,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return notAuthorized();
   }
@@ -161,6 +168,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return notAuthorized?.call();
   }
@@ -174,6 +182,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (notAuthorized != null) {
@@ -191,6 +200,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return notAuthorized(this);
   }
@@ -204,6 +214,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return notAuthorized?.call(this);
   }
@@ -217,6 +228,7 @@ class _$NotAuthorizedFailureImpl extends NotAuthorizedFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (notAuthorized != null) {
@@ -279,6 +291,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return wrongResponse();
   }
@@ -292,6 +305,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return wrongResponse?.call();
   }
@@ -305,6 +319,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (wrongResponse != null) {
@@ -322,6 +337,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return wrongResponse(this);
   }
@@ -335,6 +351,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return wrongResponse?.call(this);
   }
@@ -348,6 +365,7 @@ class _$WrongResponseFailureImpl extends WrongResponseFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (wrongResponse != null) {
@@ -445,6 +463,7 @@ class _$ServerFailureImpl extends ServerFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return server(code, message);
   }
@@ -458,6 +477,7 @@ class _$ServerFailureImpl extends ServerFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return server?.call(code, message);
   }
@@ -471,6 +491,7 @@ class _$ServerFailureImpl extends ServerFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -488,6 +509,7 @@ class _$ServerFailureImpl extends ServerFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return server(this);
   }
@@ -501,6 +523,7 @@ class _$ServerFailureImpl extends ServerFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return server?.call(this);
   }
@@ -514,6 +537,7 @@ class _$ServerFailureImpl extends ServerFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -585,6 +609,7 @@ class _$SocketFailureImpl extends SocketFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return socket();
   }
@@ -598,6 +623,7 @@ class _$SocketFailureImpl extends SocketFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return socket?.call();
   }
@@ -611,6 +637,7 @@ class _$SocketFailureImpl extends SocketFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (socket != null) {
@@ -628,6 +655,7 @@ class _$SocketFailureImpl extends SocketFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return socket(this);
   }
@@ -641,6 +669,7 @@ class _$SocketFailureImpl extends SocketFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return socket?.call(this);
   }
@@ -654,6 +683,7 @@ class _$SocketFailureImpl extends SocketFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (socket != null) {
@@ -715,6 +745,7 @@ class _$StorageFailureImpl extends StorageFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return storage();
   }
@@ -728,6 +759,7 @@ class _$StorageFailureImpl extends StorageFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return storage?.call();
   }
@@ -741,6 +773,7 @@ class _$StorageFailureImpl extends StorageFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -758,6 +791,7 @@ class _$StorageFailureImpl extends StorageFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return storage(this);
   }
@@ -771,6 +805,7 @@ class _$StorageFailureImpl extends StorageFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return storage?.call(this);
   }
@@ -784,6 +819,7 @@ class _$StorageFailureImpl extends StorageFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -871,6 +907,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     required TResult Function() socket,
     required TResult Function() storage,
     required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
   }) {
     return unknown(error);
   }
@@ -884,6 +921,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     TResult? Function()? socket,
     TResult? Function()? storage,
     TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
   }) {
     return unknown?.call(error);
   }
@@ -897,6 +935,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     TResult Function()? socket,
     TResult Function()? storage,
     TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -914,6 +953,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     required TResult Function(SocketFailure value) socket,
     required TResult Function(StorageFailure value) storage,
     required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
   }) {
     return unknown(this);
   }
@@ -927,6 +967,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     TResult? Function(SocketFailure value)? socket,
     TResult? Function(StorageFailure value)? storage,
     TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
   }) {
     return unknown?.call(this);
   }
@@ -940,6 +981,7 @@ class _$UnknownFailureImpl extends UnknownFailure {
     TResult Function(SocketFailure value)? socket,
     TResult Function(StorageFailure value)? storage,
     TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -960,4 +1002,143 @@ abstract class UnknownFailure extends Failure {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownFailureImplCopyWith<_$UnknownFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$WrongCredentialsFailureImplCopyWith<$Res> {
+  factory _$$WrongCredentialsFailureImplCopyWith(
+          _$WrongCredentialsFailureImpl value,
+          $Res Function(_$WrongCredentialsFailureImpl) then) =
+      __$$WrongCredentialsFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WrongCredentialsFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$WrongCredentialsFailureImpl>
+    implements _$$WrongCredentialsFailureImplCopyWith<$Res> {
+  __$$WrongCredentialsFailureImplCopyWithImpl(
+      _$WrongCredentialsFailureImpl _value,
+      $Res Function(_$WrongCredentialsFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$WrongCredentialsFailureImpl extends WrongCredentialsFailure {
+  _$WrongCredentialsFailureImpl() : super._();
+
+  @override
+  String toString() {
+    return 'Failure.wrongCredentials()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WrongCredentialsFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notAuthorized,
+    required TResult Function() wrongResponse,
+    required TResult Function(int code, String message) server,
+    required TResult Function() socket,
+    required TResult Function() storage,
+    required TResult Function(Object error) unknown,
+    required TResult Function() wrongCredentials,
+  }) {
+    return wrongCredentials();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notAuthorized,
+    TResult? Function()? wrongResponse,
+    TResult? Function(int code, String message)? server,
+    TResult? Function()? socket,
+    TResult? Function()? storage,
+    TResult? Function(Object error)? unknown,
+    TResult? Function()? wrongCredentials,
+  }) {
+    return wrongCredentials?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notAuthorized,
+    TResult Function()? wrongResponse,
+    TResult Function(int code, String message)? server,
+    TResult Function()? socket,
+    TResult Function()? storage,
+    TResult Function(Object error)? unknown,
+    TResult Function()? wrongCredentials,
+    required TResult orElse(),
+  }) {
+    if (wrongCredentials != null) {
+      return wrongCredentials();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotAuthorizedFailure value) notAuthorized,
+    required TResult Function(WrongResponseFailure value) wrongResponse,
+    required TResult Function(ServerFailure value) server,
+    required TResult Function(SocketFailure value) socket,
+    required TResult Function(StorageFailure value) storage,
+    required TResult Function(UnknownFailure value) unknown,
+    required TResult Function(WrongCredentialsFailure value) wrongCredentials,
+  }) {
+    return wrongCredentials(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotAuthorizedFailure value)? notAuthorized,
+    TResult? Function(WrongResponseFailure value)? wrongResponse,
+    TResult? Function(ServerFailure value)? server,
+    TResult? Function(SocketFailure value)? socket,
+    TResult? Function(StorageFailure value)? storage,
+    TResult? Function(UnknownFailure value)? unknown,
+    TResult? Function(WrongCredentialsFailure value)? wrongCredentials,
+  }) {
+    return wrongCredentials?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotAuthorizedFailure value)? notAuthorized,
+    TResult Function(WrongResponseFailure value)? wrongResponse,
+    TResult Function(ServerFailure value)? server,
+    TResult Function(SocketFailure value)? socket,
+    TResult Function(StorageFailure value)? storage,
+    TResult Function(UnknownFailure value)? unknown,
+    TResult Function(WrongCredentialsFailure value)? wrongCredentials,
+    required TResult orElse(),
+  }) {
+    if (wrongCredentials != null) {
+      return wrongCredentials(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WrongCredentialsFailure extends Failure {
+  factory WrongCredentialsFailure() = _$WrongCredentialsFailureImpl;
+  WrongCredentialsFailure._() : super._();
 }
