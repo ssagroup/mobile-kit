@@ -41,27 +41,27 @@ class _VerifyPinScreenState extends State<VerifyPinScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => _bloc,
-      child: Scaffold(
-        body: BlocConsumer<VerifyPinCubit, VerifyPinState>(listener: (context, state) async {
-          if (state.showError) {
-            Future.delayed(const Duration(milliseconds: 400), () {
-              _clearPinController.add(true);
-            });
-            var snackBar = SnackBar(
-              content: Text(
+    return Scaffold(
+      body: BlocConsumer<VerifyPinCubit, VerifyPinState>(
+          bloc: _bloc,
+          listener: (context, state) async {
+            if (state.showError) {
+              Future.delayed(const Duration(milliseconds: 400), () {
+                _clearPinController.add(true);
+              });
+              var snackBar = SnackBar(
+                content: Text(
                   AppLocalizations.of(context)!.invalidPinAlert,
-              ),
-            );
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackBar);
-          }
-        }, builder: (context, state) {
-          return _buildBody();
-        }),
-      ),
+                ),
+              );
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(snackBar);
+            }
+          },
+          builder: (context, state) {
+            return _buildBody();
+          }),
     );
   }
 

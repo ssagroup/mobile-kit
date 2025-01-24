@@ -41,33 +41,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => _bloc,
-      child: Scaffold(
-        body: BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
-          state.loginStatus.whenOrNull(failure: (String message, _) {
-            final snackBar = SnackBar(
-              content: Text(
-                message,
+    return Scaffold(
+      body: BlocConsumer<LoginCubit, LoginState>(
+          bloc: _bloc,
+          listener: (context, state) {
+            state.loginStatus.whenOrNull(failure: (String message, _) {
+              final snackBar = SnackBar(
+                content: Text(
+                  message,
+                ),
+              );
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(snackBar);
+            });
+          },
+          builder: (context, state) {
+            return FullScreenProgressIndicator(
+              isLoading: state.isLoading,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 100.0),
+                  child: _buildSignIn(),
+                ),
               ),
             );
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackBar);
-          });
-        }, builder: (context, state) {
-          return FullScreenProgressIndicator(
-            isLoading: state.isLoading,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0, vertical: 100.0),
-                child: _buildSignIn(),
-              ),
-            ),
-          );
-        }),
-      ),
+          }),
     );
   }
 
@@ -131,7 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildLoginButton() {
     return Builder(builder: (context) {
-      return ActionButton(title: AppLocalizations.of(context)!.loginButton,
+      return ActionButton(
+        title: AppLocalizations.of(context)!.loginButton,
         onPressed: () => _bloc.loginAction(),
       );
     });
@@ -142,5 +142,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _passwordTC.dispose();
     _emailTC.dispose();
+    _bloc.close();
   }
 }

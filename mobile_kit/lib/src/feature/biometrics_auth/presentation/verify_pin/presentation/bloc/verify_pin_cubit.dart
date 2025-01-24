@@ -50,9 +50,4 @@ class VerifyPinCubit extends Cubit<VerifyPinState> {
   Future<void> logout() async {
     await _logoutUsecase.logout();
   }
-
-  @override
-  Future<void> close() async {
-    super.close();
-  }
 }

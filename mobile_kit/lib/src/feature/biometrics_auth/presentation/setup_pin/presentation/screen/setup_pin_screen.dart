@@ -28,7 +28,10 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
     super.initState();
 
     _bloc = SetupPinCubit(
-      biometricUsecase: BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
+      biometricUsecase: BiometricsUsecase(
+        GetIt.instance<BiometricsAuthRepository>(),
+        GetIt.instance<AuthenticationRepository>(),
+      ),
       setupPinUsecase: SetupPinUsecase(GetIt.instance<BiometricsAuthRepository>()),
       logoutUsecase: LogoutUsecase(GetIt.instance<AuthenticationRepository>()),
     );
@@ -42,22 +45,22 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => _bloc,
-      child: Scaffold(
-        body: BlocConsumer<SetupPinCubit, SetupPinState>(listener: (context, state) async {
-          if (state.isBioAvailable) {
-            final shouldEnableResult = await showYesNoDialog(
-              context: context,
-              title: AppLocalizations.of(context)!.setupPinAlertTitle,
-              message: AppLocalizations.of(context)!.setupPinAlertMessage,
-            );
-            shouldEnableResult ? _bloc.acceptBioAuth() : _bloc.rejectBioAuth();
-          }
-        }, builder: (context, state) {
-          return _buildBody();
-        }),
-      ),
+    return Scaffold(
+      body: BlocConsumer<SetupPinCubit, SetupPinState>(
+          bloc: _bloc,
+          listener: (context, state) async {
+            if (state.isBioAvailable) {
+              final shouldEnableResult = await showYesNoDialog(
+                context: context,
+                title: AppLocalizations.of(context)!.setupPinAlertTitle,
+                message: AppLocalizations.of(context)!.setupPinAlertMessage,
+              );
+              shouldEnableResult ? _bloc.acceptBioAuth() : _bloc.rejectBioAuth();
+            }
+          },
+          builder: (context, state) {
+            return _buildBody();
+          }),
     );
   }
 
@@ -88,9 +91,7 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
                 deleteButtonColor: Colors.white,
                 deleteIconColor: Colors.black,
                 shouldShowLeftWidget: false,
-                onComplete: (pin) {
-                  _bloc.setupPin(pin);
-                },
+                onComplete: _bloc.setupPin,
                 centerBottomWidget: ActionButton(
                   title: 'Logout',
                   onPressed: () => _bloc.logout(),
