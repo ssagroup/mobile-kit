@@ -746,7 +746,7 @@ packages:
     source: hosted
     version: "2.3.0"
   persistent_bottom_nav_bar:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: persistent_bottom_nav_bar
       sha256: "6aa9b97ced1abd92c90cedd1997d34ea0b35c3ded762ac6063baccc299b0c4c5"
@@ -786,7 +786,7 @@ packages:
     source: hosted
     version: "1.5.1"
   provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: provider
       sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c

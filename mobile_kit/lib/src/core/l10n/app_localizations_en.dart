@@ -44,4 +44,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logoutAlertMessage => 'Are you sure you want to logout?';
+
+  @override
+  String get homeTitle => 'Home';
+
+  @override
+  String get alertsTitle => 'Alerts';
+
+  @override
+  String get appTitle => 'Mobile Kit';
+
+  @override
+  String get yesTitle => 'Yes';
+
+  @override
+  String get noTitle => 'No';
 }

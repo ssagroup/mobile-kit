@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_kit/src/core/resources/colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/alerts_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/home_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -34,7 +35,6 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
       stateManagement: true,
       hideNavigationBarWhenKeyboardAppears: true,
       popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-      // padding: const EdgeInsets.only(top: 8),
       backgroundColor: ColorPalette.greyBackground,
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(
@@ -42,11 +42,6 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
           duration: Duration(milliseconds: 400),
           curve: Curves.ease,
         ),
-      //   screenTransitionAnimation: ScreenTransitionAnimationSettings( // Screen transition animation on change of selected tab.
-      //     animateTabTransition: false,
-      //     duration: Duration(milliseconds: 200),
-      //     screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
-      //   ),
       ),
       confineToSafeArea: true,
       navBarHeight: kBottomNavigationBarHeight,
@@ -61,37 +56,25 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
     ];
   }
 
-
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home_filled),
-        title: ("Home"),
+        icon: SvgPicture.asset(
+          Assets.homeIcon,
+          package: assetsPackage,
+        ),
+        title: AppLocalizations.of(context)!.homeTitle,
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: ColorPalette.grayFont,
-
-        // scrollController: _scrollController1,
-        // routeAndNavigatorSettings: RouteAndNavigatorSettings(
-        //   initialRoute: "/",
-        //   routes: {
-        //     "/first": (final context) => const MainScreen2(),
-        //     "/second": (final context) => const MainScreen3(),
-        //   },
-        // ),
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.bell),
-        title: ("Alerts"),
+        icon: SvgPicture.asset(
+          Assets.notificationIcon,
+          package: assetsPackage,
+        ),
+        title: AppLocalizations.of(context)!.alertsTitle,
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: ColorPalette.grayFont,
-        // scrollController: _scrollController2,
-        // routeAndNavigatorSettings: RouteAndNavigatorSettings(
-        //   initialRoute: "/",
-        //   routes: {
-        //     "/first": (final context) => const MainScreen2(),
-        //     "/second": (final context) => const MainScreen3(),
-        //   },
-        // ),
       ),
     ];
   }

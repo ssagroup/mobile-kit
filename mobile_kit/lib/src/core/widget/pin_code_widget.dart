@@ -145,6 +145,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
       color: widget.deleteIconColor,
       width: 90,
       height: 90,
+      package: assetsPackage,
     );
     return MeasureSize(
       onChange: (size) {

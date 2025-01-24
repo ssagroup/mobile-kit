@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile_kit/src/core/resources/assets.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -91,6 +92,7 @@ class AppTextField extends StatelessWidget {
             ? Center(
                 child: SvgPicture.asset(
                   prefixIconName!,
+                  package: assetsPackage,
                 ),
               )
             : null,

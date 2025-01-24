@@ -1,5 +1,6 @@
 class Assets {
-  static const String ssaLogoSmall = 'assets/icons/Mobile kit.svg';
+  static const String ssaLogoSmall = 'assets/icons/logo_small_ic.svg';
+  static const String ssaLogoBig = 'assets/icons/ssa_logo_ic.svg';
   static const String lockIcon = 'assets/icons/lock_ic.svg';
   static const String pauseBotIcon = 'assets/icons/stop_ic.svg';
   static const String runBotIcon = 'assets/icons/start_ic.svg';
@@ -21,4 +22,7 @@ class Assets {
   static const String infrastructureIcon = 'assets/icons/infrastructure_ic.svg';
   static const String kpiIcon = 'assets/icons/kpi_ic.svg';
   static const String settingsIcon = 'assets/icons/settings_ic.svg';
+  static const String homeIcon = 'assets/icons/home_ic.svg';
 }
+
+const assetsPackage = 'mobile_kit';

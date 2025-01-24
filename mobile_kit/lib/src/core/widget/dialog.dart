@@ -1,6 +1,8 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../mobile_kit.dart';
+
 Future<void> showAdaptiveAlertDialog(
     BuildContext context,
     String? title,
@@ -37,8 +39,8 @@ Future<bool> showYesNoDialog({
     context: context,
     title: title,
     message: message,
-    okLabel: 'Yes',
-    cancelLabel: 'No',
+    okLabel: AppLocalizations.of(context)!.yesTitle,
+    cancelLabel: AppLocalizations.of(context)!.noTitle,
   );
   return result == OkCancelResult.ok;
 }

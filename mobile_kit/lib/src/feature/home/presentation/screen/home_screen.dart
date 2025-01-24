@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/card_widget.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home', style: TextStyle(color: Colors.black),),
+        title: Text(AppLocalizations.of(context)!.homeTitle, style: TextStyle(color: Colors.black)),
         elevation: 0,
         backgroundColor: ColorPalette.greyBackground,
         actions: _buildActions(),
@@ -53,7 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
       IconButton(
         onPressed: () async {
           final isOk = await showDialogWithCancel(
-              context: context, title: 'Logout', message: 'Are you sure you want to logout?', isDestructive: true);
+              context: context,
+              title: AppLocalizations.of(context)!.logoutAlertTitle,
+              message: AppLocalizations.of(context)!.logoutAlertMessage,
+              isDestructive: true);
           if (isOk) {
             await _logoutUseCase.logout();
           }
@@ -85,7 +89,6 @@ class HomeCardItem extends StatefulWidget {
 }
 
 class HomeCardItemState extends State<HomeCardItem> {
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -95,6 +98,7 @@ class HomeCardItemState extends State<HomeCardItem> {
           width: 20,
           height: 20,
           color: ColorPalette.grayFont,
+          package: 'mobile_kit',
         ),
         const SizedBox(width: 24),
         Text(widget.itemTitle),
