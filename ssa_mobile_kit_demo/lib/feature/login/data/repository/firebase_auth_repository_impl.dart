@@ -1,11 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
-import 'package:mobile_kit_demo/feature/login/data/datasource/local/biometrics_local_datasource.dart';
-import 'package:mobile_kit_demo/feature/login/domain/model/user_model.dart';
-import 'package:mobile_kit_demo/feature/login/domain/repository/auth_repository.dart';
-import 'package:mobile_kit_demo/feature/login/domain/request/auth_request.dart';
-import 'package:mobile_kit_demo/feature/login/presentation/login/bloc/auth/auth_notifier.dart';
-import 'package:mobile_kit_demo/shared/domain/entity/failure.dart';
 
 class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   FirebaseAuthenticationRepositoryImpl({
@@ -42,7 +36,7 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<void> signIn({required AuthRequest request}) async {
     try {
-      final credential = _firebaseAuthInstance.signInWithEmailAndPassword(
+      final credential = await _firebaseAuthInstance.signInWithEmailAndPassword(
         email: request.email,
         password: request.password,
       );
@@ -53,6 +47,9 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
         throw CredentialsInvalidException();
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
+        throw CredentialsInvalidException();
+      } else if (e.code == 'invalid-credential') {
+        print('The supplied auth credential is malformed or has expired.');
         throw CredentialsInvalidException();
       }
     } catch (e) {
