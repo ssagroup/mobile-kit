@@ -33,7 +33,7 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
         GetIt.instance<AuthenticationRepository>(),
       ),
       setupPinUsecase: SetupPinUsecase(GetIt.instance<BiometricsAuthRepository>()),
-      logoutUsecase: LogoutUsecase(GetIt.instance<AuthenticationRepository>()),
+      logoutUsecase: LogoutUseCase(GetIt.instance<AuthenticationRepository>()),
     );
   }
 

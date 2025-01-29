@@ -3,6 +3,7 @@ import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/screen/setup_pin_screen.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/settings/settings_screen.dart';
 import 'package:mobile_kit/src/feature/login/presentation/screen/login_screen.dart';
 
 // Auth
@@ -13,6 +14,7 @@ const verifyPinRouteName = 'verifyPin';
 // Main
 const homeRouteName = 'home';
 const notificationListRouteName = 'notificationList';
+const settingsRouteName = 'settings';
 
 GoRouter setupRouter(AuthenticationNotifier authNotifier) {
   final GoRouter router = GoRouter(
@@ -50,7 +52,8 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
       }
 
       final isMainState = authNotifier.state == const AuthenticationState.authenticated();
-      if (isMainState) {
+      final isOnMainScreen = state.fullPath?.startsWith('/home') == true;
+      if (isMainState && !isOnMainScreen) {
         return state.namedLocation(homeRouteName);
       }
 
@@ -97,6 +100,13 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
             name: notificationListRouteName,
             pageBuilder: (context, state) => MaterialPage<void>(
               child: Container(),
+            ),
+          ),
+          GoRoute(
+            path: 'settings',
+            name: settingsRouteName,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              child: SettingsScreen(),
             ),
           ),
         ],

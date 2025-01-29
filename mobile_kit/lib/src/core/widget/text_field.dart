@@ -24,6 +24,8 @@ class AppTextField extends StatelessWidget {
     this.obscureText,
     this.useOtp,
     this.autofocus = false,
+    this.readOnly = false,
+    this.enabled = true,
     this.prefixIconName,
     this.prefixIconColor,
     super.key,
@@ -50,16 +52,17 @@ class AppTextField extends StatelessWidget {
   final bool? obscureText;
   final bool? useOtp;
   final bool autofocus;
+  final bool readOnly;
+  final bool enabled;
+
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       textInputAction: textInputAction,
       controller: controller,
-      // cursorColor: Colors.white,
       style: textStyle ??
           const TextStyle(
-            // color: Colors.white,
             fontSize: 16.0,
           ),
       keyboardType: keyboardType,
@@ -115,6 +118,8 @@ class AppTextField extends StatelessWidget {
       onChanged: onTextChanged,
       maxLines: maxLines,
       autofocus: autofocus,
+      readOnly: readOnly,
+      enabled: enabled,
     );
   }
 }

@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Log In'**
   String get loginButton;
 
+  /// No description provided for @logoutButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get logoutButton;
+
   /// No description provided for @setupPinAlertTitle.
   ///
   /// In en, this message translates to:
@@ -200,6 +206,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get noTitle;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

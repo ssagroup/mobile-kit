@@ -13,7 +13,7 @@ class VerifyPinCubit extends Cubit<VerifyPinState> {
   VerifyPinCubit({
     required VerifyPinUsecase verifyPinUsecase,
     required BiometricsUsecase biometricsUsecase,
-    required LogoutUsecase logoutUsecase,
+    required LogoutUseCase logoutUsecase,
   })  : _verifyPinUsecase = verifyPinUsecase,
         _biometricsUsecase = biometricsUsecase,
         _logoutUsecase = logoutUsecase,
@@ -21,7 +21,7 @@ class VerifyPinCubit extends Cubit<VerifyPinState> {
 
   final VerifyPinUsecase _verifyPinUsecase;
   final BiometricsUsecase _biometricsUsecase;
-  final LogoutUsecase _logoutUsecase;
+  final LogoutUseCase _logoutUsecase;
 
   Future<void> initialize() async {
     checkBioIfEnabled();

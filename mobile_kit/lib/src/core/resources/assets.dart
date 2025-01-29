@@ -23,6 +23,7 @@ class Assets {
   static const String kpiIcon = 'assets/icons/kpi_ic.svg';
   static const String settingsIcon = 'assets/icons/settings_ic.svg';
   static const String homeIcon = 'assets/icons/home_ic.svg';
+  static const String userIcon = 'assets/icons/user_ic.svg';
 }
 
 const assetsPackage = 'mobile_kit';

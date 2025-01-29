@@ -10,6 +10,8 @@ abstract class AuthenticationRepository {
 
   Future<bool> get isLoggedIn;
 
+  Future<UserModel?> get currentUser;
+
   void setState(AuthenticationState state);
 
   Future<AuthenticationState> get currentState;

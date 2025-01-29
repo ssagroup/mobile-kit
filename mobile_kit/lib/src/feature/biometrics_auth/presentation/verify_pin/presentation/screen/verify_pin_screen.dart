@@ -27,7 +27,7 @@ class _VerifyPinScreenState extends State<VerifyPinScreen> {
     _bloc = VerifyPinCubit(
       verifyPinUsecase: VerifyPinUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
       biometricsUsecase: BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
-      logoutUsecase: LogoutUsecase(GetIt.instance<AuthenticationRepository>()),
+      logoutUsecase: LogoutUseCase(GetIt.instance<AuthenticationRepository>()),
     )
     ..initialize();
   }
