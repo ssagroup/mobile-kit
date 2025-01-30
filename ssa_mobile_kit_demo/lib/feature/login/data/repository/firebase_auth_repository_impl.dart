@@ -27,7 +27,7 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<UserModel?> get currentUser async {
     if (_firebaseAuthInstance.currentUser != null) {
       final User fbUser = _firebaseAuthInstance.currentUser!;
-      final user = UserModel((fbUser.email).orEmpty, (fbUser.displayName).orEmpty);
+      final user = UserModel(fbUser.email.orEmpty, fbUser.displayName.orEmpty, fbUser.uid);
       return user;
     } else {
       return null;
@@ -75,7 +75,7 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
         clear();
         return null;
       } else {
-        return UserModel((user.email).orEmpty, (user.displayName).orEmpty);
+        return UserModel(user.email.orEmpty, user.displayName.orEmpty, user.uid);
       }
     });
   }

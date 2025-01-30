@@ -5,6 +5,7 @@ import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/core/util/validation.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
+import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/core/widget/text_field.dart';
@@ -131,6 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return ActionButton(
         title: AppLocalizations.of(context)!.loginButton,
         onPressed: () => _bloc.loginAction(),
+        decoration: GradientBoxDecoration.authButtonGradient,
       );
     });
   }

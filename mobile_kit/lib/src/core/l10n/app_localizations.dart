@@ -93,6 +93,12 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
+  /// No description provided for @appTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Kit'**
+  String get appTitle;
+
   /// No description provided for @validationPasswordRequired.
   ///
   /// In en, this message translates to:
@@ -135,18 +141,6 @@ abstract class AppLocalizations {
   /// **'Log Out'**
   String get logoutButton;
 
-  /// No description provided for @setupPinAlertTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Enabling biometrical authentication'**
-  String get setupPinAlertTitle;
-
-  /// No description provided for @setupPinAlertMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Do you want to enable biometrical authentication for SSA Mobile Kit?'**
-  String get setupPinAlertMessage;
-
   /// No description provided for @invalidPinAlert.
   ///
   /// In en, this message translates to:
@@ -177,6 +171,30 @@ abstract class AppLocalizations {
   /// **'Are you sure you want to logout?'**
   String get logoutAlertMessage;
 
+  /// No description provided for @stopAllAlertTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop All'**
+  String get stopAllAlertTitle;
+
+  /// No description provided for @stopAllAlertMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to stop all running resources?'**
+  String get stopAllAlertMessage;
+
+  /// No description provided for @setupPinAlertTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enabling biometrical authentication'**
+  String get setupPinAlertTitle;
+
+  /// No description provided for @setupPinAlertMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to enable biometrical authentication for SSA Mobile Kit?'**
+  String get setupPinAlertMessage;
+
   /// No description provided for @homeTitle.
   ///
   /// In en, this message translates to:
@@ -189,11 +207,35 @@ abstract class AppLocalizations {
   /// **'Alerts'**
   String get alertsTitle;
 
-  /// No description provided for @appTitle.
+  /// No description provided for @settingsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Mobile Kit'**
-  String get appTitle;
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @controlTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get controlTitle;
+
+  /// No description provided for @kpisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'KPIs'**
+  String get kpisTitle;
+
+  /// No description provided for @infrastructureTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Infrastructure'**
+  String get infrastructureTitle;
+
+  /// No description provided for @stopAllTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop All'**
+  String get stopAllTitle;
 
   /// No description provided for @yesTitle.
   ///
@@ -206,12 +248,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get noTitle;
-
-  /// No description provided for @settingsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settingsTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

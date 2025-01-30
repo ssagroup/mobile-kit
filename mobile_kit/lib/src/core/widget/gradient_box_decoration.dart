@@ -46,7 +46,7 @@ class GradientBoxDecoration extends BoxDecoration {
     );
   }
 
-  BoxDecoration get warningOrangeGradient {
+  static BoxDecoration get warningOrangeGradient {
     return BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topLeft,
@@ -60,7 +60,7 @@ class GradientBoxDecoration extends BoxDecoration {
     );
   }
 
-  BoxDecoration get dangerRedGradient {
+  static BoxDecoration get dangerRedGradient {
     return BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topLeft,
@@ -71,10 +71,11 @@ class GradientBoxDecoration extends BoxDecoration {
         ],
         tileMode: TileMode.clamp,
       ),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
     );
   }
 
-  BoxDecoration get successGreenGradient {
+  static BoxDecoration get successGreenGradient {
     return BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topLeft,

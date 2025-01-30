@@ -10,7 +10,7 @@ import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/core/widget/text_field.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_user_info_usecase.dart';
-import 'package:mobile_kit/src/feature/home/presentation/screen/bloc/settings_cubit.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/settings/bloc/settings_cubit.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 import 'package:mobile_kit/src/core/util/optional.dart';
@@ -115,6 +115,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Builder(builder: (context) {
       return ActionButton(
         title: AppLocalizations.of(context)!.logoutButton,
+        decoration: GradientBoxDecoration.authButtonGradient,
         onPressed: () async {
           final isOk = await showDialogWithCancel(
             context: context,

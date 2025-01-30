@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
+import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 
-class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({
+class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarWithLogoWidget({
     Key? key,
     this.title,
     this.actions,
@@ -19,15 +20,19 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       elevation: elevation,
       child: AppBar(
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: const AppLogoWidget(),
+        ),
         title: title,
-        centerTitle: false,
         backgroundColor: ColorPalette.greyBackground,
-        foregroundColor: Colors.black,
         actions: actions,
+        leadingWidth: 116,
         flexibleSpace: Container(
           decoration: GradientBoxDecoration.backgroundBarGradient,
         ),
-      )
+      ),
     );
   }
 

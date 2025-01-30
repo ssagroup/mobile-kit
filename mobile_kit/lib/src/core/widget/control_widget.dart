@@ -8,12 +8,14 @@ class ControlWidget extends StatelessWidget {
     required this.assetName,
     required this.itemTitle,
     required this.itemDescription,
+    required this.itemDescriptionColor,
     required this.onPressed,
   });
 
   final String assetName;
   final String itemTitle;
   final String itemDescription;
+  final Color itemDescriptionColor;
   final Function() onPressed;
 
   @override
@@ -21,12 +23,13 @@ class ControlWidget extends StatelessWidget {
     return Row(
       children: [
         Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(itemTitle),
             const SizedBox(height: 8),
-            Text(itemDescription),
+            Text(
+              itemDescription,
+              style: TextStyle(color: itemDescriptionColor),
+            ),
           ],
         ),
         const Spacer(),

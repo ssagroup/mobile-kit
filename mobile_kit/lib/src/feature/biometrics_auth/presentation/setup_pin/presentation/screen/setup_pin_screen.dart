@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
 import 'package:mobile_kit/src/core/widget/dialog.dart';
+import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 import 'package:mobile_kit/src/core/widget/pin_code_widget.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
@@ -95,6 +96,7 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
                 centerBottomWidget: ActionButton(
                   title: 'Logout',
                   onPressed: () => _bloc.logout(),
+                  decoration: GradientBoxDecoration.authButtonGradient,
                 ),
               ),
             ),

@@ -7,6 +7,9 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get appTitle => 'Mobile Kit';
+
+  @override
   String get validationPasswordRequired => '*Password is required';
 
   @override
@@ -28,12 +31,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutButton => 'Log Out';
 
   @override
-  String get setupPinAlertTitle => 'Enabling biometrical authentication';
-
-  @override
-  String get setupPinAlertMessage => 'Do you want to enable biometrical authentication for SSA Mobile Kit?';
-
-  @override
   String get invalidPinAlert => 'Invalid PIN. Please try again';
 
   @override
@@ -49,20 +46,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutAlertMessage => 'Are you sure you want to logout?';
 
   @override
+  String get stopAllAlertTitle => 'Stop All';
+
+  @override
+  String get stopAllAlertMessage => 'Are you sure you want to stop all running resources?';
+
+  @override
+  String get setupPinAlertTitle => 'Enabling biometrical authentication';
+
+  @override
+  String get setupPinAlertMessage => 'Do you want to enable biometrical authentication for SSA Mobile Kit?';
+
+  @override
   String get homeTitle => 'Home';
 
   @override
   String get alertsTitle => 'Alerts';
 
   @override
-  String get appTitle => 'Mobile Kit';
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get controlTitle => 'Control';
+
+  @override
+  String get kpisTitle => 'KPIs';
+
+  @override
+  String get infrastructureTitle => 'Infrastructure';
+
+  @override
+  String get stopAllTitle => 'Stop All';
 
   @override
   String get yesTitle => 'Yes';
 
   @override
   String get noTitle => 'No';
-
-  @override
-  String get settingsTitle => 'Settings';
 }
