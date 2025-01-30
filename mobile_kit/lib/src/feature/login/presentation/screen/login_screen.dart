@@ -80,8 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(height: 20),
           _buildSignInForm(),
           const SizedBox(height: 20),
-          // _buildRememberMe(),
-          // const SizedBox(height: 20),
           _buildLoginButton(),
         ],
       );

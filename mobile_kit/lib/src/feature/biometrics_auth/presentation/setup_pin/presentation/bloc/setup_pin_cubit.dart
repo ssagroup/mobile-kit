@@ -12,7 +12,7 @@ class SetupPinCubit extends Cubit<SetupPinState> {
   SetupPinCubit({
     required BiometricsUsecase biometricUsecase,
     required SetupPinUsecase setupPinUsecase,
-    required LogoutUsecase logoutUsecase,
+    required LogoutUseCase logoutUsecase,
   })  : _biometricUsecase = biometricUsecase,
         _setupPinUsecase = setupPinUsecase,
         _logoutUseCase = logoutUsecase,
@@ -20,7 +20,7 @@ class SetupPinCubit extends Cubit<SetupPinState> {
 
   final BiometricsUsecase _biometricUsecase;
   final SetupPinUsecase _setupPinUsecase;
-  final LogoutUsecase _logoutUseCase;
+  final LogoutUseCase _logoutUseCase;
 
   Future<void> setupPin(String pin) async {
     await _setupPinUsecase.setupPin(pin: pin);

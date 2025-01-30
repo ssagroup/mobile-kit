@@ -6,6 +6,7 @@
   "emailPlaceholder": "Email*",
   "passwordPlaceholder": "Password*",
   "loginButton": "Log In",
+  "logoutButton": "Log Out",
 
   "setupPinAlertTitle": "Enabling biometrical authentication",
   "setupPinAlertMessage": "Do you want to enable biometrical authentication for SSA Mobile Kit?",
@@ -15,5 +16,12 @@
   "verifyPinLogout": "Logout",
 
   "logoutAlertTitle": "Logout",
-  "logoutAlertMessage": "Are you sure you want to logout?"
+  "logoutAlertMessage": "Are you sure you want to logout?",
+
+  "homeTitle": "Home",
+  "alertsTitle": "Alerts",
+  "appTitle": "Mobile Kit",
+  "yesTitle": "Yes",
+  "noTitle": "No",
+  "settingsTitle": "Settings"
 }

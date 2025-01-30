@@ -25,6 +25,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginButton => 'Log In';
 
   @override
+  String get logoutButton => 'Log Out';
+
+  @override
   String get setupPinAlertTitle => 'Enabling biometrical authentication';
 
   @override
@@ -44,4 +47,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logoutAlertMessage => 'Are you sure you want to logout?';
+
+  @override
+  String get homeTitle => 'Home';
+
+  @override
+  String get alertsTitle => 'Alerts';
+
+  @override
+  String get appTitle => 'Mobile Kit';
+
+  @override
+  String get yesTitle => 'Yes';
+
+  @override
+  String get noTitle => 'No';
+
+  @override
+  String get settingsTitle => 'Settings';
 }
