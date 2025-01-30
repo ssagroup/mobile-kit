@@ -33,7 +33,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     super.initState();
     final logoutUseCase = LogoutUseCase(GetIt.instance<AuthenticationRepository>());
     final getUserInfoUseCase = GetUserInfoUseCase(GetIt.instance<AuthenticationRepository>());
-    _bloc = SettingsCubit(logoutUseCase, getUserInfoUseCase);
+    _bloc = SettingsCubit(logoutUseCase, getUserInfoUseCase)
+      ..initialize();
   }
 
   @override

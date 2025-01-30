@@ -11,11 +11,14 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit(LogoutUseCase logoutUseCase, GetUserInfoUseCase getUserInfoUseCase) : super(SettingsState.initial()) {
     _logoutUseCase = logoutUseCase;
     _getUserInfoUseCase = getUserInfoUseCase;
-    _getUserInfo();
   }
 
   late final LogoutUseCase _logoutUseCase;
   late final GetUserInfoUseCase _getUserInfoUseCase;
+
+  Future<void> initialize() async {
+    _getUserInfo();
+  }
 
   Future<void> logoutAction() async {
     await _logoutUseCase.logout();
@@ -31,11 +34,8 @@ class SettingsCubit extends Cubit<SettingsState> {
       state.copyWith(
         username: user?.username.orEmpty,
         email: user?.email.orEmpty,
+        isLoading: false,
       ),
     );
-
-    emit(state.copyWith(
-      isLoading: false,
-    ));
   }
 }
