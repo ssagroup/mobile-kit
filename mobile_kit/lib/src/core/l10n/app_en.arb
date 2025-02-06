@@ -35,6 +35,8 @@
 
   "stopAllTitle": "Stop All",
   "yesTitle": "Yes",
-  "noTitle": "No"
+  "noTitle": "No",
+
+  "noDataTitle": "No data available"
 
 }

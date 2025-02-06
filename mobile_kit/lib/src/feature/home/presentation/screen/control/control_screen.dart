@@ -9,6 +9,7 @@ import 'package:mobile_kit/src/core/widget/card_widget.dart';
 import 'package:mobile_kit/src/core/widget/control_widget.dart';
 import 'package:mobile_kit/src/core/widget/dialog.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
+import 'package:mobile_kit/src/core/widget/no_data_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_controls_usecase.dart';
@@ -45,14 +46,14 @@ class _ControlScreenState extends State<ControlScreen> {
       body: BlocConsumer<ControlCubit, ControlState>(
         listener: (context, state) {
           state.apiStatus.whenOrNull(failure: (String message) async {
-              final snackBar = SnackBar(
-                content: Text(
-                  message,
-                ),
-              );
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(snackBar);
+            final snackBar = SnackBar(
+              content: Text(
+                message,
+              ),
+            );
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackBar);
           });
         },
         bloc: _bloc,
@@ -69,12 +70,26 @@ class _ControlScreenState extends State<ControlScreen> {
               isLoading: state.isLoading,
               child: RefreshIndicator(
                 onRefresh: () => _bloc.refresh(),
-                child: SingleChildScrollView(
+                child: CustomScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: _buildBody(),
-                  ),
+                  slivers: [
+                    if (state.controls.isEmpty) ...[
+                      const SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 100,
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: NoDataWidget(title: AppLocalizations.of(context)!.noDataTitle),
+                      ),
+                    ] else
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: _buildBody(),
+                        ),
+                      )
+                  ],
                 ),
               ),
             ),

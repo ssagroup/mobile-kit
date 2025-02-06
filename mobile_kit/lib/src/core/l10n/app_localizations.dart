@@ -260,6 +260,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get noTitle;
+
+  /// No description provided for @noDataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available'**
+  String get noDataTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

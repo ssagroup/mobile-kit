@@ -13,42 +13,30 @@ class ToggleControlUsecase {
         super();
 
   Future<Either<Failure, void>> start(int id) async {
-    final controls = await _controlRepository.getControls;
-    var control = controls.firstWhereOrNull((element) => element.id == id);
-    control = control?.copyWith(isActionsDisabled: true);
-    if(control != null) {
-      controls.removeWhere((element) => element.id == id);
-      controls.add(control);
-    }
-    _controlRepository.updateControls(controls.sortedById);
-    final result = await _controlRepository.start(id);
-    control = control?.copyWith(isActionsDisabled: false);
-    result.ifRight((_) {
-      control = control?.copyWith(status: ControlStatus.started);
-    });
-    if(control != null) {
-      controls.removeWhere((element) => element.id == id);
-      controls.add(control!);
-    }
-    _controlRepository.updateControls(controls.sortedById);
-    return result;
+    return _toggle(id, ControlStatus.started);
   }
 
   Future<Either<Failure, void>> stop(int id) async {
-    final controls = _controlRepository.getControls;
+    return _toggle(id, ControlStatus.stopped);
+  }
+
+  Future<Either<Failure, void>> _toggle(int id, ControlStatus status) async {
+    final controls = await _controlRepository.getControls;
     var control = controls.firstWhereOrNull((element) => element.id == id);
     control = control?.copyWith(isActionsDisabled: true);
-    if(control != null) {
+    if (control != null) {
       controls.removeWhere((element) => element.id == id);
       controls.add(control);
     }
     _controlRepository.updateControls(controls.sortedById);
-    final result = await _controlRepository.stop(id);
+    final result = status == ControlStatus.stopped
+        ? await _controlRepository.stop(id)
+        : await _controlRepository.start(id);
     control = control?.copyWith(isActionsDisabled: false);
     result.ifRight((_) {
-      control = control?.copyWith(status: ControlStatus.stopped);
+      control = control?.copyWith(status: status);
     });
-    if(control != null) {
+    if (control != null) {
       controls.removeWhere((element) => element.id == id);
       controls.add(control!);
     }

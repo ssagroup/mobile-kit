@@ -89,4 +89,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noTitle => 'No';
+
+  @override
+  String get noDataTitle => 'No data available';
 }
