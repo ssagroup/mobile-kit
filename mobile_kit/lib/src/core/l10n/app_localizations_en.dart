@@ -46,10 +46,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutAlertMessage => 'Are you sure you want to logout?';
 
   @override
-  String get stopAllAlertTitle => 'Stop All';
+  String get stopAllAlertTitle => 'Stop All Controls';
 
   @override
-  String get stopAllAlertMessage => 'Are you sure you want to stop all running resources?';
+  String get stopAllAlertMessage => 'Are you sure you want to stop all running controls?';
+
+  @override
+  String get stopControlAlertTitle => 'Stop this control';
+
+  @override
+  String get stopControlAlertMessage => 'Are you sure you want to stop this control?';
 
   @override
   String get setupPinAlertTitle => 'Enabling biometrical authentication';

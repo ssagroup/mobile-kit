@@ -17,9 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ControlState {
   bool get isLoading => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  AuthStatus get loginStatus => throw _privateConstructorUsedError;
+  ApiStatus get apiStatus => throw _privateConstructorUsedError;
+  List<ControlModel> get controls => throw _privateConstructorUsedError;
+  bool get isStopAllActive => throw _privateConstructorUsedError;
+  bool get isActionsDisabled => throw _privateConstructorUsedError;
+  bool get trigger => throw _privateConstructorUsedError;
 
   /// Create a copy of ControlState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,11 +38,13 @@ abstract class $ControlStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      String? email,
-      String? username,
-      AuthStatus loginStatus});
+      ApiStatus apiStatus,
+      List<ControlModel> controls,
+      bool isStopAllActive,
+      bool isActionsDisabled,
+      bool trigger});
 
-  $AuthStatusCopyWith<$Res> get loginStatus;
+  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -59,27 +63,37 @@ class _$ControlStateCopyWithImpl<$Res, $Val extends ControlState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? loginStatus = null,
+    Object? apiStatus = null,
+    Object? controls = null,
+    Object? isStopAllActive = null,
+    Object? isActionsDisabled = null,
+    Object? trigger = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+      apiStatus: null == apiStatus
+          ? _value.apiStatus
+          : apiStatus // ignore: cast_nullable_to_non_nullable
+              as ApiStatus,
+      controls: null == controls
+          ? _value.controls
+          : controls // ignore: cast_nullable_to_non_nullable
+              as List<ControlModel>,
+      isStopAllActive: null == isStopAllActive
+          ? _value.isStopAllActive
+          : isStopAllActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActionsDisabled: null == isActionsDisabled
+          ? _value.isActionsDisabled
+          : isActionsDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      trigger: null == trigger
+          ? _value.trigger
+          : trigger // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -87,9 +101,9 @@ class _$ControlStateCopyWithImpl<$Res, $Val extends ControlState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AuthStatusCopyWith<$Res> get loginStatus {
-    return $AuthStatusCopyWith<$Res>(_value.loginStatus, (value) {
-      return _then(_value.copyWith(loginStatus: value) as $Val);
+  $ApiStatusCopyWith<$Res> get apiStatus {
+    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
+      return _then(_value.copyWith(apiStatus: value) as $Val);
     });
   }
 }
@@ -104,12 +118,14 @@ abstract class _$$ControlStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      String? email,
-      String? username,
-      AuthStatus loginStatus});
+      ApiStatus apiStatus,
+      List<ControlModel> controls,
+      bool isStopAllActive,
+      bool isActionsDisabled,
+      bool trigger});
 
   @override
-  $AuthStatusCopyWith<$Res> get loginStatus;
+  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -126,27 +142,37 @@ class __$$ControlStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? loginStatus = null,
+    Object? apiStatus = null,
+    Object? controls = null,
+    Object? isStopAllActive = null,
+    Object? isActionsDisabled = null,
+    Object? trigger = null,
   }) {
     return _then(_$ControlStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+      apiStatus: null == apiStatus
+          ? _value.apiStatus
+          : apiStatus // ignore: cast_nullable_to_non_nullable
+              as ApiStatus,
+      controls: null == controls
+          ? _value._controls
+          : controls // ignore: cast_nullable_to_non_nullable
+              as List<ControlModel>,
+      isStopAllActive: null == isStopAllActive
+          ? _value.isStopAllActive
+          : isStopAllActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActionsDisabled: null == isActionsDisabled
+          ? _value.isActionsDisabled
+          : isActionsDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      trigger: null == trigger
+          ? _value.trigger
+          : trigger // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -156,22 +182,35 @@ class __$$ControlStateImplCopyWithImpl<$Res>
 class _$ControlStateImpl implements _ControlState {
   const _$ControlStateImpl(
       {required this.isLoading,
-      required this.email,
-      required this.username,
-      required this.loginStatus});
+      required this.apiStatus,
+      required final List<ControlModel> controls,
+      required this.isStopAllActive,
+      required this.isActionsDisabled,
+      required this.trigger})
+      : _controls = controls;
 
   @override
   final bool isLoading;
   @override
-  final String? email;
+  final ApiStatus apiStatus;
+  final List<ControlModel> _controls;
   @override
-  final String? username;
+  List<ControlModel> get controls {
+    if (_controls is EqualUnmodifiableListView) return _controls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_controls);
+  }
+
   @override
-  final AuthStatus loginStatus;
+  final bool isStopAllActive;
+  @override
+  final bool isActionsDisabled;
+  @override
+  final bool trigger;
 
   @override
   String toString() {
-    return 'ControlState(isLoading: $isLoading, email: $email, username: $username, loginStatus: $loginStatus)';
+    return 'ControlState(isLoading: $isLoading, apiStatus: $apiStatus, controls: $controls, isStopAllActive: $isStopAllActive, isActionsDisabled: $isActionsDisabled, trigger: $trigger)';
   }
 
   @override
@@ -181,16 +220,25 @@ class _$ControlStateImpl implements _ControlState {
             other is _$ControlStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.loginStatus, loginStatus) ||
-                other.loginStatus == loginStatus));
+            (identical(other.apiStatus, apiStatus) ||
+                other.apiStatus == apiStatus) &&
+            const DeepCollectionEquality().equals(other._controls, _controls) &&
+            (identical(other.isStopAllActive, isStopAllActive) ||
+                other.isStopAllActive == isStopAllActive) &&
+            (identical(other.isActionsDisabled, isActionsDisabled) ||
+                other.isActionsDisabled == isActionsDisabled) &&
+            (identical(other.trigger, trigger) || other.trigger == trigger));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, email, username, loginStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      apiStatus,
+      const DeepCollectionEquality().hash(_controls),
+      isStopAllActive,
+      isActionsDisabled,
+      trigger);
 
   /// Create a copy of ControlState
   /// with the given fields replaced by the non-null parameter values.
@@ -204,18 +252,24 @@ class _$ControlStateImpl implements _ControlState {
 abstract class _ControlState implements ControlState {
   const factory _ControlState(
       {required final bool isLoading,
-      required final String? email,
-      required final String? username,
-      required final AuthStatus loginStatus}) = _$ControlStateImpl;
+      required final ApiStatus apiStatus,
+      required final List<ControlModel> controls,
+      required final bool isStopAllActive,
+      required final bool isActionsDisabled,
+      required final bool trigger}) = _$ControlStateImpl;
 
   @override
   bool get isLoading;
   @override
-  String? get email;
+  ApiStatus get apiStatus;
   @override
-  String? get username;
+  List<ControlModel> get controls;
   @override
-  AuthStatus get loginStatus;
+  bool get isStopAllActive;
+  @override
+  bool get isActionsDisabled;
+  @override
+  bool get trigger;
 
   /// Create a copy of ControlState
   /// with the given fields replaced by the non-null parameter values.

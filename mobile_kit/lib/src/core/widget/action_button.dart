@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_kit/src/core/resources/colors.dart';
-import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
     required this.title,
-    required this.onPressed,
     this.decoration,
+    this.onPressed,
+    this.textStyle,
     super.key,
   });
 
   final String title;
   final Decoration? decoration;
-  final Function() onPressed;
+  final TextStyle? textStyle;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +22,20 @@ class ActionButton extends StatelessWidget {
         decoration: decoration,
         clipBehavior: Clip.hardEdge,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Center(
             child: Text(
               title,
-              style: TextStyle(color: Colors.white),
+              style: textStyle ?? TextStyle(color: Colors.white),
             ),
           ),
         ),
       ),
       onTap: () {
         FocusScope.of(context).unfocus();
-        onPressed();
+        if (onPressed != null) {
+          onPressed!();
+        }
       },
     );
   }

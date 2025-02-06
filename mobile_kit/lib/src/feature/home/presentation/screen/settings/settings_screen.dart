@@ -9,6 +9,7 @@ import 'package:mobile_kit/src/core/widget/dialog.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/core/widget/text_field.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/settings_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_user_info_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/settings/bloc/settings_cubit.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
@@ -32,9 +33,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
     final logoutUseCase = LogoutUseCase(GetIt.instance<AuthenticationRepository>());
-    final getUserInfoUseCase = GetUserInfoUseCase(GetIt.instance<AuthenticationRepository>());
-    _bloc = SettingsCubit(logoutUseCase, getUserInfoUseCase)
-      ..initialize();
+    final getUserInfoUseCase = GetUserInfoUseCase(
+      GetIt.instance<SettingsRepository>(),
+    );
+    _bloc = SettingsCubit(logoutUseCase, getUserInfoUseCase)..initialize();
   }
 
   @override
@@ -46,11 +48,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: false,
-        backgroundColor: ColorPalette.greyBackground,
+        backgroundColor: ColorPalette.grayBackground,
         foregroundColor: Colors.black,
-        flexibleSpace: Container(
-          decoration: GradientBoxDecoration.backgroundBarGradient,
-        ),
       ),
       body: BlocConsumer<SettingsCubit, SettingsState>(
         bloc: _bloc,

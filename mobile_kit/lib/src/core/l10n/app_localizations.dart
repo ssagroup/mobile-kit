@@ -174,14 +174,26 @@ abstract class AppLocalizations {
   /// No description provided for @stopAllAlertTitle.
   ///
   /// In en, this message translates to:
-  /// **'Stop All'**
+  /// **'Stop All Controls'**
   String get stopAllAlertTitle;
 
   /// No description provided for @stopAllAlertMessage.
   ///
   /// In en, this message translates to:
-  /// **'Are you sure you want to stop all running resources?'**
+  /// **'Are you sure you want to stop all running controls?'**
   String get stopAllAlertMessage;
+
+  /// No description provided for @stopControlAlertTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop this control'**
+  String get stopControlAlertTitle;
+
+  /// No description provided for @stopControlAlertMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to stop this control?'**
+  String get stopControlAlertMessage;
 
   /// No description provided for @setupPinAlertTitle.
   ///

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
-import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
@@ -21,12 +20,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: title,
         centerTitle: false,
-        backgroundColor: ColorPalette.greyBackground,
+        backgroundColor: ColorPalette.grayBackground,
         foregroundColor: Colors.black,
         actions: actions,
-        flexibleSpace: Container(
-          decoration: GradientBoxDecoration.backgroundBarGradient,
-        ),
       )
     );
   }

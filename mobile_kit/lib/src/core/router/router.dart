@@ -14,7 +14,6 @@ const verifyPinRouteName = 'verifyPin';
 
 // Main
 const homeRouteName = 'home';
-const notificationListRouteName = 'notificationList';
 const settingsRouteName = 'settings';
 const controlRouteName = 'control';
 
@@ -58,7 +57,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
       if (isMainState && !isOnMainScreen) {
         return state.namedLocation(homeRouteName);
       }
-
       return null;
     },
     routes: [
@@ -67,7 +65,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: loginRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: LoginScreen(),
         ),
       ),
@@ -76,7 +73,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: setupPinRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: SetupPinScreen(),
         ),
       ),
@@ -85,7 +81,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: verifyPinRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: VerifyPinScreen(),
         ),
       ),
@@ -93,17 +88,9 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         path: '/home',
         name: homeRouteName,
         pageBuilder: (context, state) => const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: BottomTabScreen(),
         ),
         routes: [
-          GoRoute(
-            path: 'notification_list',
-            name: notificationListRouteName,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              child: Container(),
-            ),
-          ),
           GoRoute(
             path: 'settings',
             name: settingsRouteName,

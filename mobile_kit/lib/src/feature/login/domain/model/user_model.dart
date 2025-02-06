@@ -1,7 +1,14 @@
-class UserModel {
-  UserModel(this.email, this.username, this.uid);
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  String email;
-  String username;
-  String uid;
+part 'user_model.freezed.dart';
+
+@freezed
+class UserModel with _$UserModel {
+  const factory UserModel({
+    required String email,
+    required String userName,
+    required String uid,
+  }) = _UserModel;
+
+  const UserModel._();
 }

@@ -17,8 +17,11 @@
   "logoutAlertTitle": "Logout",
   "logoutAlertMessage": "Are you sure you want to logout?",
 
-  "stopAllAlertTitle": "Stop All",
-  "stopAllAlertMessage": "Are you sure you want to stop all running resources?",
+  "stopAllAlertTitle": "Stop All Controls",
+  "stopAllAlertMessage": "Are you sure you want to stop all running controls?",
+
+  "stopControlAlertTitle": "Stop this control",
+  "stopControlAlertMessage": "Are you sure you want to stop this control?",
 
   "setupPinAlertTitle": "Enabling biometrical authentication",
   "setupPinAlertMessage": "Do you want to enable biometrical authentication for SSA Mobile Kit?",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_kit/src/core/resources/colors.dart';
 
 class GradientBoxDecoration extends BoxDecoration {
 
@@ -9,11 +10,16 @@ class GradientBoxDecoration extends BoxDecoration {
         colors: <Color>[
           Color(0xffE9EAEC),
           Color(0xffF0F1F4),
-          // Color(0xffCCCDD2),
-          // Color(0xffE1E4EA),
         ],
         tileMode: TileMode.clamp,
       ),
+    );
+  }
+
+  static BoxDecoration backgroundBottomBarGradient(bool isSelected) {
+    return BoxDecoration(
+      color: isSelected ? Colors.white : ColorPalette.grayBackground,
+      borderRadius: BorderRadius.circular(16.0),
     );
   }
 
@@ -68,6 +74,21 @@ class GradientBoxDecoration extends BoxDecoration {
         colors: <Color>[
           Color(0xffF0816B),
           Color(0xffF99990),
+        ],
+        tileMode: TileMode.clamp,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+    );
+  }
+
+  static BoxDecoration get inactiveGrayGradient {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: <Color>[
+          Color(0xffCCCDD2),
+          Color(0xffE1E4EA),
         ],
         tileMode: TileMode.clamp,
       ),

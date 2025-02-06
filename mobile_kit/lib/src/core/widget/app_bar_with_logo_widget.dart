@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
-import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 
 class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -26,12 +25,9 @@ class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidge
           child: const AppLogoWidget(),
         ),
         title: title,
-        backgroundColor: ColorPalette.greyBackground,
+        backgroundColor: ColorPalette.grayBackground,
         actions: actions,
         leadingWidth: 116,
-        flexibleSpace: Container(
-          decoration: GradientBoxDecoration.backgroundBarGradient,
-        ),
       ),
     );
   }

@@ -4,15 +4,19 @@ part of 'control_cubit.dart';
 class ControlState with _$ControlState {
   const factory ControlState({
     required bool isLoading,
-    required String? email,
-    required String? username,
-    required AuthStatus loginStatus,
+    required ApiStatus apiStatus,
+    required List<ControlModel> controls,
+    required bool isStopAllActive,
+    required bool isActionsDisabled,
+    required bool trigger,
   }) = _ControlState;
 
   factory ControlState.initial() => const ControlState(
-    isLoading: false,
-    email: 'test@gmail.com',
-    username: 'test',
-    loginStatus: AuthStatus.none(),
-  );
+        isLoading: false,
+        apiStatus: ApiStatus.none(),
+        controls: [],
+        isStopAllActive: false,
+        isActionsDisabled: false,
+        trigger: false,
+      );
 }

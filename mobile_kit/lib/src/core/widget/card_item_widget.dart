@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
-import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 
 class CardItem extends StatelessWidget {
   const CardItem({
@@ -22,12 +21,12 @@ class CardItem extends StatelessWidget {
       children: [
         SvgPicture.asset(
           assetName,
-          width: 20,
-          height: 20,
+          width: 24,
+          height: 24,
           color: ColorPalette.grayIcon,
           package: assetsPackage,
         ),
-        const SizedBox(width: 24),
+        const SizedBox(width: 16),
         Text(
           itemTitle,
           style: TextStyle(
