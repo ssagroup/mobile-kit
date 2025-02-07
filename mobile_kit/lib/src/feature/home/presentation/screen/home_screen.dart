@@ -33,6 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
             if (index == 1) {
               context.goNamed(controlRouteName);
             }
+            if (index == 2) {
+              context.goNamed(kpisRouteName);
+            }
             if (index == 3) {
               context.goNamed(settingsRouteName);
             }

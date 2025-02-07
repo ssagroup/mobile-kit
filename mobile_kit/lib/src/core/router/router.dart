@@ -4,6 +4,7 @@ import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/pr
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/control/control_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/kpis/kpis_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/settings/settings_screen.dart';
 import 'package:mobile_kit/src/feature/login/presentation/screen/login_screen.dart';
 
@@ -16,6 +17,7 @@ const verifyPinRouteName = 'verifyPin';
 const homeRouteName = 'home';
 const settingsRouteName = 'settings';
 const controlRouteName = 'control';
+const kpisRouteName = 'kpis';
 
 GoRouter setupRouter(AuthenticationNotifier authNotifier) {
   final GoRouter router = GoRouter(
@@ -103,6 +105,13 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
             name: controlRouteName,
             pageBuilder: (context, state) => MaterialPage<void>(
               child: ControlScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'kpis',
+            name: kpisRouteName,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              child: KpisScreen(),
             ),
           ),
         ],
