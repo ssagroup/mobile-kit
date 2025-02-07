@@ -18,25 +18,18 @@ class ControlCubit extends Cubit<ControlState> {
     GetAllControlsUsecase getAllControlsUseCase,
     ToggleControlUsecase toggleControlUseCase,
     StopAllControlsUsecase stopAllControlsUseCase,
-  ) : super(ControlState.initial()) {
-    _getAllControlsUseCase = getAllControlsUseCase;
-    _toggleControlUseCase = toggleControlUseCase;
-    _stopAllControlsUseCase = stopAllControlsUseCase;
-
+  )   : _getAllControlsUseCase = getAllControlsUseCase,
+        _toggleControlUseCase = toggleControlUseCase,
+        _stopAllControlsUseCase = stopAllControlsUseCase,
+        super(ControlState.initial()) {
     subscriptions.add(_getAllControlsUseCase.controls.listen((controls) {
-      final activeControls =
-          controls.where((element) => element.status == ControlStatus.started && !element.isActionsDisabled);
-      emit(state.copyWith(
-        controls: controls,
-        trigger: !state.trigger,
-        isStopAllActive: activeControls.isNotEmpty,
-      ));
+      _updateControls(controls);
     }));
   }
 
-  late final GetAllControlsUsecase _getAllControlsUseCase;
-  late final StopAllControlsUsecase _stopAllControlsUseCase;
-  late final ToggleControlUsecase _toggleControlUseCase;
+  final GetAllControlsUsecase _getAllControlsUseCase;
+  final StopAllControlsUsecase _stopAllControlsUseCase;
+  final ToggleControlUsecase _toggleControlUseCase;
   List<StreamSubscription> subscriptions = [];
 
   Future<void> initialize() async {
@@ -49,12 +42,22 @@ class ControlCubit extends Cubit<ControlState> {
     ));
   }
 
+  void _updateControls(List<ControlModel> controls) {
+    final activeControls =
+    controls.where((element) => element.status == ControlStatus.started && !element.isActionsDisabled);
+    emit(state.copyWith(
+      controls: controls,
+      trigger: !state.trigger,
+      isStopAllActive: activeControls.isNotEmpty,
+    ));
+  }
+
   Future<void> refresh() async {
     await _getAllControlsUseCase.invoke();
   }
 
   Future<void> stopAllAction() async {
-    final ApiStatus status = (await _stopAllControlsUseCase.invoke()).map<Unit>((r) => unit).foldedApiStatus;;
+    final ApiStatus status = (await _stopAllControlsUseCase.invoke()).map<Unit>((r) => unit).foldedApiStatus;
     emit(state.copyWith(
       apiStatus: status,
     ));

@@ -91,7 +91,7 @@ class FirestoreControlRepositoryImpl implements ControlRepository {
   }
 
   @override
-  List<ControlModel> get getControls => _controlsSubject.value;
+  List<ControlModel> get controls => _controlsSubject.value;
 
   @override
   Stream<List<ControlModel>> get controlsStream => _controlsSubject.stream;

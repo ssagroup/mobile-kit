@@ -16,7 +16,7 @@ abstract class ControlRepository {
 
   void updateControls(List<ControlModel> controls);
 
-  List<ControlModel> get getControls;
+  List<ControlModel> get controls;
 
   Stream<List<ControlModel>> get controlsStream;
 
