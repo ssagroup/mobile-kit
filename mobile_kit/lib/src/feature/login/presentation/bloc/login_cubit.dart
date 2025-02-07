@@ -11,11 +11,10 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(LoginUseCase loginUseCase)
-      : super(LoginState.initial()) {
-    _loginUseCase = loginUseCase;
-  }
+      : _loginUseCase = loginUseCase,
+        super(LoginState.initial());
 
-  late final LoginUseCase _loginUseCase;
+  final LoginUseCase _loginUseCase;
 
   void emailChanged(String email) {
     emit(
@@ -84,11 +83,11 @@ class LoginCubit extends Cubit<LoginState> {
     ));
 
     final request = AuthRequest(
-        email: state.email.orEmpty,
-        password: state.password.orEmpty,
-        rememberMe: state.rememberMe);
-    final AuthStatus status =
-        (await _loginUseCase.signIn(request: request)).fold(
+      email: state.email.orEmpty,
+      password: state.password.orEmpty,
+      rememberMe: state.rememberMe,
+    );
+    final AuthStatus status = (await _loginUseCase.signIn(request: request)).fold(
       (failure) => AuthStatus.failure(failure.errorDescription, false),
       (_) => AuthStatus.success(request),
     );

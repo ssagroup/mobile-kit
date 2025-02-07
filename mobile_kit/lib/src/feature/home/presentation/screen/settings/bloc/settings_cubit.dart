@@ -8,13 +8,13 @@ part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(LogoutUseCase logoutUseCase, GetUserInfoUseCase getUserInfoUseCase) : super(SettingsState.initial()) {
-    _logoutUseCase = logoutUseCase;
-    _getUserInfoUseCase = getUserInfoUseCase;
-  }
+  SettingsCubit(LogoutUseCase logoutUseCase, GetUserInfoUseCase getUserInfoUseCase)
+      : _logoutUseCase = logoutUseCase,
+        _getUserInfoUseCase = getUserInfoUseCase,
+        super(SettingsState.initial());
 
-  late final LogoutUseCase _logoutUseCase;
-  late final GetUserInfoUseCase _getUserInfoUseCase;
+  final LogoutUseCase _logoutUseCase;
+  final GetUserInfoUseCase _getUserInfoUseCase;
 
   Future<void> initialize() async {
     _getUserInfo();

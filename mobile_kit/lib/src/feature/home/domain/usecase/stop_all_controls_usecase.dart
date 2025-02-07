@@ -12,7 +12,7 @@ class StopAllControlsUsecase {
 
   /// Stop All Controls
   Future<Either<Failure, void>> invoke() async {
-    var controls = _controlRepository.getControls;
+    var controls = _controlRepository.controls;
     controls = controls.map((element) {
       if (element.status == ControlStatus.started) {
         return element.copyWith(isActionsDisabled: true);

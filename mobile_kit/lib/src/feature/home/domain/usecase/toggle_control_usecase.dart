@@ -21,7 +21,7 @@ class ToggleControlUsecase {
   }
 
   Future<Either<Failure, void>> _toggle(int id, ControlStatus status) async {
-    final controls = await _controlRepository.getControls;
+    final controls = await _controlRepository.controls;
     var control = controls.firstWhereOrNull((element) => element.id == id);
     control = control?.copyWith(isActionsDisabled: true);
     if (control != null) {
