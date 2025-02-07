@@ -15,7 +15,7 @@ class LoginState with _$LoginState {
 
   factory LoginState.initial() => const LoginState(
     isLoading: false,
-    email: 'test@gmail.com',
+    email: 'test1@gmail.com',
     emailError: null,
     password: 'qwerty',
     passwordError: null,

@@ -3,6 +3,7 @@ import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/screen/setup_pin_screen.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/control/control_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/settings/settings_screen.dart';
 import 'package:mobile_kit/src/feature/login/presentation/screen/login_screen.dart';
 
@@ -13,8 +14,8 @@ const verifyPinRouteName = 'verifyPin';
 
 // Main
 const homeRouteName = 'home';
-const notificationListRouteName = 'notificationList';
 const settingsRouteName = 'settings';
+const controlRouteName = 'control';
 
 GoRouter setupRouter(AuthenticationNotifier authNotifier) {
   final GoRouter router = GoRouter(
@@ -56,7 +57,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
       if (isMainState && !isOnMainScreen) {
         return state.namedLocation(homeRouteName);
       }
-
       return null;
     },
     routes: [
@@ -65,7 +65,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: loginRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: LoginScreen(),
         ),
       ),
@@ -74,7 +73,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: setupPinRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: SetupPinScreen(),
         ),
       ),
@@ -83,7 +81,6 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         name: verifyPinRouteName,
         pageBuilder: (context, state) =>
         const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: VerifyPinScreen(),
         ),
       ),
@@ -91,22 +88,21 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
         path: '/home',
         name: homeRouteName,
         pageBuilder: (context, state) => const NoTransitionPage<void>(
-          // key: state.pageKey,
           child: BottomTabScreen(),
         ),
         routes: [
-          GoRoute(
-            path: 'notification_list',
-            name: notificationListRouteName,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              child: Container(),
-            ),
-          ),
           GoRoute(
             path: 'settings',
             name: settingsRouteName,
             pageBuilder: (context, state) => MaterialPage<void>(
               child: SettingsScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'control',
+            name: controlRouteName,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              child: ControlScreen(),
             ),
           ),
         ],

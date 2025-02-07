@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
+import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/domain/usecase/verify_pin_usecase.dart';
@@ -95,6 +96,7 @@ class _VerifyPinScreenState extends State<VerifyPinScreen> {
                 centerBottomWidget: ActionButton(
                   title: AppLocalizations.of(context)!.verifyPinLogout,
                   onPressed: () => _bloc.logout(),
+                  decoration: GradientBoxDecoration.authButtonGradient,
                 ),
               ),
             ),

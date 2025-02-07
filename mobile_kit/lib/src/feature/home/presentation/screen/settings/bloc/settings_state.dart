@@ -6,13 +6,13 @@ class SettingsState with _$SettingsState {
     required bool isLoading,
     required String? email,
     required String? username,
-    required AuthStatus loginStatus,
+    required ApiStatus apiStatus,
   }) = _SettingsState;
 
   factory SettingsState.initial() => const SettingsState(
     isLoading: false,
     email: 'test@gmail.com',
     username: 'test',
-    loginStatus: AuthStatus.none(),
+    apiStatus: ApiStatus.none(),
   );
 }

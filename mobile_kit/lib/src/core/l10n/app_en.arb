@@ -1,4 +1,6 @@
 {
+  "appTitle": "Mobile Kit",
+
   "validationPasswordRequired": "*Password is required",
   "validationEmailRequired": "*Email is required",
   "validationEmailWrongFormat": "Email must be in the format \\'name@domain.com",
@@ -8,9 +10,6 @@
   "loginButton": "Log In",
   "logoutButton": "Log Out",
 
-  "setupPinAlertTitle": "Enabling biometrical authentication",
-  "setupPinAlertMessage": "Do you want to enable biometrical authentication for SSA Mobile Kit?",
-
   "invalidPinAlert": "Invalid PIN. Please try again",
   "enterPinTitle": "Enter PIN",
   "verifyPinLogout": "Logout",
@@ -18,10 +17,26 @@
   "logoutAlertTitle": "Logout",
   "logoutAlertMessage": "Are you sure you want to logout?",
 
+  "stopAllAlertTitle": "Stop All Controls",
+  "stopAllAlertMessage": "Are you sure you want to stop all running controls?",
+
+  "stopControlAlertTitle": "Stop this control",
+  "stopControlAlertMessage": "Are you sure you want to stop this control?",
+
+  "setupPinAlertTitle": "Enabling biometrical authentication",
+  "setupPinAlertMessage": "Do you want to enable biometrical authentication for SSA Mobile Kit?",
+
   "homeTitle": "Home",
   "alertsTitle": "Alerts",
-  "appTitle": "Mobile Kit",
+  "settingsTitle": "Settings",
+  "controlTitle": "Control",
+  "kpisTitle": "KPIs",
+  "infrastructureTitle": "Infrastructure",
+
+  "stopAllTitle": "Stop All",
   "yesTitle": "Yes",
   "noTitle": "No",
-  "settingsTitle": "Settings"
+
+  "noDataTitle": "No data available"
+
 }

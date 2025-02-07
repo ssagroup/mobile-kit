@@ -497,3 +497,475 @@ abstract class AuthStatusFailure implements AuthStatus {
   _$$AuthStatusFailureImplCopyWith<_$AuthStatusFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ApiStatus {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(Object? result) success,
+    required TResult Function(String message) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
+    TResult? Function(Object? result)? success,
+    TResult? Function(String message)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(Object? result)? success,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiStatusNone value) none,
+    required TResult Function(ApiStatusSuccess value) success,
+    required TResult Function(ApiStatusFailure value) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiStatusNone value)? none,
+    TResult? Function(ApiStatusSuccess value)? success,
+    TResult? Function(ApiStatusFailure value)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiStatusNone value)? none,
+    TResult Function(ApiStatusSuccess value)? success,
+    TResult Function(ApiStatusFailure value)? failure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApiStatusCopyWith<$Res> {
+  factory $ApiStatusCopyWith(ApiStatus value, $Res Function(ApiStatus) then) =
+      _$ApiStatusCopyWithImpl<$Res, ApiStatus>;
+}
+
+/// @nodoc
+class _$ApiStatusCopyWithImpl<$Res, $Val extends ApiStatus>
+    implements $ApiStatusCopyWith<$Res> {
+  _$ApiStatusCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ApiStatusNoneImplCopyWith<$Res> {
+  factory _$$ApiStatusNoneImplCopyWith(
+          _$ApiStatusNoneImpl value, $Res Function(_$ApiStatusNoneImpl) then) =
+      __$$ApiStatusNoneImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ApiStatusNoneImplCopyWithImpl<$Res>
+    extends _$ApiStatusCopyWithImpl<$Res, _$ApiStatusNoneImpl>
+    implements _$$ApiStatusNoneImplCopyWith<$Res> {
+  __$$ApiStatusNoneImplCopyWithImpl(
+      _$ApiStatusNoneImpl _value, $Res Function(_$ApiStatusNoneImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ApiStatusNoneImpl implements ApiStatusNone {
+  const _$ApiStatusNoneImpl();
+
+  @override
+  String toString() {
+    return 'ApiStatus.none()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ApiStatusNoneImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(Object? result) success,
+    required TResult Function(String message) failure,
+  }) {
+    return none();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
+    TResult? Function(Object? result)? success,
+    TResult? Function(String message)? failure,
+  }) {
+    return none?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(Object? result)? success,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiStatusNone value) none,
+    required TResult Function(ApiStatusSuccess value) success,
+    required TResult Function(ApiStatusFailure value) failure,
+  }) {
+    return none(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiStatusNone value)? none,
+    TResult? Function(ApiStatusSuccess value)? success,
+    TResult? Function(ApiStatusFailure value)? failure,
+  }) {
+    return none?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiStatusNone value)? none,
+    TResult Function(ApiStatusSuccess value)? success,
+    TResult Function(ApiStatusFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiStatusNone implements ApiStatus {
+  const factory ApiStatusNone() = _$ApiStatusNoneImpl;
+}
+
+/// @nodoc
+abstract class _$$ApiStatusSuccessImplCopyWith<$Res> {
+  factory _$$ApiStatusSuccessImplCopyWith(_$ApiStatusSuccessImpl value,
+          $Res Function(_$ApiStatusSuccessImpl) then) =
+      __$$ApiStatusSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object? result});
+}
+
+/// @nodoc
+class __$$ApiStatusSuccessImplCopyWithImpl<$Res>
+    extends _$ApiStatusCopyWithImpl<$Res, _$ApiStatusSuccessImpl>
+    implements _$$ApiStatusSuccessImplCopyWith<$Res> {
+  __$$ApiStatusSuccessImplCopyWithImpl(_$ApiStatusSuccessImpl _value,
+      $Res Function(_$ApiStatusSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = freezed,
+  }) {
+    return _then(_$ApiStatusSuccessImpl(
+      freezed == result ? _value.result : result,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ApiStatusSuccessImpl implements ApiStatusSuccess {
+  const _$ApiStatusSuccessImpl([this.result]);
+
+  @override
+  final Object? result;
+
+  @override
+  String toString() {
+    return 'ApiStatus.success(result: $result)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiStatusSuccessImpl &&
+            const DeepCollectionEquality().equals(other.result, result));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiStatusSuccessImplCopyWith<_$ApiStatusSuccessImpl> get copyWith =>
+      __$$ApiStatusSuccessImplCopyWithImpl<_$ApiStatusSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(Object? result) success,
+    required TResult Function(String message) failure,
+  }) {
+    return success(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
+    TResult? Function(Object? result)? success,
+    TResult? Function(String message)? failure,
+  }) {
+    return success?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(Object? result)? success,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiStatusNone value) none,
+    required TResult Function(ApiStatusSuccess value) success,
+    required TResult Function(ApiStatusFailure value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiStatusNone value)? none,
+    TResult? Function(ApiStatusSuccess value)? success,
+    TResult? Function(ApiStatusFailure value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiStatusNone value)? none,
+    TResult Function(ApiStatusSuccess value)? success,
+    TResult Function(ApiStatusFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiStatusSuccess implements ApiStatus {
+  const factory ApiStatusSuccess([final Object? result]) =
+      _$ApiStatusSuccessImpl;
+
+  Object? get result;
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ApiStatusSuccessImplCopyWith<_$ApiStatusSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApiStatusFailureImplCopyWith<$Res> {
+  factory _$$ApiStatusFailureImplCopyWith(_$ApiStatusFailureImpl value,
+          $Res Function(_$ApiStatusFailureImpl) then) =
+      __$$ApiStatusFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ApiStatusFailureImplCopyWithImpl<$Res>
+    extends _$ApiStatusCopyWithImpl<$Res, _$ApiStatusFailureImpl>
+    implements _$$ApiStatusFailureImplCopyWith<$Res> {
+  __$$ApiStatusFailureImplCopyWithImpl(_$ApiStatusFailureImpl _value,
+      $Res Function(_$ApiStatusFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ApiStatusFailureImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ApiStatusFailureImpl implements ApiStatusFailure {
+  const _$ApiStatusFailureImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ApiStatus.failure(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiStatusFailureImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiStatusFailureImplCopyWith<_$ApiStatusFailureImpl> get copyWith =>
+      __$$ApiStatusFailureImplCopyWithImpl<_$ApiStatusFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(Object? result) success,
+    required TResult Function(String message) failure,
+  }) {
+    return failure(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
+    TResult? Function(Object? result)? success,
+    TResult? Function(String message)? failure,
+  }) {
+    return failure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(Object? result)? success,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiStatusNone value) none,
+    required TResult Function(ApiStatusSuccess value) success,
+    required TResult Function(ApiStatusFailure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApiStatusNone value)? none,
+    TResult? Function(ApiStatusSuccess value)? success,
+    TResult? Function(ApiStatusFailure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiStatusNone value)? none,
+    TResult Function(ApiStatusSuccess value)? success,
+    TResult Function(ApiStatusFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiStatusFailure implements ApiStatus {
+  const factory ApiStatusFailure(final String message) = _$ApiStatusFailureImpl;
+
+  String get message;
+
+  /// Create a copy of ApiStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ApiStatusFailureImplCopyWith<_$ApiStatusFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

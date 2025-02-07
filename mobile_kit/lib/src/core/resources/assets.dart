@@ -6,7 +6,6 @@ class Assets {
   static const String runBotIcon = 'assets/icons/start_ic.svg';
   static const String redCorner = 'assets/icons/red_corner_ic.svg';
   static const String greenCorner = 'assets/icons/green_corner_ic.svg';
-  static const String notificationIcon = 'assets/icons/notification_ic.svg';
   static const String coinIcon = 'assets/icons/coin_ic.svg';
   static const String envelopIcon = 'assets/icons/envelop_ic.svg';
   static const String noDataIcon = 'assets/icons/no_data_ic.svg';
@@ -23,6 +22,9 @@ class Assets {
   static const String kpiIcon = 'assets/icons/kpi_ic.svg';
   static const String settingsIcon = 'assets/icons/settings_ic.svg';
   static const String homeIcon = 'assets/icons/home_ic.svg';
+  static const String notificationIcon = 'assets/icons/notification_ic.svg';
+  static const String homeSelectedIcon = 'assets/icons/home_selected_ic.svg';
+  static const String notificationSelectedIcon = 'assets/icons/notification_selected_ic.svg';
   static const String userIcon = 'assets/icons/user_ic.svg';
 }
 

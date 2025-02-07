@@ -19,7 +19,7 @@ mixin _$SettingsState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
-  AuthStatus get loginStatus => throw _privateConstructorUsedError;
+  ApiStatus get apiStatus => throw _privateConstructorUsedError;
 
   /// Create a copy of SettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,12 +35,9 @@ abstract class $SettingsStateCopyWith<$Res> {
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      String? email,
-      String? username,
-      AuthStatus loginStatus});
+      {bool isLoading, String? email, String? username, ApiStatus apiStatus});
 
-  $AuthStatusCopyWith<$Res> get loginStatus;
+  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -61,7 +58,7 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
     Object? isLoading = null,
     Object? email = freezed,
     Object? username = freezed,
-    Object? loginStatus = null,
+    Object? apiStatus = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -76,10 +73,10 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+      apiStatus: null == apiStatus
+          ? _value.apiStatus
+          : apiStatus // ignore: cast_nullable_to_non_nullable
+              as ApiStatus,
     ) as $Val);
   }
 
@@ -87,9 +84,9 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AuthStatusCopyWith<$Res> get loginStatus {
-    return $AuthStatusCopyWith<$Res>(_value.loginStatus, (value) {
-      return _then(_value.copyWith(loginStatus: value) as $Val);
+  $ApiStatusCopyWith<$Res> get apiStatus {
+    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
+      return _then(_value.copyWith(apiStatus: value) as $Val);
     });
   }
 }
@@ -103,13 +100,10 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      String? email,
-      String? username,
-      AuthStatus loginStatus});
+      {bool isLoading, String? email, String? username, ApiStatus apiStatus});
 
   @override
-  $AuthStatusCopyWith<$Res> get loginStatus;
+  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -128,7 +122,7 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? email = freezed,
     Object? username = freezed,
-    Object? loginStatus = null,
+    Object? apiStatus = null,
   }) {
     return _then(_$SettingsStateImpl(
       isLoading: null == isLoading
@@ -143,10 +137,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
+      apiStatus: null == apiStatus
+          ? _value.apiStatus
+          : apiStatus // ignore: cast_nullable_to_non_nullable
+              as ApiStatus,
     ));
   }
 }
@@ -158,7 +152,7 @@ class _$SettingsStateImpl implements _SettingsState {
       {required this.isLoading,
       required this.email,
       required this.username,
-      required this.loginStatus});
+      required this.apiStatus});
 
   @override
   final bool isLoading;
@@ -167,11 +161,11 @@ class _$SettingsStateImpl implements _SettingsState {
   @override
   final String? username;
   @override
-  final AuthStatus loginStatus;
+  final ApiStatus apiStatus;
 
   @override
   String toString() {
-    return 'SettingsState(isLoading: $isLoading, email: $email, username: $username, loginStatus: $loginStatus)';
+    return 'SettingsState(isLoading: $isLoading, email: $email, username: $username, apiStatus: $apiStatus)';
   }
 
   @override
@@ -184,13 +178,13 @@ class _$SettingsStateImpl implements _SettingsState {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.loginStatus, loginStatus) ||
-                other.loginStatus == loginStatus));
+            (identical(other.apiStatus, apiStatus) ||
+                other.apiStatus == apiStatus));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, isLoading, email, username, loginStatus);
+      Object.hash(runtimeType, isLoading, email, username, apiStatus);
 
   /// Create a copy of SettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -206,7 +200,7 @@ abstract class _SettingsState implements SettingsState {
       {required final bool isLoading,
       required final String? email,
       required final String? username,
-      required final AuthStatus loginStatus}) = _$SettingsStateImpl;
+      required final ApiStatus apiStatus}) = _$SettingsStateImpl;
 
   @override
   bool get isLoading;
@@ -215,7 +209,7 @@ abstract class _SettingsState implements SettingsState {
   @override
   String? get username;
   @override
-  AuthStatus get loginStatus;
+  ApiStatus get apiStatus;
 
   /// Create a copy of SettingsState
   /// with the given fields replaced by the non-null parameter values.

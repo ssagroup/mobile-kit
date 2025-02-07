@@ -21,7 +21,7 @@ class FullScreenProgressIndicator extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.white,
                 ),
                 const Center(
                   child: CircularProgressIndicator(),

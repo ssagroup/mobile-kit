@@ -8,13 +8,13 @@ part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(LogoutUseCase logoutUseCase, GetUserInfoUseCase getUserInfoUseCase) : super(SettingsState.initial()) {
-    _logoutUseCase = logoutUseCase;
-    _getUserInfoUseCase = getUserInfoUseCase;
-  }
+  SettingsCubit(LogoutUseCase logoutUseCase, GetUserInfoUseCase getUserInfoUseCase)
+      : _logoutUseCase = logoutUseCase,
+        _getUserInfoUseCase = getUserInfoUseCase,
+        super(SettingsState.initial());
 
-  late final LogoutUseCase _logoutUseCase;
-  late final GetUserInfoUseCase _getUserInfoUseCase;
+  final LogoutUseCase _logoutUseCase;
+  final GetUserInfoUseCase _getUserInfoUseCase;
 
   Future<void> initialize() async {
     _getUserInfo();
@@ -28,12 +28,19 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(
       isLoading: true,
     ));
-
-    final user = await _getUserInfoUseCase.getUserInfo();
+    final result = (await _getUserInfoUseCase.getUserInfo())
+        .fold((failure) => ApiStatus.failure(failure.errorDescription), (user) {
+      emit(
+        state.copyWith(
+          username: user.userName.orEmpty,
+          email: user.email.orEmpty,
+        ),
+      );
+      return const ApiStatus.success();
+    });
     emit(
       state.copyWith(
-        username: user?.username.orEmpty,
-        email: user?.email.orEmpty,
+        apiStatus: result,
         isLoading: false,
       ),
     );
