@@ -30,4 +30,10 @@ extension EitherExtension<T> on Either<Failure, T> {
         (failure) => AuthStatus.failure(failure.errorDescription, failure == Failure.notAuthorized()),
         (_) => const AuthStatus.success(),
   );
+
+  ApiStatus get foldedApiStatusWithResult => fold(
+        (failure) => ApiStatus.failure(failure.errorDescription),
+        (success) => ApiStatus.success(success),
+  );
+
 }

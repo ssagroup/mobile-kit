@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
-import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
+import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/dialog.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
@@ -42,14 +42,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBarWidget(
         title: Text(
           AppLocalizations.of(context)!.settingsTitle,
           style: TextStyle(color: Colors.black),
         ),
-        centerTitle: false,
-        backgroundColor: ColorPalette.grayBackground,
-        foregroundColor: Colors.black,
       ),
       body: BlocConsumer<SettingsCubit, SettingsState>(
         bloc: _bloc,

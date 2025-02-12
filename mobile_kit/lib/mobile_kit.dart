@@ -31,8 +31,10 @@ export 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.d
 export 'package:mobile_kit/src/feature/login/domain/model/user_model.dart';
 export 'package:mobile_kit/src/feature/login/domain/request/auth_request.dart';
 export 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
+export 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
 export 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 export 'package:mobile_kit/src/feature/home/domain/repository/settings_repository.dart';
+export 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
 
 // Core
 export 'package:mobile_kit/src/core/data/hive/hive_local_storage.dart';

@@ -7,7 +7,7 @@ class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidge
     Key? key,
     this.title,
     this.actions,
-    this.elevation = 2.0,
+    this.elevation = 0.0,
   }) : super(key: key);
 
   final Widget? title;
