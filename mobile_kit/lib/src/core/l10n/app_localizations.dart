@@ -266,6 +266,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No data available'**
   String get noDataTitle;
+
+  /// No description provided for @dayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'24 h'**
+  String get dayTitle;
+
+  /// No description provided for @weekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'7 d'**
+  String get weekTitle;
+
+  /// No description provided for @monthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'30 d'**
+  String get monthTitle;
+
+  /// No description provided for @yearTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1 y'**
+  String get yearTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

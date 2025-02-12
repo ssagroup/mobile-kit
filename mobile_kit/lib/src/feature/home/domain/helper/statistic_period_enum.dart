@@ -1,4 +1,7 @@
-enum StatisticsPeriod { day, week, month, year, }
+import 'package:flutter/material.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
+
+enum StatisticsPeriod { day, week, month, year }
 
 extension StatisticsPeriodExtension on StatisticsPeriod {
   String get apiValue {
@@ -11,23 +14,19 @@ extension StatisticsPeriodExtension on StatisticsPeriod {
         return '30d';
       case StatisticsPeriod.year:
         return '1y';
-      // case StatisticsPeriod.allTime:
-      //   return 'All';
     }
   }
 
-  String get uiValue {
+  String uiValue(BuildContext context) {
     switch (this) {
       case StatisticsPeriod.day:
-        return '24 h';
+        return AppLocalizations.of(context)!.dayTitle;
       case StatisticsPeriod.week:
-        return '7 d';
+        return AppLocalizations.of(context)!.weekTitle;
       case StatisticsPeriod.month:
-        return '30 d';
+        return AppLocalizations.of(context)!.monthTitle;
       case StatisticsPeriod.year:
-        return '1 y';
-      // case StatisticsPeriod.allTime:
-      //   return 'All';
+        return AppLocalizations.of(context)!.yearTitle;
     }
   }
 }

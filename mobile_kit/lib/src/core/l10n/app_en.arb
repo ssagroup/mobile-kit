@@ -37,6 +37,10 @@
   "yesTitle": "Yes",
   "noTitle": "No",
 
-  "noDataTitle": "No data available"
+  "noDataTitle": "No data available",
+  "dayTitle": "24 h",
+  "weekTitle": "7 d",
+  "monthTitle": "30 d",
+  "yearTitle": "1 y"
 
 }

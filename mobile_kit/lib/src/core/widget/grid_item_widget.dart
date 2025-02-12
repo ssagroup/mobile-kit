@@ -9,7 +9,6 @@ class GridItem extends StatelessWidget {
     super.key,
     required this.itemValue,
     required this.itemTitle,
-    required this.index,
     this.unit,
     this.isUp,
     this.showChart,
@@ -20,7 +19,6 @@ class GridItem extends StatelessWidget {
   final String? unit;
   final bool? isUp;
   final bool? showChart;
-  final int index;
 
   @override
   Widget build(BuildContext context) {

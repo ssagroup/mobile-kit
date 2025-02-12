@@ -86,7 +86,7 @@ class _KpisScreenState extends State<KpisScreen> {
   Widget _buildSegmentedControl() {
     return Builder(builder: (context) {
       return CupertinoSegmentedControl<StatisticsPeriod>(
-        children: _segmentedWidgetList(_bloc.state.periodFilter),
+        children: _segmentedWidgetList(context, _bloc.state.periodFilter),
         onValueChanged: _bloc.segmentChanged,
         groupValue: _bloc.state.periodFilter,
         selectedColor: ColorPalette.grayControl,
@@ -131,7 +131,6 @@ class _KpisScreenState extends State<KpisScreen> {
               child: GridItem(
                 itemValue: item.value,
                 itemTitle: item.title,
-                index: index,
                 unit: item.unit,
                 isUp: item.isUp,
                 showChart: item.chartId?.isNotEmpty,
@@ -143,14 +142,14 @@ class _KpisScreenState extends State<KpisScreen> {
     );
   }
 
-  Map<StatisticsPeriod, Widget> _segmentedWidgetList(StatisticsPeriod period) {
+  Map<StatisticsPeriod, Widget> _segmentedWidgetList(BuildContext context, StatisticsPeriod period) {
     final dictionary = <StatisticsPeriod, Widget>{};
     for (final element in StatisticsPeriod.values) {
       dictionary[element] = Container(
         padding: const EdgeInsets.symmetric(vertical: 8),
         width: double.maxFinite,
         child: Text(
-          element.uiValue,
+          element.uiValue(context),
           textAlign: TextAlign.center,
           style: element == period
               ? const TextStyle(color: ColorPalette.grayText, fontSize: 13)

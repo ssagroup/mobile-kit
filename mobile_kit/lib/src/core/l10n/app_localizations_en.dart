@@ -92,4 +92,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noDataTitle => 'No data available';
+
+  @override
+  String get dayTitle => '24 h';
+
+  @override
+  String get weekTitle => '7 d';
+
+  @override
+  String get monthTitle => '30 d';
+
+  @override
+  String get yearTitle => '1 y';
 }
