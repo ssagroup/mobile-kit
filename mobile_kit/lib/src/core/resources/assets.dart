@@ -26,6 +26,7 @@ class Assets {
   static const String homeSelectedIcon = 'assets/icons/home_selected_ic.svg';
   static const String notificationSelectedIcon = 'assets/icons/notification_selected_ic.svg';
   static const String userIcon = 'assets/icons/user_ic.svg';
+  static const String chartIcon = 'assets/icons/chart_ic.svg';
 }
 
 const assetsPackage = 'mobile_kit';

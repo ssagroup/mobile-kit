@@ -6,12 +6,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     this.title,
     this.actions,
-    this.elevation = 2.0,
+    this.elevation = 0.0,
+    this.shadowColor,
   }) : super(key: key);
 
   final Widget? title;
   final double elevation;
   final List<Widget>? actions;
+  final Color? shadowColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: ColorPalette.grayBackground,
         foregroundColor: Colors.black,
         actions: actions,
+        shadowColor: shadowColor,
       )
     );
   }

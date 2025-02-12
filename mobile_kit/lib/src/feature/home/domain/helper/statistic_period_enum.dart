@@ -1,18 +1,18 @@
-enum StatisticsPeriod { day, week, month, year, allTime }
+enum StatisticsPeriod { day, week, month, year, }
 
 extension StatisticsPeriodExtension on StatisticsPeriod {
   String get apiValue {
     switch (this) {
       case StatisticsPeriod.day:
-        return 'Day';
+        return '24h';
       case StatisticsPeriod.week:
-        return 'Week';
+        return '7d';
       case StatisticsPeriod.month:
-        return 'Month';
+        return '30d';
       case StatisticsPeriod.year:
-        return 'Year';
-      case StatisticsPeriod.allTime:
-        return 'AllTime';
+        return '1y';
+      // case StatisticsPeriod.allTime:
+      //   return 'All';
     }
   }
 
@@ -26,8 +26,8 @@ extension StatisticsPeriodExtension on StatisticsPeriod {
         return '30 d';
       case StatisticsPeriod.year:
         return '1 y';
-      case StatisticsPeriod.allTime:
-        return 'All';
+      // case StatisticsPeriod.allTime:
+      //   return 'All';
     }
   }
 }

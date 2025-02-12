@@ -23,6 +23,7 @@ extension ControlsList on List<ControlModel> {
     return sorted((a, b) => a.id.compareTo(b.id));
   }
 }
+
 enum ControlStatus {
   started, stopped, undefined
 }

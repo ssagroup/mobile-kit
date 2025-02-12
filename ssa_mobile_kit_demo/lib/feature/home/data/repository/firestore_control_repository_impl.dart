@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
-import 'package:mobile_kit_demo/feature/home/data/model/control.dart';
+import 'package:mobile_kit_demo/feature/home/data/model/control_entity.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FirestoreControlRepositoryImpl implements ControlRepository {

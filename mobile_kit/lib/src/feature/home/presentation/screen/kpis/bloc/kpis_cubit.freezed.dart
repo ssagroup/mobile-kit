@@ -19,6 +19,7 @@ mixin _$KpisState {
   bool get isLoading => throw _privateConstructorUsedError;
   ApiStatus get apiStatus => throw _privateConstructorUsedError;
   StatisticsPeriod get periodFilter => throw _privateConstructorUsedError;
+  List<KpiModel> get kpis => throw _privateConstructorUsedError;
 
   /// Create a copy of KpisState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,10 @@ abstract class $KpisStateCopyWith<$Res> {
       _$KpisStateCopyWithImpl<$Res, KpisState>;
   @useResult
   $Res call(
-      {bool isLoading, ApiStatus apiStatus, StatisticsPeriod periodFilter});
+      {bool isLoading,
+      ApiStatus apiStatus,
+      StatisticsPeriod periodFilter,
+      List<KpiModel> kpis});
 
   $ApiStatusCopyWith<$Res> get apiStatus;
 }
@@ -56,6 +60,7 @@ class _$KpisStateCopyWithImpl<$Res, $Val extends KpisState>
     Object? isLoading = null,
     Object? apiStatus = null,
     Object? periodFilter = null,
+    Object? kpis = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -70,6 +75,10 @@ class _$KpisStateCopyWithImpl<$Res, $Val extends KpisState>
           ? _value.periodFilter
           : periodFilter // ignore: cast_nullable_to_non_nullable
               as StatisticsPeriod,
+      kpis: null == kpis
+          ? _value.kpis
+          : kpis // ignore: cast_nullable_to_non_nullable
+              as List<KpiModel>,
     ) as $Val);
   }
 
@@ -93,7 +102,10 @@ abstract class _$$KpisStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, ApiStatus apiStatus, StatisticsPeriod periodFilter});
+      {bool isLoading,
+      ApiStatus apiStatus,
+      StatisticsPeriod periodFilter,
+      List<KpiModel> kpis});
 
   @override
   $ApiStatusCopyWith<$Res> get apiStatus;
@@ -115,6 +127,7 @@ class __$$KpisStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? apiStatus = null,
     Object? periodFilter = null,
+    Object? kpis = null,
   }) {
     return _then(_$KpisStateImpl(
       isLoading: null == isLoading
@@ -129,6 +142,10 @@ class __$$KpisStateImplCopyWithImpl<$Res>
           ? _value.periodFilter
           : periodFilter // ignore: cast_nullable_to_non_nullable
               as StatisticsPeriod,
+      kpis: null == kpis
+          ? _value._kpis
+          : kpis // ignore: cast_nullable_to_non_nullable
+              as List<KpiModel>,
     ));
   }
 }
@@ -139,7 +156,9 @@ class _$KpisStateImpl implements _KpisState {
   const _$KpisStateImpl(
       {required this.isLoading,
       required this.apiStatus,
-      required this.periodFilter});
+      required this.periodFilter,
+      required final List<KpiModel> kpis})
+      : _kpis = kpis;
 
   @override
   final bool isLoading;
@@ -147,10 +166,17 @@ class _$KpisStateImpl implements _KpisState {
   final ApiStatus apiStatus;
   @override
   final StatisticsPeriod periodFilter;
+  final List<KpiModel> _kpis;
+  @override
+  List<KpiModel> get kpis {
+    if (_kpis is EqualUnmodifiableListView) return _kpis;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_kpis);
+  }
 
   @override
   String toString() {
-    return 'KpisState(isLoading: $isLoading, apiStatus: $apiStatus, periodFilter: $periodFilter)';
+    return 'KpisState(isLoading: $isLoading, apiStatus: $apiStatus, periodFilter: $periodFilter, kpis: $kpis)';
   }
 
   @override
@@ -163,12 +189,13 @@ class _$KpisStateImpl implements _KpisState {
             (identical(other.apiStatus, apiStatus) ||
                 other.apiStatus == apiStatus) &&
             (identical(other.periodFilter, periodFilter) ||
-                other.periodFilter == periodFilter));
+                other.periodFilter == periodFilter) &&
+            const DeepCollectionEquality().equals(other._kpis, _kpis));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, apiStatus, periodFilter);
+  int get hashCode => Object.hash(runtimeType, isLoading, apiStatus,
+      periodFilter, const DeepCollectionEquality().hash(_kpis));
 
   /// Create a copy of KpisState
   /// with the given fields replaced by the non-null parameter values.
@@ -183,7 +210,8 @@ abstract class _KpisState implements KpisState {
   const factory _KpisState(
       {required final bool isLoading,
       required final ApiStatus apiStatus,
-      required final StatisticsPeriod periodFilter}) = _$KpisStateImpl;
+      required final StatisticsPeriod periodFilter,
+      required final List<KpiModel> kpis}) = _$KpisStateImpl;
 
   @override
   bool get isLoading;
@@ -191,6 +219,8 @@ abstract class _KpisState implements KpisState {
   ApiStatus get apiStatus;
   @override
   StatisticsPeriod get periodFilter;
+  @override
+  List<KpiModel> get kpis;
 
   /// Create a copy of KpisState
   /// with the given fields replaced by the non-null parameter values.
