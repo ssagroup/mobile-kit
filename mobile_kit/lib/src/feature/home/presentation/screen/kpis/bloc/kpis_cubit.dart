@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile_kit/src/core/util/either_extension.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_kpis_usecase.dart';
@@ -12,11 +10,11 @@ part 'kpis_state.dart';
 
 class KpisCubit extends Cubit<KpisState> {
   KpisCubit(
-    GetAllKpisUsecase getAllKpisUseCase,
+    GetAllKpisUseCase getAllKpisUseCase,
   )   : _getAllKpisUseCase = getAllKpisUseCase,
         super(KpisState.initial());
 
-  final GetAllKpisUsecase _getAllKpisUseCase;
+  final GetAllKpisUseCase _getAllKpisUseCase;
 
   Future<void> initialize() async {
     emit(state.copyWith(

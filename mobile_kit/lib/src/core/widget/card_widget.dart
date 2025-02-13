@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({super.key, required this.items, required this.onTapCallback});
+  const CardWidget({
+    super.key,
+    required this.items,
+    this.onTapCallback,
+  });
 
   final List<Widget> items;
-  final void Function(int) onTapCallback;
+  final void Function(int)? onTapCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class CardWidget extends StatelessWidget {
               ),
             ),
           ),
-          onTap: () => onTapCallback(index),
+          onTap: onTapCallback != null ? () => onTapCallback!(index) : null,
         );
       },
     );

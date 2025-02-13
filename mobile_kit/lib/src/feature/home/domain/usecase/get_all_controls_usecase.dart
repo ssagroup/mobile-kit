@@ -4,8 +4,8 @@ import 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
-class GetAllControlsUsecase {
-  GetAllControlsUsecase(
+class GetAllControlsUseCase {
+  GetAllControlsUseCase(
     ControlRepository controlRepository,
   )   : _controlRepository = controlRepository,
         super();

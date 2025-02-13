@@ -25,7 +25,7 @@ class _KpisScreenState extends State<KpisScreen> {
   @override
   void initState() {
     super.initState();
-    final getAllKpisUseCase = GetAllKpisUsecase(GetIt.instance<KpiRepository>());
+    final getAllKpisUseCase = GetAllKpisUseCase(GetIt.instance<KpiRepository>());
     _bloc = KpisCubit(
       getAllKpisUseCase,
     )..initialize();

@@ -15,9 +15,9 @@ part 'control_state.dart';
 
 class ControlCubit extends Cubit<ControlState> {
   ControlCubit(
-    GetAllControlsUsecase getAllControlsUseCase,
-    ToggleControlUsecase toggleControlUseCase,
-    StopAllControlsUsecase stopAllControlsUseCase,
+    GetAllControlsUseCase getAllControlsUseCase,
+    ToggleControlUseCase toggleControlUseCase,
+    StopAllControlsUseCase stopAllControlsUseCase,
   )   : _getAllControlsUseCase = getAllControlsUseCase,
         _toggleControlUseCase = toggleControlUseCase,
         _stopAllControlsUseCase = stopAllControlsUseCase,
@@ -27,9 +27,9 @@ class ControlCubit extends Cubit<ControlState> {
     }));
   }
 
-  final GetAllControlsUsecase _getAllControlsUseCase;
-  final StopAllControlsUsecase _stopAllControlsUseCase;
-  final ToggleControlUsecase _toggleControlUseCase;
+  final GetAllControlsUseCase _getAllControlsUseCase;
+  final StopAllControlsUseCase _stopAllControlsUseCase;
+  final ToggleControlUseCase _toggleControlUseCase;
   List<StreamSubscription> subscriptions = [];
 
   Future<void> initialize() async {

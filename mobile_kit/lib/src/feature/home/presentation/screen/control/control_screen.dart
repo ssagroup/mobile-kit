@@ -30,9 +30,9 @@ class _ControlScreenState extends State<ControlScreen> {
   @override
   void initState() {
     super.initState();
-    final getAllControlsUseCase = GetAllControlsUsecase(GetIt.instance<ControlRepository>());
-    final toggleControlUseCase = ToggleControlUsecase(GetIt.instance<ControlRepository>());
-    final stopAllControlsUseCase = StopAllControlsUsecase(GetIt.instance<ControlRepository>());
+    final getAllControlsUseCase = GetAllControlsUseCase(GetIt.instance<ControlRepository>());
+    final toggleControlUseCase = ToggleControlUseCase(GetIt.instance<ControlRepository>());
+    final stopAllControlsUseCase = StopAllControlsUseCase(GetIt.instance<ControlRepository>());
     _bloc = ControlCubit(
       getAllControlsUseCase,
       toggleControlUseCase,
@@ -115,7 +115,6 @@ class _ControlScreenState extends State<ControlScreen> {
     return Builder(builder: (context) {
       return CardWidget(
         items: _controlItems,
-        onTapCallback: (_) {},
       );
     });
   }

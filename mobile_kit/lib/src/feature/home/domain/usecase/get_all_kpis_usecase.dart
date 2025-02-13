@@ -4,8 +4,8 @@ import 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
-class GetAllKpisUsecase {
-  GetAllKpisUsecase(
+class GetAllKpisUseCase {
+  GetAllKpisUseCase(
       KpiRepository kpiRepository,
       )   : _kpiRepository = kpiRepository,
         super();

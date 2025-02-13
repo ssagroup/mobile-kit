@@ -6,8 +6,8 @@ import 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
-class ToggleControlUsecase {
-  ToggleControlUsecase(
+class ToggleControlUseCase {
+  ToggleControlUseCase(
     ControlRepository controlRepository,
   )   : _controlRepository = controlRepository,
         super();

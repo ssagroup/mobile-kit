@@ -8,12 +8,10 @@ class CardItem extends StatelessWidget {
     super.key,
     required this.assetName,
     required this.itemTitle,
-    required this.index,
   });
 
   final String assetName;
   final String itemTitle;
-  final int index;
 
   @override
   Widget build(BuildContext context) {
