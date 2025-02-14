@@ -4,9 +4,6 @@ class Assets {
   static const String lockIcon = 'assets/icons/lock_ic.svg';
   static const String pauseBotIcon = 'assets/icons/stop_ic.svg';
   static const String runBotIcon = 'assets/icons/start_ic.svg';
-  static const String redCorner = 'assets/icons/red_corner_ic.svg';
-  static const String greenCorner = 'assets/icons/green_corner_ic.svg';
-  static const String coinIcon = 'assets/icons/coin_ic.svg';
   static const String envelopIcon = 'assets/icons/envelop_ic.svg';
   static const String noDataIcon = 'assets/icons/no_data_ic.svg';
   static const String notificationWarningIcon = 'assets/icons/notification_warning_ic.svg';
@@ -14,7 +11,6 @@ class Assets {
   static const String notificationInformationIcon = 'assets/icons/notification_info_ic.svg';
   static const String notificationUnreadPointIcon = 'assets/icons/unread_point.svg';
   static const String faceIdIcon = 'assets/icons/face_id_ic.svg';
-  static const String greenLineIcon = 'assets/icons/green_line_ic.svg';
 
   // New icons
   static const String controlIcon = 'assets/icons/control_ic.svg';
@@ -27,6 +23,9 @@ class Assets {
   static const String notificationSelectedIcon = 'assets/icons/notification_selected_ic.svg';
   static const String userIcon = 'assets/icons/user_ic.svg';
   static const String chartIcon = 'assets/icons/chart_ic.svg';
+  static const String normalStatusIcon = 'assets/icons/normal_status_ic.svg';
+  static const String warningStatusIcon = 'assets/icons/warning_status_ic.svg';
+  static const String errorStatusIcon = 'assets/icons/error_status_ic.svg';
 }
 
 const assetsPackage = 'mobile_kit';

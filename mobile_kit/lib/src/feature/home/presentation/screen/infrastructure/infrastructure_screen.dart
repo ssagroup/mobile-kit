@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
+import 'package:mobile_kit/src/core/widget/card_item_widget.dart';
 import 'package:mobile_kit/src/core/widget/card_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
+import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_infrastructure_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure/bloc/infrastructure_cubit.dart';
@@ -32,7 +34,6 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(
-        shadowColor: Colors.transparent,
         title: Text(
           AppLocalizations.of(context)!.infrastructureTitle,
           style: TextStyle(color: Colors.black),
@@ -70,7 +71,7 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
       physics: AlwaysScrollableScrollPhysics(),
       clipBehavior: Clip.none,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: CardWidget(
           items: _infrastructureItems,
         ),
@@ -81,7 +82,12 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
   List<Widget> get _infrastructureItems {
     final length = _bloc.state.infrastructure.length;
     return List.generate(length, (index) {
-      return Center();
+      final item = _bloc.state.infrastructure[index];
+      return CardItem(
+        assetName: item.type.assetName,
+        itemTitle: item.title,
+        fontSize: 14,
+      );
     });
   }
 }

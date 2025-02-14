@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 
-enum StatisticsPeriod { day, week, month, year }
+enum StatisticsPeriod {
 
-extension StatisticsPeriodExtension on StatisticsPeriod {
+  day, week, month, year;
+
   String get apiValue {
     switch (this) {
       case StatisticsPeriod.day:

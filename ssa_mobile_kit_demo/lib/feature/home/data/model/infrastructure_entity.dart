@@ -10,7 +10,7 @@ class InfrastructureEntity {
 
   final String status;
   final String title;
-  final String id;
+  final String? id;
 
   factory InfrastructureEntity.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,

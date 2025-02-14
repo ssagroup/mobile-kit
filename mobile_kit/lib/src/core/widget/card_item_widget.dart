@@ -8,10 +8,16 @@ class CardItem extends StatelessWidget {
     super.key,
     required this.assetName,
     required this.itemTitle,
+    this.iconColor,
+    this.iconSize,
+    this.fontSize,
   });
 
   final String assetName;
   final String itemTitle;
+  final Color? iconColor;
+  final double? iconSize;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +25,9 @@ class CardItem extends StatelessWidget {
       children: [
         SvgPicture.asset(
           assetName,
-          width: 24,
-          height: 24,
-          color: ColorPalette.grayIcon,
+          width: iconSize,
+          height: iconSize,
+          color: iconColor,
           package: assetsPackage,
         ),
         const SizedBox(width: 16),
@@ -30,7 +36,7 @@ class CardItem extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w400,
-            fontSize: 16,
+            fontSize: fontSize ?? 16,
           ),
         ),
         const Spacer(),

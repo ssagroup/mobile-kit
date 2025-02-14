@@ -35,7 +35,6 @@ class _KpisScreenState extends State<KpisScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(
-        shadowColor: Colors.transparent,
         title: Text(
           AppLocalizations.of(context)!.kpisTitle,
           style: TextStyle(color: Colors.black),

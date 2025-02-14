@@ -27,7 +27,8 @@ class KpisCubit extends Cubit<KpisState> {
   }
 
   Future<void> refresh() async {
-    final ApiStatus status = (await _getAllKpisUseCase.getAll(state.periodFilter)).fold((l) => const ApiStatus.failure(''), (kpis) {
+    final ApiStatus status =
+        (await _getAllKpisUseCase.getAll(state.periodFilter)).fold((l) => const ApiStatus.failure(''), (kpis) {
       emit(state.copyWith(
         kpis: kpis.sortedByOrder,
       ));

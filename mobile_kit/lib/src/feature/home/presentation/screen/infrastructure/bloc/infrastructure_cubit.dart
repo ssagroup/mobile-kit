@@ -9,8 +9,8 @@ part 'infrastructure_state.dart';
 
 class InfrastructureCubit extends Cubit<InfrastructureState> {
   InfrastructureCubit(
-      GetAllInfrastructureUseCase getAllInfrastructureUseCase,
-      )   : _getAllInfrastructureUseCase = getAllInfrastructureUseCase,
+    GetAllInfrastructureUseCase getAllInfrastructureUseCase,
+  )   : _getAllInfrastructureUseCase = getAllInfrastructureUseCase,
         super(InfrastructureState.initial());
 
   final GetAllInfrastructureUseCase _getAllInfrastructureUseCase;
@@ -26,18 +26,18 @@ class InfrastructureCubit extends Cubit<InfrastructureState> {
   }
 
   Future<void> refresh() async {
-    // final ApiStatus status = (await _getAllInfrastructureUseCase.invoke()).fold((l) => const ApiStatus.failure(''), (infrastructure) {
-    //   emit(state.copyWith(
-    //     infrastructure: infrastructure,
-    //   ));
-    //   return ApiStatus.success();
-    // });
-    // emit(state.copyWith(
-    //   apiStatus: status,
-    // ));
-    // emit(state.copyWith(
-    //   apiStatus: const ApiStatus.none(),
-    // ));
+    final ApiStatus status =
+        (await _getAllInfrastructureUseCase.invoke()).fold((l) => const ApiStatus.failure(''), (infrastructure) {
+      emit(state.copyWith(
+        infrastructure: infrastructure,
+      ));
+      return ApiStatus.success();
+    });
+    emit(state.copyWith(
+      apiStatus: status,
+    ));
+    emit(state.copyWith(
+      apiStatus: const ApiStatus.none(),
+    ));
   }
-
 }
