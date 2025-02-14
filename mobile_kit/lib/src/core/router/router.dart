@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/screen/setup_pin_screen.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/control/control_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure/infrastructure_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/kpis/kpis_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/settings/settings_screen.dart';
+import 'package:mobile_kit/src/feature/login/domain/repository/auth_notifier.dart';
 import 'package:mobile_kit/src/feature/login/presentation/screen/login_screen.dart';
 
 // Auth
@@ -18,6 +20,7 @@ const homeRouteName = 'home';
 const settingsRouteName = 'settings';
 const controlRouteName = 'control';
 const kpisRouteName = 'kpis';
+const infrastructureRouteName = 'infrastructure';
 
 GoRouter setupRouter(AuthenticationNotifier authNotifier) {
   final GoRouter router = GoRouter(
@@ -112,6 +115,13 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
             name: kpisRouteName,
             pageBuilder: (context, state) => MaterialPage<void>(
               child: KpisScreen(),
+            ),
+          ),
+          GoRoute(
+            path: 'infrastructure',
+            name: infrastructureRouteName,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              child: InfrastructureScreen(),
             ),
           ),
         ],

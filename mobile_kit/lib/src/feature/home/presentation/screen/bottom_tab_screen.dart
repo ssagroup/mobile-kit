@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
+import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/bottom_bar_widget.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/alerts_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/home_screen.dart';

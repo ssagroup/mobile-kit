@@ -2,13 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
 import 'package:mobile_kit/src/core/widget/gradient_box_decoration.dart';
 import 'package:mobile_kit/src/core/widget/logo_widget.dart';
+import 'package:mobile_kit/src/core/widget/pin_code_widget.dart';
+import 'package:mobile_kit/src/feature/biometrics_auth/domain/repository/biometrics_auth_repository.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/domain/usecase/verify_pin_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/bloc/verify_pin_cubit.dart';
+import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
+import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
 class VerifyPinScreen extends StatefulWidget {
   const VerifyPinScreen({super.key});

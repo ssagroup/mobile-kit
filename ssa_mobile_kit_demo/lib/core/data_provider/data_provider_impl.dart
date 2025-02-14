@@ -2,6 +2,7 @@ import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/hive_biometrics_local_datasource_impl.dart';
 import 'package:mobile_kit_demo/feature/biometrics_auth/data/repository/biometrics_auth_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_control_repository_impl.dart';
+import 'package:mobile_kit_demo/feature/home/data/repository/firestore_infrastructure_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_kpis_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_settings_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/login/data/repository/firebase_auth_repository_impl.dart';
@@ -27,6 +28,7 @@ class DataProviderImpl extends DataProvider {
     controlRepository = FirestoreControlRepositoryImpl();
     settingsRepository = FirestoreSettingsRepositoryImpl();
     kpisRepository = FirestoreKpiRepositoryImpl();
+    infrastructureRepository = FirestoreInfrastructureRepositoryImpl();
   }
 
   static Future<DataProviderImpl> create() async {

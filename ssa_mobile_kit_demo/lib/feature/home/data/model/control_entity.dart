@@ -33,6 +33,11 @@ class ControlEntity {
   }
 
   ControlModel get controlModel {
-    return ControlModel(id: id, name: name, status: ControlStatusExtension.init(status), isActionsDisabled: false);
+    return ControlModel(
+      id: id,
+      name: name,
+      status: ControlStatusExtension.init(status),
+      isActionsDisabled: false,
+    );
   }
 }

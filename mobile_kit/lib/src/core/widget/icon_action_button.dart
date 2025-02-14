@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
+import 'package:mobile_kit/src/core/widget/dialog.dart';
 
 class IconActionButton extends StatelessWidget {
   const IconActionButton({

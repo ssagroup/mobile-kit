@@ -1,4 +1,5 @@
 import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 
 abstract class DataProvider {
   late AuthenticationRepository authRep;
@@ -6,6 +7,7 @@ abstract class DataProvider {
   late ControlRepository controlRepository;
   late KpiRepository kpisRepository;
   late SettingsRepository settingsRepository;
+  late InfrastructureRepository infrastructureRepository;
 
   late AuthenticationNotifier authNotifier;
 }
@@ -17,6 +19,7 @@ class DependencyManager {
     GetIt.instance.registerSingleton<ControlRepository>(dataProvider.controlRepository);
     GetIt.instance.registerSingleton<KpiRepository>(dataProvider.kpisRepository);
     GetIt.instance.registerSingleton<SettingsRepository>(dataProvider.settingsRepository);
+    GetIt.instance.registerSingleton<InfrastructureRepository>(dataProvider.infrastructureRepository);
 
     GetIt.instance.registerSingleton<AuthenticationNotifier>(dataProvider.authNotifier);
   }

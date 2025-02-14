@@ -30,14 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CardWidget(
           items: _homeItems,
           onTapCallback: (int index) {
-            if (index == 1) {
-              context.goNamed(controlRouteName);
-            }
-            if (index == 2) {
-              context.goNamed(kpisRouteName);
-            }
-            if (index == 3) {
-              context.goNamed(settingsRouteName);
+            switch (index) {
+              case 0: context.goNamed(infrastructureRouteName);
+              case 1: context.goNamed(controlRouteName);
+              case 2: context.goNamed(kpisRouteName);
+              case 3: context.goNamed(settingsRouteName);
             }
           },
         ),
@@ -47,25 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> get _homeItems {
     return <Widget>[
-      const CardItem(
+      CardItem(
         assetName: Assets.infrastructureIcon,
-        itemTitle: 'Infrastructure',
-        index: 0,
+        itemTitle: AppLocalizations.of(context)!.infrastructureTitle,
       ),
-      const CardItem(
+      CardItem(
         assetName: Assets.controlIcon,
-        itemTitle: 'Control',
-        index: 1,
+        itemTitle: AppLocalizations.of(context)!.controlTitle,
       ),
-      const CardItem(
+      CardItem(
         assetName: Assets.kpiIcon,
-        itemTitle: 'KPIs',
-        index: 2,
+        itemTitle: AppLocalizations.of(context)!.kpisTitle,
       ),
-      const CardItem(
+      CardItem(
         assetName: Assets.settingsIcon,
-        itemTitle: 'Settings',
-        index: 3,
+        itemTitle: AppLocalizations.of(context)!.settingsTitle,
       ),
     ];
   }

@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/core/util/optional.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_user_info_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
+import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
 part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
