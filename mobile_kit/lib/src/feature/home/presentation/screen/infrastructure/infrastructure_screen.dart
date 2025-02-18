@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
+import 'package:mobile_kit/src/core/router/router.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/card_item_widget.dart';
 import 'package:mobile_kit/src/core/widget/card_widget.dart';
@@ -58,7 +60,7 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
             isLoading: state.isLoading,
             child: RefreshIndicator(
               onRefresh: () => _bloc.refresh(),
-              child: _buildKpiItems(),
+              child: _buildItems(),
             ),
           );
         },
@@ -66,7 +68,7 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
     );
   }
 
-  Widget _buildKpiItems() {
+  Widget _buildItems() {
     return SingleChildScrollView(
       physics: AlwaysScrollableScrollPhysics(),
       clipBehavior: Clip.none,
@@ -74,6 +76,9 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
         padding: const EdgeInsets.all(8.0),
         child: CardWidget(
           items: _infrastructureItems,
+          onTapCallback: (index) {
+            context.goNamed(infrastructureDetailsRouteName, extra: _bloc.state.infrastructure[index]);
+          },
         ),
       ),
     );

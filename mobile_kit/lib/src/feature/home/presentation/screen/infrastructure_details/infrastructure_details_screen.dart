@@ -2,32 +2,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/grid_item_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
+import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
-import 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
-import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_kpis_usecase.dart';
-import 'package:mobile_kit/src/feature/home/presentation/screen/kpis/bloc/kpis_cubit.dart';
+import 'package:mobile_kit/src/feature/home/domain/model/infrastructure_model.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
+import 'package:mobile_kit/src/feature/home/domain/usecase/get_infrastructure_details_usecase.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure_details/bloc/infrastructure_details_cubit.dart';
 
-class KpisScreen extends StatefulWidget {
-  const KpisScreen({Key? key}) : super(key: key);
+class InfrastructureDetailsScreen extends StatefulWidget {
+  InfrastructureDetailsScreen(InfrastructureModel model, {Key? key})
+      : title = model.title,
+        id = model.id,
+        super(key: key);
+
+  final String title;
+  final String id;
 
   @override
-  _KpisScreenState createState() => _KpisScreenState();
+  _InfrastructureDetailsScreenState createState() => _InfrastructureDetailsScreenState();
 }
 
-class _KpisScreenState extends State<KpisScreen> {
-  late final KpisCubit _bloc;
+class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScreen> {
+  late final InfrastructureDetailsCubit _bloc;
 
   @override
   void initState() {
     super.initState();
-    final getAllKpisUseCase = GetAllKpisUseCase(GetIt.instance<KpiRepository>());
-    _bloc = KpisCubit(
-      getAllKpisUseCase,
+    final getInfrastructureUseCase =
+        GetInfrastructureDetailsUseCase(GetIt.instance<InfrastructureRepository>(), widget.id);
+    _bloc = InfrastructureDetailsCubit(
+      getInfrastructureUseCase,
     )..initialize();
   }
 
@@ -36,11 +44,11 @@ class _KpisScreenState extends State<KpisScreen> {
     return Scaffold(
       appBar: AppBarWidget(
         title: Text(
-          AppLocalizations.of(context)!.kpisTitle,
+          widget.title,
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: BlocConsumer<KpisCubit, KpisState>(
+      body: BlocConsumer<InfrastructureDetailsCubit, InfrastructureDetailsState>(
         listener: (context, state) {
           state.apiStatus.whenOrNull(failure: (String message) async {
             final snackBar = SnackBar(
@@ -62,7 +70,7 @@ class _KpisScreenState extends State<KpisScreen> {
                 isLoading: state.isLoading,
                 child: RefreshIndicator(
                   onRefresh: () => _bloc.refresh(),
-                  child: _buildKpiItems(),
+                  child: _buildItems(),
                 ),
               ),
             ],
@@ -94,7 +102,7 @@ class _KpisScreenState extends State<KpisScreen> {
     });
   }
 
-  Widget _buildKpiItems() {
+  Widget _buildItems() {
     return SingleChildScrollView(
       physics: AlwaysScrollableScrollPhysics(),
       clipBehavior: Clip.none,
@@ -111,9 +119,9 @@ class _KpisScreenState extends State<KpisScreen> {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 60),
-      itemCount: _bloc.state.kpis.length,
+      itemCount: _bloc.state.models.length,
       itemBuilder: (context, index) {
-        final item = _bloc.state.kpis[index];
+        final item = _bloc.state.models[index];
         return GestureDetector(
           onTap: () => {},
           child: Container(
@@ -127,8 +135,8 @@ class _KpisScreenState extends State<KpisScreen> {
                 itemValue: item.value,
                 itemTitle: item.title,
                 unit: item.unit,
-                isUp: item.isUp,
                 showChart: item.chartId?.isNotEmpty,
+                textColor: item.type.color,
               ),
             ),
           ),
@@ -140,10 +148,12 @@ class _KpisScreenState extends State<KpisScreen> {
   Map<StatisticsPeriod, Widget> _segmentedWidgetList(BuildContext context, StatisticsPeriod period) {
     final dictionary = <StatisticsPeriod, Widget>{};
     for (final element in [
-      StatisticsPeriod.day,
-      StatisticsPeriod.week,
-      StatisticsPeriod.month,
-      StatisticsPeriod.year
+      StatisticsPeriod.current,
+      StatisticsPeriod.one_hour,
+      StatisticsPeriod.three_hours,
+      StatisticsPeriod.six_hours,
+      StatisticsPeriod.twelve_hours,
+      StatisticsPeriod.day
     ]) {
       dictionary[element] = Container(
         padding: const EdgeInsets.symmetric(vertical: 8),

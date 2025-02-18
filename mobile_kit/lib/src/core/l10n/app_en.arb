@@ -38,6 +38,11 @@
   "noTitle": "No",
 
   "noDataTitle": "No data available",
+  "currentTitle": "Current",
+  "oneHourTitle": "1 h",
+  "threeHoursTitle": "3 h",
+  "sixHoursTitle": "6 h",
+  "twelveHoursTitle": "12 h",
   "dayTitle": "24 h",
   "weekTitle": "7 d",
   "monthTitle": "30 d",

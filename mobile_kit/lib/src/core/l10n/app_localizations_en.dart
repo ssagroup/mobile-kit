@@ -94,6 +94,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noDataTitle => 'No data available';
 
   @override
+  String get currentTitle => 'Current';
+
+  @override
+  String get oneHourTitle => '1 h';
+
+  @override
+  String get threeHoursTitle => '3 h';
+
+  @override
+  String get sixHoursTitle => '6 h';
+
+  @override
+  String get twelveHoursTitle => '12 h';
+
+  @override
   String get dayTitle => '24 h';
 
   @override

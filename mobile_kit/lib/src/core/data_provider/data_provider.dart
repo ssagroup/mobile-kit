@@ -1,5 +1,4 @@
 import 'package:mobile_kit/mobile_kit.dart';
-import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 
 abstract class DataProvider {
   late AuthenticationRepository authRep;

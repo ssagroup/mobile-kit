@@ -267,6 +267,36 @@ abstract class AppLocalizations {
   /// **'No data available'**
   String get noDataTitle;
 
+  /// No description provided for @currentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get currentTitle;
+
+  /// No description provided for @oneHourTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1 h'**
+  String get oneHourTitle;
+
+  /// No description provided for @threeHoursTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3 h'**
+  String get threeHoursTitle;
+
+  /// No description provided for @sixHoursTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'6 h'**
+  String get sixHoursTitle;
+
+  /// No description provided for @twelveHoursTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'12 h'**
+  String get twelveHoursTitle;
+
   /// No description provided for @dayTitle.
   ///
   /// In en, this message translates to:

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile_kit/src/core/util/sortable.dart';
 import 'package:mobile_kit/src/feature/home/domain/model/infrastructure_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_infrastructure_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
@@ -29,7 +30,7 @@ class InfrastructureCubit extends Cubit<InfrastructureState> {
     final ApiStatus status =
         (await _getAllInfrastructureUseCase.invoke()).fold((l) => const ApiStatus.failure(''), (infrastructure) {
       emit(state.copyWith(
-        infrastructure: infrastructure,
+        infrastructure: infrastructure.sortedByOrder,
       ));
       return ApiStatus.success();
     });

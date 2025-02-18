@@ -1,21 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/core/util/sortable.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
-import 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
-import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_kpis_usecase.dart';
+import 'package:mobile_kit/src/feature/home/domain/usecase/get_infrastructure_details_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 
-part 'kpis_cubit.freezed.dart';
-part 'kpis_state.dart';
+part 'infrastructure_details_state.dart';
+part 'infrastructure_details_cubit.freezed.dart';
 
-class KpisCubit extends Cubit<KpisState> {
-  KpisCubit(
-    GetAllKpisUseCase getAllKpisUseCase,
-  )   : _getAllKpisUseCase = getAllKpisUseCase,
-        super(KpisState.initial());
+class InfrastructureDetailsCubit extends Cubit<InfrastructureDetailsState> {
+  InfrastructureDetailsCubit(
+      GetInfrastructureDetailsUseCase getInfrastructureUseCase,
+      )   : _getInfrastructureUseCase = getInfrastructureUseCase,
+        super(InfrastructureDetailsState.initial());
 
-  final GetAllKpisUseCase _getAllKpisUseCase;
+  final GetInfrastructureDetailsUseCase _getInfrastructureUseCase;
 
   Future<void> initialize() async {
     emit(state.copyWith(
@@ -28,10 +28,9 @@ class KpisCubit extends Cubit<KpisState> {
   }
 
   Future<void> refresh() async {
-    final ApiStatus status =
-        (await _getAllKpisUseCase.getAll(state.periodFilter)).fold((l) => const ApiStatus.failure(''), (kpis) {
+    final ApiStatus status = (await _getInfrastructureUseCase.getDetails(state.periodFilter)).fold((l) => const ApiStatus.failure(''), (models) {
       emit(state.copyWith(
-        kpis: kpis.sortedByOrder,
+        models: models.sortedByOrder,
       ));
       return ApiStatus.success();
     });
@@ -47,7 +46,7 @@ class KpisCubit extends Cubit<KpisState> {
     emit(
       state.copyWith(
         periodFilter: value,
-        kpis: [],
+        models: [],
         isLoading: true,
       ),
     );

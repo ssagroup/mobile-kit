@@ -6,11 +6,13 @@ class InfrastructureEntity {
     required this.status,
     required this.title,
     required this.id,
+    required this.order,
   });
 
   final String status;
   final String title;
   final String? id;
+  final int order;
 
   factory InfrastructureEntity.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -21,6 +23,7 @@ class InfrastructureEntity {
       status: data?['status'],
       title: data?['title'],
       id: data?['id'],
+      order: data?['order'],
     );
   }
 
@@ -29,10 +32,11 @@ class InfrastructureEntity {
       'status': status,
       'title': title,
       'id': id,
+      'order': order,
     };
   }
 
   InfrastructureModel toInfrastructureModel(String id) {
-    return InfrastructureModel(status: status, title: title, id: id);
+    return InfrastructureModel(status: status, title: title, id: id, order: order);
   }
 }

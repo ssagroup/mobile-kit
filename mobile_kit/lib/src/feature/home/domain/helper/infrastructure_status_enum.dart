@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
+import 'package:mobile_kit/src/core/resources/colors.dart';
 
 enum InfrastructureStatus {
   normal, warning, error,
@@ -13,6 +15,17 @@ extension InfrastructureStatusExtension on InfrastructureStatus {
         return Assets.warningStatusIcon;
       case InfrastructureStatus.error:
         return Assets.errorStatusIcon;
+    }
+  }
+
+  Color get color {
+    switch (this) {
+      case InfrastructureStatus.normal:
+        return ColorPalette.greenText;
+      case InfrastructureStatus.warning:
+        return ColorPalette.yellowText;
+      case InfrastructureStatus.error:
+        return ColorPalette.redText;
     }
   }
 }
