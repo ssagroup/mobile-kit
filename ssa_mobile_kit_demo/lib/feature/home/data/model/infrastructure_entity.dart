@@ -37,6 +37,6 @@ class InfrastructureEntity {
   }
 
   InfrastructureModel toInfrastructureModel(String id) {
-    return InfrastructureModel(status: status, title: title, id: id, order: order);
+    return InfrastructureModel(status: InfrastructureStatusExtension.init(status), title: title, id: id, order: order);
   }
 }

@@ -46,7 +46,7 @@ class InfrastructureDetailsEntity {
 
   InfrastructureDetailsModel get infrastructureDetailsModel {
     return InfrastructureDetailsModel(
-      status: status,
+      status: InfrastructureStatusExtension.init(status),
       title: title,
       value: value,
       order: order,

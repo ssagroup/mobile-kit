@@ -9,17 +9,9 @@ class InfrastructureModel implements Sortable {
     required this.order,
   });
 
-  final String status;
+  final InfrastructureStatus status;
   final String title;
   final String id;
   final int order;
 
-  InfrastructureStatus get type {
-    switch (status) {
-      case 'Normal': return InfrastructureStatus.normal;
-      case 'Warning': return InfrastructureStatus.warning;
-      case 'Error': return InfrastructureStatus.error;
-    }
-    throw 'Undefined type';
-  }
 }

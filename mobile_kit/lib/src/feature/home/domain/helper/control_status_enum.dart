@@ -7,6 +7,7 @@ enum ControlStatus {
 }
 
 extension ControlStatusExtension on ControlStatus {
+
   static ControlStatus init(String status) {
     switch (status) {
       case 'Started': return ControlStatus.started;
@@ -36,5 +37,4 @@ extension ControlStatusExtension on ControlStatus {
         throw 'Unsupported status';
     }
   }
-
 }

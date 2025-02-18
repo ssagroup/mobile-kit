@@ -85,8 +85,8 @@ class _ControlScreenState extends State<ControlScreen> {
                     ] else
                       SliverToBoxAdapter(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: _buildBody(),
+                          padding: const EdgeInsets.all(8.0),
+                          child: _buildItems(),
                         ),
                       )
                   ],
@@ -99,19 +99,7 @@ class _ControlScreenState extends State<ControlScreen> {
     );
   }
 
-  Widget _buildBody() {
-    return Builder(builder: (context) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(height: 20),
-          _buildControlItems(),
-        ],
-      );
-    });
-  }
-
-  Widget _buildControlItems() {
+  Widget _buildItems() {
     return Builder(builder: (context) {
       return CardWidget(
         items: _controlItems,

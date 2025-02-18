@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/grid_item_widget.dart';
+import 'package:mobile_kit/src/core/widget/no_data_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
@@ -66,11 +68,30 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
           return Column(
             children: [
               _buildTopSection(),
-              FullScreenProgressIndicator(
-                isLoading: state.isLoading,
-                child: RefreshIndicator(
-                  onRefresh: () => _bloc.refresh(),
-                  child: _buildItems(),
+              Expanded(
+                child: FullScreenProgressIndicator(
+                  isLoading: state.isLoading,
+                  child: RefreshIndicator(
+                    onRefresh: () => _bloc.refresh(),
+                    child: CustomScrollView(
+                      physics: AlwaysScrollableScrollPhysics(),
+                      slivers: [
+                        if (state.models.isEmpty) ...[
+                          const SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: 100,
+                            ),
+                          ),
+                          SliverToBoxAdapter(
+                            child: NoDataWidget(title: AppLocalizations.of(context)!.noDataTitle),
+                          ),
+                        ] else
+                          SliverToBoxAdapter(
+                            child: _buildItems(),
+                          )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -103,45 +124,38 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
   }
 
   Widget _buildItems() {
-    return SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
-      clipBehavior: Clip.none,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: _buildCollection(),
-      ),
-    );
-  }
-
-  Widget _buildCollection() {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 60),
-      itemCount: _bloc.state.models.length,
-      itemBuilder: (context, index) {
-        final item = _bloc.state.models[index];
-        return GestureDetector(
-          onTap: () => {},
-          child: Container(
-            decoration: BoxDecoration(
-              color: ColorPalette.grayBackground,
-              borderRadius: BorderRadius.circular(6.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridItem(
-                itemValue: item.value,
-                itemTitle: item.title,
-                unit: item.unit,
-                showChart: item.chartId?.isNotEmpty,
-                textColor: item.type.color,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        clipBehavior: Clip.none,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 60),
+        itemCount: _bloc.state.models.length,
+        itemBuilder: (context, index) {
+          final item = _bloc.state.models[index];
+          return GestureDetector(
+            onTap: () => {},
+            child: Container(
+              decoration: BoxDecoration(
+                color: ColorPalette.grayBackground,
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridItem(
+                  itemValue: item.value,
+                  itemTitle: item.title,
+                  unit: item.unit,
+                  showChart: item.chartId?.isNotEmpty,
+                  textColor: item.status.color,
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

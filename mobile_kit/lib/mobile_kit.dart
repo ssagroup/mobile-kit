@@ -26,6 +26,7 @@ export 'package:mobile_kit/src/feature/home/domain/repository/settings_repositor
 export 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
 export 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 export 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';
+export 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
 
 // Core
 export 'package:mobile_kit/src/core/data/hive/hive_local_storage.dart';
