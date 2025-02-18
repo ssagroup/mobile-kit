@@ -15,12 +15,6 @@ class GetInfrastructureDetailsUseCase {
   /// Get All Infrastructure Details
   Future<Either<Failure, List<InfrastructureDetailsModel>>> getDetails(StatisticsPeriod filter) async {
     String period = filter.apiValue;
-    // TODO: Delete if-else (DB is filled only for Current and 1 h now)
-    if (filter == StatisticsPeriod.current || filter == StatisticsPeriod.three_hours || filter == StatisticsPeriod.twelve_hours) {
-      period = StatisticsPeriod.current.apiValue;
-    } else {
-      period = StatisticsPeriod.one_hour.apiValue;
-    }
     return (await _infrastructureRepository.getDetails(_id, period));
   }
 
