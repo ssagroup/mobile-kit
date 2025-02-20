@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/core/util/either_extension.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
@@ -47,7 +48,7 @@ class ControlCubit extends Cubit<ControlState> {
     final activeControls =
     controls.where((element) => element.status == ControlStatus.started && !element.isActionsDisabled);
     emit(state.copyWith(
-      controls: controls,
+      models: controls,
       trigger: !state.trigger,
       isStopAllActive: activeControls.isNotEmpty,
     ));
@@ -63,7 +64,7 @@ class ControlCubit extends Cubit<ControlState> {
       apiStatus: status,
     ));
     emit(state.copyWith(
-      apiStatus: const ApiStatus.none(),
+      apiStatus: ApiStatusNone(),
     ));
   }
 
@@ -77,7 +78,7 @@ class ControlCubit extends Cubit<ControlState> {
       apiStatus: status,
     ));
     emit(state.copyWith(
-      apiStatus: const ApiStatus.none(),
+      apiStatus: ApiStatusNone(),
     ));
   }
 

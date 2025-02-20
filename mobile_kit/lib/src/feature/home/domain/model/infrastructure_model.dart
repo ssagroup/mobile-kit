@@ -12,6 +12,6 @@ class InfrastructureModel implements Sortable {
   final InfrastructureStatus status;
   final String title;
   final String id;
-  final int order;
+  @override final int order;
 
 }

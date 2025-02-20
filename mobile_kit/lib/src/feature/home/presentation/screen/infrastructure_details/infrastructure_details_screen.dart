@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
+import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/grid_item_widget.dart';
 import 'package:mobile_kit/src/core/widget/no_data_widget.dart';
@@ -51,23 +52,12 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
         ),
       ),
       body: BlocConsumer<InfrastructureDetailsCubit, InfrastructureDetailsState>(
-        listener: (context, state) {
-          state.apiStatus.whenOrNull(failure: (String message) async {
-            final snackBar = SnackBar(
-              content: Text(
-                message,
-              ),
-            );
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackBar);
-          });
-        },
+        listener: showFailure,
         bloc: _bloc,
         builder: (context, state) {
           return Column(
             children: [
-              _buildTopSection(),
+              _buildTopSection(state),
               Expanded(
                 child: FullScreenProgressIndicator(
                   isLoading: state.isLoading,
@@ -86,9 +76,40 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
                             child: NoDataWidget(title: AppLocalizations.of(context)!.noDataTitle),
                           ),
                         ] else
-                          SliverToBoxAdapter(
-                            child: _buildItems(),
-                          )
+                          SliverPadding(
+                            padding: EdgeInsets.all(16),
+                            sliver: SliverGrid.builder(
+                              itemBuilder: (BuildContext context, int index) {
+                                final item = state.models[index];
+                                return GestureDetector(
+                                  onTap: () => {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: ColorPalette.grayBackground,
+                                      borderRadius: BorderRadius.circular(6.0),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: GridItem(
+                                        itemValue: item.value,
+                                        itemTitle: item.title,
+                                        unit: item.unit,
+                                        showChart: item.chartId?.isNotEmpty,
+                                        textColor: item.status.color,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              itemCount: state.models.length,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                                mainAxisExtent: 60,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -101,62 +122,26 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
     );
   }
 
-  Widget _buildTopSection() {
+  Widget _buildTopSection(InfrastructureDetailsState state) {
     return Container(
       color: ColorPalette.grayBackground,
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: Center(
-        child: _buildSegmentedControl(),
+        child: _buildSegmentedControl(state),
       ),
     );
   }
 
-  Widget _buildSegmentedControl() {
+  Widget _buildSegmentedControl(InfrastructureDetailsState state) {
     return Builder(builder: (context) {
       return CupertinoSegmentedControl<StatisticsPeriod>(
-        children: _segmentedWidgetList(context, _bloc.state.periodFilter),
+        children: _segmentedWidgetList(context, state.periodFilter),
         onValueChanged: _bloc.segmentChanged,
-        groupValue: _bloc.state.periodFilter,
+        groupValue: state.periodFilter,
         selectedColor: ColorPalette.grayControl,
         borderColor: ColorPalette.grayControl,
       );
     });
-  }
-
-  Widget _buildItems() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        clipBehavior: Clip.none,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 60),
-        itemCount: _bloc.state.models.length,
-        itemBuilder: (context, index) {
-          final item = _bloc.state.models[index];
-          return GestureDetector(
-            onTap: () => {},
-            child: Container(
-              decoration: BoxDecoration(
-                color: ColorPalette.grayBackground,
-                borderRadius: BorderRadius.circular(6.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GridItem(
-                  itemValue: item.value,
-                  itemTitle: item.title,
-                  unit: item.unit,
-                  showChart: item.chartId?.isNotEmpty,
-                  textColor: item.status.color,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
   }
 
   Map<StatisticsPeriod, Widget> _segmentedWidgetList(BuildContext context, StatisticsPeriod period) {
@@ -182,5 +167,11 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
       );
     }
     return dictionary;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.close();
   }
 }

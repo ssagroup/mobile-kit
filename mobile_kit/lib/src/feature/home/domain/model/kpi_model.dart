@@ -12,7 +12,7 @@ class KpiModel implements Sortable {
 
   final bool? isUp;
   final String value;
-  final int order;
+  @override final int order;
   final String title;
   final String? chartId;
   final String? unit;

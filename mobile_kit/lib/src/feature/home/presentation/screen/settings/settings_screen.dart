@@ -50,7 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: BlocConsumer<SettingsCubit, SettingsState>(
         bloc: _bloc,
-        listener: (BuildContext context, SettingsState state) {
+        listener: (context, state) {
           _emailTC.text = state.email.orEmpty;
           _usernameTC.text = state.username.orEmpty;
         },
@@ -68,44 +68,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _buildBody() {
-    return Builder(builder: (context) {
-      return SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 20),
-            _buildSettingsForm(),
-            const Spacer(),
-            _buildLogoutButton(),
-            const SizedBox(height: 20),
-          ],
-        ),
-      );
-    });
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(height: 20),
+          _buildSettingsForm(),
+          const Spacer(),
+          _buildLogoutButton(),
+          const SizedBox(height: 20),
+        ],
+      ),
+    );
   }
 
   Widget _buildSettingsForm() {
-    return Builder(builder: (context) {
-      return Form(
-        child: Column(
-          children: <Widget>[
-            AppTextField(
-              controller: _usernameTC,
-              prefixIconName: Assets.userIcon,
-              prefixIconColor: Colors.grey,
-              readOnly: true,
-            ),
-            const SizedBox(height: 20),
-            AppTextField(
-              controller: _emailTC,
-              prefixIconName: Assets.envelopIcon,
-              prefixIconColor: Colors.grey,
-              readOnly: true,
-            ),
-          ],
-        ),
-      );
-    });
+    return Form(
+      child: Column(
+        children: <Widget>[
+          AppTextField(
+            controller: _usernameTC,
+            prefixIconName: Assets.userIcon,
+            prefixIconColor: Colors.grey,
+            readOnly: true,
+          ),
+          const SizedBox(height: 20),
+          AppTextField(
+            controller: _emailTC,
+            prefixIconName: Assets.envelopIcon,
+            prefixIconColor: Colors.grey,
+            readOnly: true,
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildLogoutButton() {

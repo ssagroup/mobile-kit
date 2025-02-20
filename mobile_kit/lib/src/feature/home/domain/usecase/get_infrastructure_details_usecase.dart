@@ -9,14 +9,11 @@ class GetInfrastructureDetailsUseCase {
     InfrastructureRepository infrastructureRepository,
     String id,
   )   : _infrastructureRepository = infrastructureRepository,
-        _id = id,
-        super();
+        _id = id;
 
   /// Get All Infrastructure Details
-  Future<Either<Failure, List<InfrastructureDetailsModel>>> getDetails(StatisticsPeriod filter) async {
-    String period = filter.apiValue;
-    return (await _infrastructureRepository.getDetails(_id, period));
-  }
+  Future<Either<Failure, List<InfrastructureDetailsModel>>> getDetails(StatisticsPeriod filter) async =>
+      await _infrastructureRepository.getDetails(_id, filter.apiValue);
 
   final InfrastructureRepository _infrastructureRepository;
   final String _id;

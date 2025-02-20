@@ -16,25 +16,16 @@ extension ControlStatusExtension on ControlStatus {
     return ControlStatus.undefined;
   }
 
-  Color get descriptionColor {
-    switch (this) {
-      case ControlStatus.started:
-        return ColorPalette.greenText;
-      case ControlStatus.stopped:
-        return ColorPalette.redText;
-      case ControlStatus.undefined:
-        throw 'Unsupported status';
-    }
-  }
+  String get assetName => switch (this) {
+    ControlStatus.started => Assets.pauseBotIcon,
+    ControlStatus.stopped => Assets.runBotIcon,
+    ControlStatus.undefined => throw 'Unsupported status',
+  };
 
-  String get assetName {
-    switch (this) {
-      case ControlStatus.started:
-        return Assets.pauseBotIcon;
-      case ControlStatus.stopped:
-        return Assets.runBotIcon;
-      case ControlStatus.undefined:
-        throw 'Unsupported status';
-    }
-  }
+  Color get descriptionColor => switch (this) {
+    ControlStatus.started => ColorPalette.greenText,
+    ControlStatus.stopped => ColorPalette.redText,
+    ControlStatus.undefined => throw 'Unsupported status',
+  };
+
 }

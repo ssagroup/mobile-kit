@@ -22,18 +22,18 @@ extension EitherExtension<T> on Either<Failure, T> {
   }
 
   ApiStatus get foldedApiStatus => fold(
-        (failure) => ApiStatus.failure(failure.errorDescription),
-        (_) => const ApiStatus.success(),
+        (failure) => ApiStatusFailure(failure.errorDescription),
+        (_) => ApiStatusSuccess(),
   );
 
   AuthStatus get foldedAuthStatus => fold(
-        (failure) => AuthStatus.failure(failure.errorDescription, failure == Failure.notAuthorized()),
-        (_) => const AuthStatus.success(),
+        (failure) => AuthStatusFailure(failure.errorDescription, failure == Failure.notAuthorized()),
+        (_) => AuthStatusSuccess(),
   );
 
   ApiStatus get foldedApiStatusWithResult => fold(
-        (failure) => ApiStatus.failure(failure.errorDescription),
-        (success) => ApiStatus.success(success),
+        (failure) => ApiStatusFailure(failure.errorDescription),
+        (success) => ApiStatusSuccess(success),
   );
 
 }

@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$InfrastructureState {
   bool get isLoading => throw _privateConstructorUsedError;
   ApiStatus get apiStatus => throw _privateConstructorUsedError;
-  List<InfrastructureModel> get infrastructure =>
-      throw _privateConstructorUsedError;
+  List<InfrastructureModel> get models => throw _privateConstructorUsedError;
 
   /// Create a copy of InfrastructureState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,11 +34,7 @@ abstract class $InfrastructureStateCopyWith<$Res> {
       _$InfrastructureStateCopyWithImpl<$Res, InfrastructureState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      ApiStatus apiStatus,
-      List<InfrastructureModel> infrastructure});
-
-  $ApiStatusCopyWith<$Res> get apiStatus;
+      {bool isLoading, ApiStatus apiStatus, List<InfrastructureModel> models});
 }
 
 /// @nodoc
@@ -59,7 +54,7 @@ class _$InfrastructureStateCopyWithImpl<$Res, $Val extends InfrastructureState>
   $Res call({
     Object? isLoading = null,
     Object? apiStatus = null,
-    Object? infrastructure = null,
+    Object? models = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -70,21 +65,11 @@ class _$InfrastructureStateCopyWithImpl<$Res, $Val extends InfrastructureState>
           ? _value.apiStatus
           : apiStatus // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      infrastructure: null == infrastructure
-          ? _value.infrastructure
-          : infrastructure // ignore: cast_nullable_to_non_nullable
+      models: null == models
+          ? _value.models
+          : models // ignore: cast_nullable_to_non_nullable
               as List<InfrastructureModel>,
     ) as $Val);
-  }
-
-  /// Create a copy of InfrastructureState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ApiStatusCopyWith<$Res> get apiStatus {
-    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
-      return _then(_value.copyWith(apiStatus: value) as $Val);
-    });
   }
 }
 
@@ -97,12 +82,7 @@ abstract class _$$InfrastructureStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      ApiStatus apiStatus,
-      List<InfrastructureModel> infrastructure});
-
-  @override
-  $ApiStatusCopyWith<$Res> get apiStatus;
+      {bool isLoading, ApiStatus apiStatus, List<InfrastructureModel> models});
 }
 
 /// @nodoc
@@ -120,7 +100,7 @@ class __$$InfrastructureStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? apiStatus = null,
-    Object? infrastructure = null,
+    Object? models = null,
   }) {
     return _then(_$InfrastructureStateImpl(
       isLoading: null == isLoading
@@ -131,9 +111,9 @@ class __$$InfrastructureStateImplCopyWithImpl<$Res>
           ? _value.apiStatus
           : apiStatus // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      infrastructure: null == infrastructure
-          ? _value._infrastructure
-          : infrastructure // ignore: cast_nullable_to_non_nullable
+      models: null == models
+          ? _value._models
+          : models // ignore: cast_nullable_to_non_nullable
               as List<InfrastructureModel>,
     ));
   }
@@ -145,24 +125,24 @@ class _$InfrastructureStateImpl implements _InfrastructureState {
   const _$InfrastructureStateImpl(
       {required this.isLoading,
       required this.apiStatus,
-      required final List<InfrastructureModel> infrastructure})
-      : _infrastructure = infrastructure;
+      required final List<InfrastructureModel> models})
+      : _models = models;
 
   @override
   final bool isLoading;
   @override
   final ApiStatus apiStatus;
-  final List<InfrastructureModel> _infrastructure;
+  final List<InfrastructureModel> _models;
   @override
-  List<InfrastructureModel> get infrastructure {
-    if (_infrastructure is EqualUnmodifiableListView) return _infrastructure;
+  List<InfrastructureModel> get models {
+    if (_models is EqualUnmodifiableListView) return _models;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_infrastructure);
+    return EqualUnmodifiableListView(_models);
   }
 
   @override
   String toString() {
-    return 'InfrastructureState(isLoading: $isLoading, apiStatus: $apiStatus, infrastructure: $infrastructure)';
+    return 'InfrastructureState(isLoading: $isLoading, apiStatus: $apiStatus, models: $models)';
   }
 
   @override
@@ -174,13 +154,12 @@ class _$InfrastructureStateImpl implements _InfrastructureState {
                 other.isLoading == isLoading) &&
             (identical(other.apiStatus, apiStatus) ||
                 other.apiStatus == apiStatus) &&
-            const DeepCollectionEquality()
-                .equals(other._infrastructure, _infrastructure));
+            const DeepCollectionEquality().equals(other._models, _models));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, apiStatus,
-      const DeepCollectionEquality().hash(_infrastructure));
+      const DeepCollectionEquality().hash(_models));
 
   /// Create a copy of InfrastructureState
   /// with the given fields replaced by the non-null parameter values.
@@ -196,7 +175,7 @@ abstract class _InfrastructureState implements InfrastructureState {
   const factory _InfrastructureState(
           {required final bool isLoading,
           required final ApiStatus apiStatus,
-          required final List<InfrastructureModel> infrastructure}) =
+          required final List<InfrastructureModel> models}) =
       _$InfrastructureStateImpl;
 
   @override
@@ -204,7 +183,7 @@ abstract class _InfrastructureState implements InfrastructureState {
   @override
   ApiStatus get apiStatus;
   @override
-  List<InfrastructureModel> get infrastructure;
+  List<InfrastructureModel> get models;
 
   /// Create a copy of InfrastructureState
   /// with the given fields replaced by the non-null parameter values.

@@ -36,8 +36,6 @@ abstract class $SettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading, String? email, String? username, ApiStatus apiStatus});
-
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -79,16 +77,6 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
               as ApiStatus,
     ) as $Val);
   }
-
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ApiStatusCopyWith<$Res> get apiStatus {
-    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
-      return _then(_value.copyWith(apiStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -101,9 +89,6 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading, String? email, String? username, ApiStatus apiStatus});
-
-  @override
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc

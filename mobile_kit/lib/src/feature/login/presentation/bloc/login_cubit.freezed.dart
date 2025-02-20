@@ -47,8 +47,6 @@ abstract class $LoginStateCopyWith<$Res> {
       AuthStatus loginStatus,
       bool showPassword,
       bool rememberMe});
-
-  $AuthStatusCopyWith<$Res> get loginStatus;
 }
 
 /// @nodoc
@@ -110,16 +108,6 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
               as bool,
     ) as $Val);
   }
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AuthStatusCopyWith<$Res> get loginStatus {
-    return $AuthStatusCopyWith<$Res>(_value.loginStatus, (value) {
-      return _then(_value.copyWith(loginStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -139,9 +127,6 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       AuthStatus loginStatus,
       bool showPassword,
       bool rememberMe});
-
-  @override
-  $AuthStatusCopyWith<$Res> get loginStatus;
 }
 
 /// @nodoc

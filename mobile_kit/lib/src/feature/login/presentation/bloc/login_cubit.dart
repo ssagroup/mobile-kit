@@ -21,7 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         emailError: email != state.email ? null : state.emailError,
         email: email,
-        loginStatus: const AuthStatus.none(),
+        loginStatus: AuthStatusNone(),
       ),
     );
   }
@@ -31,7 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         passwordError: password != state.password ? null : state.passwordError,
         password: password,
-        loginStatus: const AuthStatus.none(),
+        loginStatus: AuthStatusNone(),
       ),
     );
   }
@@ -54,7 +54,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginAction() async {
     emit(state.copyWith(
-      loginStatus: const AuthStatus.none(),
+      loginStatus: AuthStatusNone(),
     ));
 
     final emailError = await validateEmail(state.email);
@@ -88,8 +88,8 @@ class LoginCubit extends Cubit<LoginState> {
       rememberMe: state.rememberMe,
     );
     final AuthStatus status = (await _loginUseCase.signIn(request: request)).fold(
-      (failure) => AuthStatus.failure(failure.errorDescription, false),
-      (_) => AuthStatus.success(request),
+      (failure) => AuthStatusFailure(failure.errorDescription, false),
+      (_) => AuthStatusSuccess(request),
     );
 
     emit(state.copyWith(
@@ -98,7 +98,7 @@ class LoginCubit extends Cubit<LoginState> {
     ));
 
     emit(state.copyWith(
-      loginStatus: const AuthStatus.none(),
+      loginStatus: AuthStatusNone(),
     ));
   }
 }

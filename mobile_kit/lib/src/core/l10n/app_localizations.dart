@@ -320,6 +320,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1 y'**
   String get yearTitle;
+
+  /// No description provided for @errorLoadingData.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading data!'**
+  String get errorLoadingData;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

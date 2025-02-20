@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/core/util/sortable.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
@@ -29,17 +30,17 @@ class KpisCubit extends Cubit<KpisState> {
 
   Future<void> refresh() async {
     final ApiStatus status =
-        (await _getAllKpisUseCase.getAll(state.periodFilter)).fold((l) => const ApiStatus.failure(''), (kpis) {
+        (await _getAllKpisUseCase.getAll(state.periodFilter)).fold((l) => ApiStatusFailure(), (kpis) {
       emit(state.copyWith(
-        kpis: kpis.sortedByOrder,
+        models: kpis.sortedByOrder,
       ));
-      return ApiStatus.success();
+      return ApiStatusSuccess();
     });
     emit(state.copyWith(
       apiStatus: status,
     ));
     emit(state.copyWith(
-      apiStatus: const ApiStatus.none(),
+      apiStatus: ApiStatusNone(),
     ));
   }
 
@@ -47,7 +48,7 @@ class KpisCubit extends Cubit<KpisState> {
     emit(
       state.copyWith(
         periodFilter: value,
-        kpis: [],
+        models: [],
         isLoading: true,
       ),
     );

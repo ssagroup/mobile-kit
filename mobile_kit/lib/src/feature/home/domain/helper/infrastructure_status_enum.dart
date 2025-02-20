@@ -17,25 +17,16 @@ extension InfrastructureStatusExtension on InfrastructureStatus {
     throw 'Undefined type';
   }
 
-  String get assetName {
-    switch (this) {
-      case InfrastructureStatus.normal:
-        return Assets.normalStatusIcon;
-      case InfrastructureStatus.warning:
-        return Assets.warningStatusIcon;
-      case InfrastructureStatus.error:
-        return Assets.errorStatusIcon;
-    }
-  }
+  String get assetName => switch (this) {
+    InfrastructureStatus.normal => Assets.normalStatusIcon,
+    InfrastructureStatus.warning => Assets.warningStatusIcon,
+    InfrastructureStatus.error => Assets.errorStatusIcon,
+  };
 
-  Color get color {
-    switch (this) {
-      case InfrastructureStatus.normal:
-        return ColorPalette.greenText;
-      case InfrastructureStatus.warning:
-        return ColorPalette.yellowText;
-      case InfrastructureStatus.error:
-        return ColorPalette.redText;
-    }
-  }
+  Color get color => switch (this) {
+    InfrastructureStatus.normal => ColorPalette.greenText,
+    InfrastructureStatus.warning => ColorPalette.yellowText,
+    InfrastructureStatus.error => ColorPalette.redText,
+  };
+
 }

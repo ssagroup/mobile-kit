@@ -30,14 +30,14 @@ class SettingsCubit extends Cubit<SettingsState> {
       isLoading: true,
     ));
     final result = (await _getUserInfoUseCase.getUserInfo())
-        .fold((failure) => ApiStatus.failure(failure.errorDescription), (user) {
+        .fold((failure) => ApiStatusFailure(failure.errorDescription), (user) {
       emit(
         state.copyWith(
           username: user.userName.orEmpty,
           email: user.email.orEmpty,
         ),
       );
-      return const ApiStatus.success();
+      return ApiStatusSuccess();
     });
     emit(
       state.copyWith(

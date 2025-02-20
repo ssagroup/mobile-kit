@@ -26,10 +26,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CardWidget(
-          items: _homeItems,
-          onTapCallback: (int index) {
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
+        child: _buildListView(),
+      ),
+    );
+  }
+
+  Widget _buildListView() {
+    return ListView.builder(
+      itemCount: 4,
+      itemBuilder: (BuildContext context, int index) {
+        final item = _homeItems[index];
+        return CardWidget(
+          item: item,
+          index: index,
+          onTapCallback: (index) {
             switch (index) {
               case 0:
                 context.goNamed(infrastructureRouteName);
@@ -41,36 +52,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 context.goNamed(settingsRouteName);
             }
           },
-        ),
-      ),
+        );
+      },
     );
   }
 
   List<Widget> get _homeItems {
     return <Widget>[
-      CardItem(
-        assetName: Assets.infrastructureIcon,
-        itemTitle: AppLocalizations.of(context)!.infrastructureTitle,
-        iconColor: ColorPalette.grayIcon,
-        iconSize: 20,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CardItem(
+          assetName: Assets.infrastructureIcon,
+          itemTitle: AppLocalizations.of(context)!.infrastructureTitle,
+          iconColor: ColorPalette.grayIcon,
+          iconSize: 20,
+        ),
       ),
-      CardItem(
-        assetName: Assets.controlIcon,
-        itemTitle: AppLocalizations.of(context)!.controlTitle,
-        iconColor: ColorPalette.grayIcon,
-        iconSize: 20,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CardItem(
+          assetName: Assets.controlIcon,
+          itemTitle: AppLocalizations.of(context)!.controlTitle,
+          iconColor: ColorPalette.grayIcon,
+          iconSize: 20,
+        ),
       ),
-      CardItem(
-        assetName: Assets.kpiIcon,
-        itemTitle: AppLocalizations.of(context)!.kpisTitle,
-        iconColor: ColorPalette.grayIcon,
-        iconSize: 20,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CardItem(
+          assetName: Assets.kpiIcon,
+          itemTitle: AppLocalizations.of(context)!.kpisTitle,
+          iconColor: ColorPalette.grayIcon,
+          iconSize: 20,
+        ),
       ),
-      CardItem(
-        assetName: Assets.settingsIcon,
-        itemTitle: AppLocalizations.of(context)!.settingsTitle,
-        iconColor: ColorPalette.grayIcon,
-        iconSize: 20,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CardItem(
+          assetName: Assets.settingsIcon,
+          itemTitle: AppLocalizations.of(context)!.settingsTitle,
+          iconColor: ColorPalette.grayIcon,
+          iconSize: 20,
+        ),
       ),
     ];
   }

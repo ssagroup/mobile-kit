@@ -1,16 +1,16 @@
 part of 'infrastructure_cubit.dart';
 
 @freezed
-class InfrastructureState with _$InfrastructureState {
+class InfrastructureState with _$InfrastructureState implements ApiStatusState {
   const factory InfrastructureState({
     required bool isLoading,
     required ApiStatus apiStatus,
-    required List<InfrastructureModel> infrastructure,
+    required List<InfrastructureModel> models,
   }) = _InfrastructureState;
 
-  factory InfrastructureState.initial() => const InfrastructureState(
+  factory InfrastructureState.initial() => InfrastructureState(
     isLoading: false,
-    apiStatus: ApiStatus.none(),
-    infrastructure: [],
+    apiStatus: ApiStatusNone(),
+    models: [],
   );
 }

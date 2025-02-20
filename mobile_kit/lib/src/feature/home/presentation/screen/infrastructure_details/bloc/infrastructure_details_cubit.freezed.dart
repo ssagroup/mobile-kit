@@ -41,8 +41,6 @@ abstract class $InfrastructureDetailsStateCopyWith<$Res> {
       ApiStatus apiStatus,
       StatisticsPeriod periodFilter,
       List<InfrastructureDetailsModel> models});
-
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -85,16 +83,6 @@ class _$InfrastructureDetailsStateCopyWithImpl<$Res,
               as List<InfrastructureDetailsModel>,
     ) as $Val);
   }
-
-  /// Create a copy of InfrastructureDetailsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ApiStatusCopyWith<$Res> get apiStatus {
-    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
-      return _then(_value.copyWith(apiStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -111,9 +99,6 @@ abstract class _$$InfrastructureDetailsStateImplCopyWith<$Res>
       ApiStatus apiStatus,
       StatisticsPeriod periodFilter,
       List<InfrastructureDetailsModel> models});
-
-  @override
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc

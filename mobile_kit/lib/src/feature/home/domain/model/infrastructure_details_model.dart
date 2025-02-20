@@ -13,7 +13,7 @@ class InfrastructureDetailsModel implements Sortable {
 
   final InfrastructureStatus status;
   final String value;
-  final int order;
+  @override int order;
   final String title;
   final String? chartId;
   final String? unit;

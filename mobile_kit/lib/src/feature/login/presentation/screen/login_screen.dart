@@ -10,6 +10,7 @@ import 'package:mobile_kit/src/core/widget/logo_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/core/widget/text_field.dart';
 import 'package:mobile_kit/src/core/util/optional.dart';
+import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/login_usecase.dart';
 import 'package:mobile_kit/src/feature/login/presentation/bloc/login_cubit.dart';
@@ -46,16 +47,18 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<LoginCubit, LoginState>(
           bloc: _bloc,
           listener: (context, state) {
-            state.loginStatus.whenOrNull(failure: (String message, _) {
-              final snackBar = SnackBar(
-                content: Text(
-                  message,
-                ),
-              );
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(snackBar);
-            });
+            switch (state.loginStatus) {
+              case AuthStatusFailure(message: final message):
+                final snackBar = SnackBar(
+                  content: Text(
+                    message,
+                  ),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
+              default: break;
+            }
           },
           builder: (context, state) {
             return FullScreenProgressIndicator(
@@ -63,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 100.0),
-                  child: _buildSignIn(),
+                  child: _buildSignIn(state),
                 ),
               ),
             );
@@ -71,23 +74,21 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignIn() {
-    return Builder(builder: (context) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(height: 30),
-          const AppLogoWidget(),
-          const SizedBox(height: 20),
-          _buildSignInForm(),
-          const SizedBox(height: 20),
-          _buildLoginButton(),
-        ],
-      );
-    });
+  Widget _buildSignIn(LoginState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(height: 30),
+        const AppLogoWidget(),
+        const SizedBox(height: 20),
+        _buildSignInForm(state),
+        const SizedBox(height: 20),
+        _buildLoginButton(),
+      ],
+    );
   }
 
-  Widget _buildSignInForm() {
+  Widget _buildSignInForm(LoginState state) {
     return Builder(builder: (context) {
       return Form(
         child: Column(
@@ -98,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _emailTC,
                 hint: AppLocalizations.of(context)!.emailPlaceholder,
                 textInputAction: TextInputAction.next,
-                errorText: _bloc.state.emailError?.errorDescription(context),
+                errorText: state.emailError?.errorDescription(context),
                 prefixIconName: Assets.envelopIcon,
                 prefixIconColor: Colors.grey,
               ),
@@ -112,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordTC,
                 hint: AppLocalizations.of(context)!.passwordPlaceholder,
                 textInputAction: TextInputAction.next,
-                errorText: _bloc.state.passwordError?.errorDescription(context),
+                errorText: state.passwordError?.errorDescription(context),
                 shouldShowEyeIcon: true,
                 onEyePressed: _bloc.changeVisibility,
-                onOffEyeIcon: _bloc.state.showPassword,
+                onOffEyeIcon: state.showPassword,
                 prefixIconName: Assets.lockIcon,
                 prefixIconColor: Colors.grey,
-                obscureText: _bloc.state.showPassword,
+                obscureText: state.showPassword,
               ),
             ),
           ],

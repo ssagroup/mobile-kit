@@ -1,15 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile_kit/src/core/util/either_extension.dart';
+import 'package:mobile_kit/src/core/util/sortable.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';
-import 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 class StopAllControlsUseCase {
   StopAllControlsUseCase(
     ControlRepository controlRepository,
-  )   : _controlRepository = controlRepository,
-        super();
+  ) : _controlRepository = controlRepository;
 
   /// Stop All Controls
   Future<Either<Failure, void>> invoke() async {
@@ -22,7 +21,7 @@ class StopAllControlsUseCase {
       }
     }).toList();
 
-    _controlRepository.updateControls(controls.sortedById);
+    _controlRepository.updateControls(controls.sortedByOrder);
 
     final result = await _controlRepository.stopAll();
 
@@ -35,7 +34,7 @@ class StopAllControlsUseCase {
         return element.copyWith(status: ControlStatus.stopped);
       }).toList();
     });
-    _controlRepository.updateControls(controls.sortedById);
+    _controlRepository.updateControls(controls.sortedByOrder);
     return result;
   }
 

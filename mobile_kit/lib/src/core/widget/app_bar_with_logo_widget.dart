@@ -18,7 +18,7 @@ class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidge
       child: AppBar(
         centerTitle: true,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: const AppLogoWidget(),
         ),
         title: title,

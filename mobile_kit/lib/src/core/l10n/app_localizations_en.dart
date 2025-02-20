@@ -119,4 +119,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get yearTitle => '1 y';
+
+  @override
+  String get errorLoadingData => 'Error loading data!';
 }
