@@ -6,6 +6,7 @@ abstract class DataProvider {
   late ControlRepository controlRepository;
   late KpiRepository kpisRepository;
   late SettingsRepository settingsRepository;
+  late InfrastructureRepository infrastructureRepository;
 
   late AuthenticationNotifier authNotifier;
 }
@@ -17,6 +18,7 @@ class DependencyManager {
     GetIt.instance.registerSingleton<ControlRepository>(dataProvider.controlRepository);
     GetIt.instance.registerSingleton<KpiRepository>(dataProvider.kpisRepository);
     GetIt.instance.registerSingleton<SettingsRepository>(dataProvider.settingsRepository);
+    GetIt.instance.registerSingleton<InfrastructureRepository>(dataProvider.infrastructureRepository);
 
     GetIt.instance.registerSingleton<AuthenticationNotifier>(dataProvider.authNotifier);
   }

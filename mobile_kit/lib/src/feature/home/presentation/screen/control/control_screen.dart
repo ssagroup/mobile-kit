@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
+import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/card_widget.dart';
@@ -30,9 +31,9 @@ class _ControlScreenState extends State<ControlScreen> {
   @override
   void initState() {
     super.initState();
-    final getAllControlsUseCase = GetAllControlsUsecase(GetIt.instance<ControlRepository>());
-    final toggleControlUseCase = ToggleControlUsecase(GetIt.instance<ControlRepository>());
-    final stopAllControlsUseCase = StopAllControlsUsecase(GetIt.instance<ControlRepository>());
+    final getAllControlsUseCase = GetAllControlsUseCase(GetIt.instance<ControlRepository>());
+    final toggleControlUseCase = ToggleControlUseCase(GetIt.instance<ControlRepository>());
+    final stopAllControlsUseCase = StopAllControlsUseCase(GetIt.instance<ControlRepository>());
     _bloc = ControlCubit(
       getAllControlsUseCase,
       toggleControlUseCase,
@@ -44,18 +45,7 @@ class _ControlScreenState extends State<ControlScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<ControlCubit, ControlState>(
-        listener: (context, state) {
-          state.apiStatus.whenOrNull(failure: (String message) async {
-            final snackBar = SnackBar(
-              content: Text(
-                message,
-              ),
-            );
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(snackBar);
-          });
-        },
+        listener: showFailure,
         bloc: _bloc,
         builder: (context, state) {
           return Scaffold(
@@ -64,7 +54,7 @@ class _ControlScreenState extends State<ControlScreen> {
                 AppLocalizations.of(context)!.controlTitle,
                 style: TextStyle(color: Colors.black),
               ),
-              actions: [_buildStopAllButton()],
+              actions: [_buildStopAllButton(state)],
             ),
             body: FullScreenProgressIndicator(
               isLoading: state.isLoading,
@@ -73,7 +63,7 @@ class _ControlScreenState extends State<ControlScreen> {
                 child: CustomScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
                   slivers: [
-                    if (state.controls.isEmpty) ...[
+                    if (state.models.isEmpty) ...[
                       const SliverToBoxAdapter(
                         child: SizedBox(
                           height: 100,
@@ -83,12 +73,22 @@ class _ControlScreenState extends State<ControlScreen> {
                         child: NoDataWidget(title: AppLocalizations.of(context)!.noDataTitle),
                       ),
                     ] else
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: _buildBody(),
+                      SliverPadding(
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
+                        sliver: SliverList.builder(
+                          itemBuilder: (BuildContext context, int index) {
+                            final elem = state.models[index];
+                            return CardWidget(
+                              item: ControlWidget(
+                                model: elem,
+                                onPressed: () => _bloc.toggleControlById(elem),
+                              ),
+                              index: index,
+                            );
+                          },
+                          itemCount: state.models.length,
                         ),
-                      )
+                      ),
                   ],
                 ),
               ),
@@ -99,40 +99,8 @@ class _ControlScreenState extends State<ControlScreen> {
     );
   }
 
-  Widget _buildBody() {
-    return Builder(builder: (context) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(height: 20),
-          _buildControlItems(),
-        ],
-      );
-    });
-  }
-
-  Widget _buildControlItems() {
-    return Builder(builder: (context) {
-      return CardWidget(
-        items: _controlItems,
-        onTapCallback: (_) {},
-      );
-    });
-  }
-
-  List<Widget> get _controlItems {
-    final length = _bloc.state.controls.length;
-    return List.generate(length, (index) {
-      final elem = _bloc.state.controls[index];
-      return ControlWidget(
-        model: elem,
-        onPressed: () => _bloc.toggleControlById(elem),
-      );
-    });
-  }
-
-  Widget _buildStopAllButton() {
-    final isActive = _bloc.state.isStopAllActive;
+  Widget _buildStopAllButton(ControlState state) {
+    final isActive = state.isStopAllActive;
     return Builder(builder: (context) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

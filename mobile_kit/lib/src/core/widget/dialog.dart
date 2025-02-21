@@ -1,7 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../mobile_kit.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 
 Future<void> showAdaptiveAlertDialog(
     BuildContext context,

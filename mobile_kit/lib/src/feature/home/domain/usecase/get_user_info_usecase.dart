@@ -6,13 +6,10 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 class GetUserInfoUseCase {
   GetUserInfoUseCase(
     SettingsRepository settingsRepository,
-  )   : _settingsRepository = settingsRepository,
-        super();
+  ) : _settingsRepository = settingsRepository;
 
   /// Get User info
-  Future<Either<Failure, UserModel>> getUserInfo() async {
-    return await _settingsRepository.getUser();
-  }
+  Future<Either<Failure, UserModel>> getUserInfo() async => await _settingsRepository.getUser();
 
   final SettingsRepository _settingsRepository;
 }

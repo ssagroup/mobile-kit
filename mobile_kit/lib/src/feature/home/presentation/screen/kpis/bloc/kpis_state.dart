@@ -1,18 +1,18 @@
 part of 'kpis_cubit.dart';
 
 @freezed
-class KpisState with _$KpisState {
+class KpisState with _$KpisState implements ApiStatusState {
   const factory KpisState({
     required bool isLoading,
     required ApiStatus apiStatus,
     required StatisticsPeriod periodFilter,
-    required List<KpiModel> kpis,
+    required List<KpiModel> models,
   }) = _KpisState;
 
-  factory KpisState.initial() => const KpisState(
+  factory KpisState.initial() => KpisState(
     isLoading: false,
-    apiStatus: ApiStatus.none(),
+    apiStatus: ApiStatusNone(),
     periodFilter: StatisticsPeriod.day,
-    kpis: [],
+    models: [],
   );
 }

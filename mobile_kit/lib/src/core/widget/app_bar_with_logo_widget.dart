@@ -7,27 +7,25 @@ class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidge
     Key? key,
     this.title,
     this.actions,
-    this.elevation = 0.0,
   }) : super(key: key);
 
   final Widget? title;
-  final double elevation;
   final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: elevation,
       child: AppBar(
         centerTitle: true,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: const AppLogoWidget(),
         ),
         title: title,
         backgroundColor: ColorPalette.grayBackground,
         actions: actions,
         leadingWidth: 116,
+        shadowColor: Colors.transparent,
       ),
     );
   }

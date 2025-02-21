@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
@@ -12,6 +11,7 @@ class GridItem extends StatelessWidget {
     this.unit,
     this.isUp,
     this.showChart,
+    this.textColor,
   });
 
   final String itemTitle;
@@ -19,6 +19,7 @@ class GridItem extends StatelessWidget {
   final String? unit;
   final bool? isUp;
   final bool? showChart;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class GridItem extends StatelessWidget {
                 Text(
                   itemValue,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: textColor ?? Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
@@ -42,7 +43,7 @@ class GridItem extends StatelessWidget {
                   Text(
                     unit!,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: textColor ?? Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -58,7 +59,7 @@ class GridItem extends StatelessWidget {
                 ]
               ],
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               itemTitle,
               style: TextStyle(

@@ -4,23 +4,14 @@ import 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
-class GetAllKpisUsecase {
-  GetAllKpisUsecase(
-      KpiRepository kpiRepository,
-      )   : _kpiRepository = kpiRepository,
-        super();
+class GetAllKpisUseCase {
+  GetAllKpisUseCase(
+    KpiRepository kpiRepository,
+  ) : _kpiRepository = kpiRepository;
 
   /// Get All Kpis
-  Future<Either<Failure, List<KpiModel>>> getAll(StatisticsPeriod filter) async {
-    String period = filter.apiValue;
-    // TODO: Delete if-else (DB is filled only for Day and Week now)
-    if (filter == StatisticsPeriod.day || filter == StatisticsPeriod.month ) { //|| filter == StatisticsPeriod.allTime) {
-      period = StatisticsPeriod.day.apiValue;
-    } else {
-      period = StatisticsPeriod.week.apiValue;
-    }
-    return (await _kpiRepository.getAll(period));
-  }
+  Future<Either<Failure, List<KpiModel>>> getAll(StatisticsPeriod filter) async =>
+      await _kpiRepository.getAll(filter.apiValue);
 
   final KpiRepository _kpiRepository;
 }

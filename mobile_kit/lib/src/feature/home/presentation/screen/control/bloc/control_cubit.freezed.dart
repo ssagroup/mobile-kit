@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ControlState {
   bool get isLoading => throw _privateConstructorUsedError;
   ApiStatus get apiStatus => throw _privateConstructorUsedError;
-  List<ControlModel> get controls => throw _privateConstructorUsedError;
+  List<ControlModel> get models => throw _privateConstructorUsedError;
   bool get isStopAllActive => throw _privateConstructorUsedError;
   bool get isActionsDisabled => throw _privateConstructorUsedError;
   bool get trigger => throw _privateConstructorUsedError;
@@ -39,12 +39,10 @@ abstract class $ControlStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       ApiStatus apiStatus,
-      List<ControlModel> controls,
+      List<ControlModel> models,
       bool isStopAllActive,
       bool isActionsDisabled,
       bool trigger});
-
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -64,7 +62,7 @@ class _$ControlStateCopyWithImpl<$Res, $Val extends ControlState>
   $Res call({
     Object? isLoading = null,
     Object? apiStatus = null,
-    Object? controls = null,
+    Object? models = null,
     Object? isStopAllActive = null,
     Object? isActionsDisabled = null,
     Object? trigger = null,
@@ -78,9 +76,9 @@ class _$ControlStateCopyWithImpl<$Res, $Val extends ControlState>
           ? _value.apiStatus
           : apiStatus // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      controls: null == controls
-          ? _value.controls
-          : controls // ignore: cast_nullable_to_non_nullable
+      models: null == models
+          ? _value.models
+          : models // ignore: cast_nullable_to_non_nullable
               as List<ControlModel>,
       isStopAllActive: null == isStopAllActive
           ? _value.isStopAllActive
@@ -96,16 +94,6 @@ class _$ControlStateCopyWithImpl<$Res, $Val extends ControlState>
               as bool,
     ) as $Val);
   }
-
-  /// Create a copy of ControlState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ApiStatusCopyWith<$Res> get apiStatus {
-    return $ApiStatusCopyWith<$Res>(_value.apiStatus, (value) {
-      return _then(_value.copyWith(apiStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -119,13 +107,10 @@ abstract class _$$ControlStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       ApiStatus apiStatus,
-      List<ControlModel> controls,
+      List<ControlModel> models,
       bool isStopAllActive,
       bool isActionsDisabled,
       bool trigger});
-
-  @override
-  $ApiStatusCopyWith<$Res> get apiStatus;
 }
 
 /// @nodoc
@@ -143,7 +128,7 @@ class __$$ControlStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? apiStatus = null,
-    Object? controls = null,
+    Object? models = null,
     Object? isStopAllActive = null,
     Object? isActionsDisabled = null,
     Object? trigger = null,
@@ -157,9 +142,9 @@ class __$$ControlStateImplCopyWithImpl<$Res>
           ? _value.apiStatus
           : apiStatus // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      controls: null == controls
-          ? _value._controls
-          : controls // ignore: cast_nullable_to_non_nullable
+      models: null == models
+          ? _value._models
+          : models // ignore: cast_nullable_to_non_nullable
               as List<ControlModel>,
       isStopAllActive: null == isStopAllActive
           ? _value.isStopAllActive
@@ -183,22 +168,22 @@ class _$ControlStateImpl implements _ControlState {
   const _$ControlStateImpl(
       {required this.isLoading,
       required this.apiStatus,
-      required final List<ControlModel> controls,
+      required final List<ControlModel> models,
       required this.isStopAllActive,
       required this.isActionsDisabled,
       required this.trigger})
-      : _controls = controls;
+      : _models = models;
 
   @override
   final bool isLoading;
   @override
   final ApiStatus apiStatus;
-  final List<ControlModel> _controls;
+  final List<ControlModel> _models;
   @override
-  List<ControlModel> get controls {
-    if (_controls is EqualUnmodifiableListView) return _controls;
+  List<ControlModel> get models {
+    if (_models is EqualUnmodifiableListView) return _models;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_controls);
+    return EqualUnmodifiableListView(_models);
   }
 
   @override
@@ -210,7 +195,7 @@ class _$ControlStateImpl implements _ControlState {
 
   @override
   String toString() {
-    return 'ControlState(isLoading: $isLoading, apiStatus: $apiStatus, controls: $controls, isStopAllActive: $isStopAllActive, isActionsDisabled: $isActionsDisabled, trigger: $trigger)';
+    return 'ControlState(isLoading: $isLoading, apiStatus: $apiStatus, models: $models, isStopAllActive: $isStopAllActive, isActionsDisabled: $isActionsDisabled, trigger: $trigger)';
   }
 
   @override
@@ -222,7 +207,7 @@ class _$ControlStateImpl implements _ControlState {
                 other.isLoading == isLoading) &&
             (identical(other.apiStatus, apiStatus) ||
                 other.apiStatus == apiStatus) &&
-            const DeepCollectionEquality().equals(other._controls, _controls) &&
+            const DeepCollectionEquality().equals(other._models, _models) &&
             (identical(other.isStopAllActive, isStopAllActive) ||
                 other.isStopAllActive == isStopAllActive) &&
             (identical(other.isActionsDisabled, isActionsDisabled) ||
@@ -235,7 +220,7 @@ class _$ControlStateImpl implements _ControlState {
       runtimeType,
       isLoading,
       apiStatus,
-      const DeepCollectionEquality().hash(_controls),
+      const DeepCollectionEquality().hash(_models),
       isStopAllActive,
       isActionsDisabled,
       trigger);
@@ -253,7 +238,7 @@ abstract class _ControlState implements ControlState {
   const factory _ControlState(
       {required final bool isLoading,
       required final ApiStatus apiStatus,
-      required final List<ControlModel> controls,
+      required final List<ControlModel> models,
       required final bool isStopAllActive,
       required final bool isActionsDisabled,
       required final bool trigger}) = _$ControlStateImpl;
@@ -263,7 +248,7 @@ abstract class _ControlState implements ControlState {
   @override
   ApiStatus get apiStatus;
   @override
-  List<ControlModel> get controls;
+  List<ControlModel> get models;
   @override
   bool get isStopAllActive;
   @override

@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/src/core/util/optional.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_user_info_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
+import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
 part 'settings_cubit.freezed.dart';
 part 'settings_state.dart';
@@ -29,14 +30,14 @@ class SettingsCubit extends Cubit<SettingsState> {
       isLoading: true,
     ));
     final result = (await _getUserInfoUseCase.getUserInfo())
-        .fold((failure) => ApiStatus.failure(failure.errorDescription), (user) {
+        .fold((failure) => ApiStatusFailure(failure.errorDescription), (user) {
       emit(
         state.copyWith(
           username: user.userName.orEmpty,
           email: user.email.orEmpty,
         ),
       );
-      return const ApiStatus.success();
+      return ApiStatusSuccess();
     });
     emit(
       state.copyWith(

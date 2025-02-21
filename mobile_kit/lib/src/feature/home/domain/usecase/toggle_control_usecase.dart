@@ -2,23 +2,19 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobile_kit/src/core/util/either_extension.dart';
-import 'package:mobile_kit/src/feature/home/domain/model/control_model.dart';
+import 'package:mobile_kit/src/core/util/sortable.dart';
+import 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/control_repository.dart';
 import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
-class ToggleControlUsecase {
-  ToggleControlUsecase(
+class ToggleControlUseCase {
+  ToggleControlUseCase(
     ControlRepository controlRepository,
-  )   : _controlRepository = controlRepository,
-        super();
+  ) : _controlRepository = controlRepository;
 
-  Future<Either<Failure, void>> start(int id) async {
-    return _toggle(id, ControlStatus.started);
-  }
+  Future<Either<Failure, void>> start(int id) async => _toggle(id, ControlStatus.started);
 
-  Future<Either<Failure, void>> stop(int id) async {
-    return _toggle(id, ControlStatus.stopped);
-  }
+  Future<Either<Failure, void>> stop(int id) async => _toggle(id, ControlStatus.stopped);
 
   Future<Either<Failure, void>> _toggle(int id, ControlStatus status) async {
     final controls = await _controlRepository.controls;
@@ -28,10 +24,9 @@ class ToggleControlUsecase {
       controls.removeWhere((element) => element.id == id);
       controls.add(control);
     }
-    _controlRepository.updateControls(controls.sortedById);
-    final result = status == ControlStatus.stopped
-        ? await _controlRepository.stop(id)
-        : await _controlRepository.start(id);
+    _controlRepository.updateControls(controls.sortedByOrder);
+    final result =
+        status == ControlStatus.stopped ? await _controlRepository.stop(id) : await _controlRepository.start(id);
     control = control?.copyWith(isActionsDisabled: false);
     result.ifRight((_) {
       control = control?.copyWith(status: status);
@@ -40,7 +35,7 @@ class ToggleControlUsecase {
       controls.removeWhere((element) => element.id == id);
       controls.add(control!);
     }
-    _controlRepository.updateControls(controls.sortedById);
+    _controlRepository.updateControls(controls.sortedByOrder);
     return result;
   }
 

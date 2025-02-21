@@ -9,10 +9,10 @@ class SettingsState with _$SettingsState {
     required ApiStatus apiStatus,
   }) = _SettingsState;
 
-  factory SettingsState.initial() => const SettingsState(
+  factory SettingsState.initial() => SettingsState(
     isLoading: false,
     email: 'test@gmail.com',
     username: 'test',
-    apiStatus: ApiStatus.none(),
+    apiStatus: ApiStatusNone(),
   );
 }

@@ -1,6 +1,6 @@
-import 'package:collection/collection.dart';
+import 'package:mobile_kit/src/core/util/sortable.dart';
 
-class KpiModel {
+class KpiModel implements Sortable {
   KpiModel({
     required this.isUp,
     required this.title,
@@ -12,14 +12,8 @@ class KpiModel {
 
   final bool? isUp;
   final String value;
-  final int order;
+  @override final int order;
   final String title;
   final String? chartId;
   final String? unit;
-}
-
-extension KpisList on List<KpiModel> {
-  List<KpiModel> get sortedByOrder {
-    return sorted((a, b) => a.order.compareTo(b.order));
-  }
 }

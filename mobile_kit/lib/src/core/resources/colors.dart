@@ -11,5 +11,6 @@ class ColorPalette {
   static const greenBackground = Color(0xff52c587);
   static const greenText = Color(0xff0B9F43);
   static const redText = Color(0xffE5350E);
+  static const yellowText = Color(0xffFFAB25);
 
 }

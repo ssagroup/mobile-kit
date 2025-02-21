@@ -13,13 +13,13 @@ class LoginState with _$LoginState {
     required bool rememberMe,
   }) = _LoginState;
 
-  factory LoginState.initial() => const LoginState(
+  factory LoginState.initial() => LoginState(
     isLoading: false,
     email: 'test1@gmail.com',
     emailError: null,
     password: 'qwerty',
     passwordError: null,
-    loginStatus: AuthStatus.none(),
+    loginStatus: AuthStatusNone(),
     showPassword: true,
     rememberMe: false,
   );

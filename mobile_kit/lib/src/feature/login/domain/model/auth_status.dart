@@ -1,17 +1,30 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+sealed class AuthStatus {}
 
-part 'auth_status.freezed.dart';
+class AuthStatusNone implements AuthStatus {}
 
-@freezed
-class AuthStatus with _$AuthStatus {
-  const factory AuthStatus.none() = AuthStatusNone;
-  const factory AuthStatus.success([Object? result]) = AuthStatusSuccess;
-  const factory AuthStatus.failure(String message, bool needLogout) = AuthStatusFailure;
+class AuthStatusSuccess implements AuthStatus {
+  AuthStatusSuccess([this.result]);
+
+  late final Object? result;
 }
 
-@freezed
-class ApiStatus with _$ApiStatus {
-  const factory ApiStatus.none() = ApiStatusNone;
-  const factory ApiStatus.success([Object? result]) = ApiStatusSuccess;
-  const factory ApiStatus.failure(String message) = ApiStatusFailure;
+class AuthStatusFailure implements AuthStatus {
+  AuthStatusFailure(this.message, this.needLogout);
+
+  final String message;
+  final bool needLogout;
+}
+
+sealed class ApiStatus {}
+
+class ApiStatusNone implements ApiStatus {}
+
+class ApiStatusSuccess implements ApiStatus {
+  ApiStatusSuccess([this.result = null]);
+  late final Object? result;
+}
+
+class ApiStatusFailure implements ApiStatus {
+  ApiStatusFailure([this.message = null]);
+  late final String? message;
 }
