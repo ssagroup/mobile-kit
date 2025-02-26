@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/core/data_provider/data_provider.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/router/router.dart';
@@ -19,6 +20,7 @@ class SSAMobileKitApp extends StatelessWidget {
     launchUseCase = LaunchUseCase(
       GetIt.instance<AuthenticationRepository>(),
       GetIt.instance<BiometricsAuthRepository>(),
+      GetIt.instance<AlertsRepository>(),
     );
 
     router = setupRouter(GetIt.instance<AuthenticationNotifier>());
@@ -37,12 +39,13 @@ class SSAMobileKitApp extends StatelessWidget {
     final enterForegroundUseCase = EnterForegroundUseCase(
       GetIt.instance<AuthenticationRepository>(),
       GetIt.instance<BiometricsAuthRepository>(),
+      GetIt.instance<AlertsRepository>(),
     );
 
     return LifeCycleManager(
       onStateChanged: (AppLifecycleState state) {
         if (state == AppLifecycleState.resumed) {
-          enterForegroundUseCase.enterForeground();
+          enterForegroundUseCase.invoke();
         } else if (state == AppLifecycleState.paused) {
           enterBackgroundUseCase.enterBackground();
         }

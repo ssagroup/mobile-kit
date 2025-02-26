@@ -13,7 +13,6 @@ import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.
 import 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_kpis_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/kpis/bloc/kpis_cubit.dart';
-import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 
 class KpisScreen extends StatefulWidget {
   const KpisScreen({Key? key}) : super(key: key);

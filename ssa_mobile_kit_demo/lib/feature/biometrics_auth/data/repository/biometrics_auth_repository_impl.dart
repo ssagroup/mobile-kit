@@ -75,7 +75,7 @@ class BiometricsAuthRepositoryImpl implements BiometricsAuthRepository {
 
   @override
   Future<String> readLastActiveSessionTime() async {
-    return await readLastActiveSessionTime();
+    return await _biometricsLocalDatasource.readLastActiveSessionTime();
   }
 
 }

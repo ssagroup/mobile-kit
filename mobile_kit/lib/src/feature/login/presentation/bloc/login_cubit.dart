@@ -92,10 +92,12 @@ class LoginCubit extends Cubit<LoginState> {
       (_) => AuthStatusSuccess(request),
     );
 
-    emit(state.copyWith(
-      isLoading: false,
-      loginStatus: status,
-    ));
+    if (!isClosed) {
+      emit(state.copyWith(
+        isLoading: false,
+        loginStatus: status,
+      ));
+    }
 
     emit(state.copyWith(
       loginStatus: AuthStatusNone(),

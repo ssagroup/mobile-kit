@@ -7,19 +7,20 @@ abstract class DataProvider {
   late KpiRepository kpisRepository;
   late SettingsRepository settingsRepository;
   late InfrastructureRepository infrastructureRepository;
+  late AlertsRepository alertsRepository;
 
   late AuthenticationNotifier authNotifier;
 }
 
 class DependencyManager {
   static void registerDependency(DataProvider dataProvider) {
+    GetIt.instance.registerSingleton<AuthenticationNotifier>(dataProvider.authNotifier);
     GetIt.instance.registerSingleton<AuthenticationRepository>(dataProvider.authRep);
     GetIt.instance.registerSingleton<BiometricsAuthRepository>(dataProvider.biometricsAuthRep);
     GetIt.instance.registerSingleton<ControlRepository>(dataProvider.controlRepository);
     GetIt.instance.registerSingleton<KpiRepository>(dataProvider.kpisRepository);
     GetIt.instance.registerSingleton<SettingsRepository>(dataProvider.settingsRepository);
     GetIt.instance.registerSingleton<InfrastructureRepository>(dataProvider.infrastructureRepository);
-
-    GetIt.instance.registerSingleton<AuthenticationNotifier>(dataProvider.authNotifier);
+    GetIt.instance.registerSingleton<AlertsRepository>(dataProvider.alertsRepository);
   }
 }

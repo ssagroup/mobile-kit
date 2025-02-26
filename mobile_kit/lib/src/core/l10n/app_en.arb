@@ -47,5 +47,6 @@
   "weekTitle": "7 d",
   "monthTitle": "30 d",
   "yearTitle": "1 y",
-  "errorLoadingData": "Error loading data!"
+  "errorLoadingData": "Error loading data!",
+  "noNotificationTitle": "You have no notifications yet"
 }

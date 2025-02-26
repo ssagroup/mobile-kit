@@ -122,4 +122,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorLoadingData => 'Error loading data!';
+
+  @override
+  String get noNotificationTitle => 'You have no notifications yet';
 }

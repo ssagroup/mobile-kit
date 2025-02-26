@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
 import 'package:mobile_kit/src/core/widget/bottom_bar_widget.dart';
-import 'package:mobile_kit/src/feature/home/presentation/screen/alerts_screen.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
+import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_notifications_usecase.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/alerts/alerts_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/home_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -17,6 +20,7 @@ class BottomTabScreen extends StatefulWidget {
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
   late PersistentTabController _controller;
+  final GetAllNotificationsUseCase _useCase = GetAllNotificationsUseCase(GetIt.instance<AlertsRepository>());
 
   @override
   void initState() {
@@ -48,6 +52,7 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
             setState(() {
               _controller.index = index;
             });
+            if (index == 1) _useCase.invoke();
           },
           selectedIndex: _controller.index,
         ),

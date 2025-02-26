@@ -326,6 +326,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading data!'**
   String get errorLoadingData;
+
+  /// No description provided for @noNotificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no notifications yet'**
+  String get noNotificationTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

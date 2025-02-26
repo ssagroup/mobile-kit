@@ -11,11 +11,12 @@ dependencies:
   # 0.0.1
   mobile_kit:
     path: ../mobile_kit
-  firebase_auth: ^5.4.0
-  firebase_core: ^3.10.0
+  firebase_auth: 5.4.0
+  firebase_core: 3.10.1
+  firebase_messaging: 15.2.1
   flutter:
     sdk: flutter
-  cloud_firestore: ^5.6.2
+  cloud_firestore: 5.6.2
   dartz: ^0.10.1
   rxdart: ^0.28.0
 
