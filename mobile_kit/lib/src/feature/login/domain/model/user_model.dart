@@ -8,6 +8,7 @@ class UserModel with _$UserModel {
     required String email,
     required String userName,
     required String uid,
+    String? pushToken,
   }) = _UserModel;
 
   const UserModel._();

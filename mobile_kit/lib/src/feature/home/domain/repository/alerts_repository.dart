@@ -10,8 +10,12 @@ abstract class AlertsRepository {
 
   Stream<Unit> get pushMessageStream;
 
+  Stream<String?> get pushTokenStream;
+
   void updateNotifications(List<NotificationModel> notifications);
 
   Future<void> requestPushNotificationToken();
+
+  Future<Either<Failure, void>> updatePushToken(String? pushToken);
 
 }

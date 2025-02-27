@@ -5,6 +5,7 @@ export 'package:get_it/get_it.dart';
 export 'package:logger/logger.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:hive/hive.dart';
+export 'package:rxdart/rxdart.dart';
 
 // ---- Util ----
 export 'package:mobile_kit/src/core/util/optional.dart';

@@ -6,4 +6,5 @@ abstract class NotificationsLocalDatasource {
 
   Stream<Unit> get pushMessage;
 
+  Stream<String?> get pushToken;
 }

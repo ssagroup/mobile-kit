@@ -14,6 +14,7 @@ class FirebaseNotificationsLocalDatasourceImpl implements NotificationsLocalData
 
   final _pushController = StreamController<Unit>.broadcast();
   final FirebaseMessaging _firebaseInstance;
+  final BehaviorSubject<String?> _fcmToken = BehaviorSubject();
 
   @override
   Stream<Unit> get pushMessage => _pushController.stream;
@@ -40,6 +41,7 @@ class FirebaseNotificationsLocalDatasourceImpl implements NotificationsLocalData
 
     Timer.run(() async {
       final token = await _firebaseInstance.getToken();
+      _fcmToken.add(token);
       if (kDebugMode) {
         print('Registration Token=$token');
       }
@@ -48,6 +50,7 @@ class FirebaseNotificationsLocalDatasourceImpl implements NotificationsLocalData
     _firebaseInstance
         .onTokenRefresh
         .listen((token) {
+      _fcmToken.add(token);
     }).onError((err) {
       if (kDebugMode) {
         print('NotificationsLocalDatasourceImpl: onTokenRefresh Error: $err');
@@ -69,5 +72,8 @@ class FirebaseNotificationsLocalDatasourceImpl implements NotificationsLocalData
       _pushController.add(unit);
     });
   }
+
+  @override
+  Stream<String?> get pushToken => _fcmToken.stream;
 
 }

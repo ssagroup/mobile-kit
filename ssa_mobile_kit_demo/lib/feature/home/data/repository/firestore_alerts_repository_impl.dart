@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit_demo/feature/home/data/model/notification_entity.dart';
+import 'package:mobile_kit_demo/feature/home/data/model/user_entity.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FirestoreAlertsRepositoryImpl implements AlertsRepository {
@@ -34,6 +35,23 @@ class FirestoreAlertsRepositoryImpl implements AlertsRepository {
     return result;
   }
 
+  @override
+  Future<Either<Failure, void>> updatePushToken(String? pushToken) async {
+    final uid = _firebaseAuthInstance.currentUser?.uid;
+    final result = _firebaseStoreInstance.collection("users").doc(uid).withConverter(
+      fromFirestore: UserEntity.fromFirestore,
+      toFirestore: (UserEntity user, _) => user.toFirestore(),
+    ).get()
+    .then((docSnapshot) async {
+      final batch = _firebaseStoreInstance.batch();
+      final docRef = docSnapshot.reference;
+      batch.update(docRef, {"pushToken": pushToken});
+      batch.commit();
+      return const Right<Failure, void>(unit) as Either<Failure, void>;
+    }).catchError((e) => Left(Failure.unknown(e)));
+    return result;
+  }
+
   final _notificationsSubject = BehaviorSubject<List<NotificationModel>>();
 
   @override
@@ -51,5 +69,8 @@ class FirestoreAlertsRepositoryImpl implements AlertsRepository {
   Future<void> requestPushNotificationToken() async {
     _localDatasource.askForPermissions();
   }
+
+  @override
+  Stream<String?> get pushTokenStream => _localDatasource.pushToken;
 
 }
