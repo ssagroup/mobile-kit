@@ -39,7 +39,7 @@ class FirebaseNotificationsLocalDatasourceImpl implements NotificationsLocalData
 
   void _run() {
 
-    Timer.run(() async {
+    Future.delayed(const Duration(seconds: 3), () async {
       final token = await _firebaseInstance.getToken();
       _fcmToken.add(token);
       if (kDebugMode) {

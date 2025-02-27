@@ -4,14 +4,12 @@ import 'package:mobile_kit/mobile_kit.dart';
 class UserEntity {
   UserEntity({
     required this.id,
-    required this.userName,
-    required this.email,
+    this.userName,
     this.pushToken,
   });
 
   final String id;
-  final String email;
-  final String userName;
+  final String? userName;
   final String? pushToken;
 
   factory UserEntity.fromFirestore(
@@ -22,7 +20,6 @@ class UserEntity {
     return UserEntity(
       id: data?['id'],
       userName: data?['userName'],
-      email: data?['email'],
       pushToken: data?['pushToken']
     );
   }
@@ -31,12 +28,11 @@ class UserEntity {
     return {
       'userName': userName,
       'id': id,
-      'email': email,
       'pushToken': pushToken,
     };
   }
 
   UserModel get userModel {
-    return UserModel(uid: id, userName: userName, email: email, pushToken: pushToken);
+    return UserModel(uid: id, userName: userName, pushToken: pushToken);
   }
 }

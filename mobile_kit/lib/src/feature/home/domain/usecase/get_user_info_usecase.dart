@@ -9,7 +9,7 @@ class GetUserInfoUseCase {
   ) : _settingsRepository = settingsRepository;
 
   /// Get User info
-  Future<Either<Failure, UserModel>> getUserInfo() async => await _settingsRepository.getUser();
+  Future<Either<Failure, UserModel?>> getUserInfo() async => await _settingsRepository.getUser();
 
   final SettingsRepository _settingsRepository;
 }
