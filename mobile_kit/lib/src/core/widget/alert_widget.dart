@@ -35,7 +35,7 @@ class AlertWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      model.createdDate.convertToAgo,
+                      model.createdDate.convertToAgo(context),
                       style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 11,

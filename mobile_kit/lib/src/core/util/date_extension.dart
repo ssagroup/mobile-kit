@@ -1,19 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
+
 extension DateExtension on DateTime {
 
-  String get convertToAgo {
+  String convertToAgo(BuildContext context) {
 
     final diff = DateTime.now().difference(this.toLocal());
 
     if (diff.inDays >= 1) {
-      return '${diff.inDays} day${diff.inDays == 1 ? '' : 's'} ago';
+      return AppLocalizations.of(context)!.inDays(diff.inDays);
     } else if (diff.inHours >= 1) {
-      return '${diff.inHours} hour${diff.inHours == 1 ? '' : 's'} ago';
+      return AppLocalizations.of(context)!.inHours(diff.inHours);
     } else if (diff.inMinutes >= 1) {
-      return '${diff.inMinutes} minute${diff.inMinutes == 1 ? '' : 's'} ago';
+      return  AppLocalizations.of(context)!.inMinutes(diff.inMinutes);
     } else if (diff.inSeconds >= 1) {
-      return '${diff.inSeconds} second${diff.inSeconds == 1 ? '' : 's'} ago';
+      return AppLocalizations.of(context)!.inSeconds(diff.inSeconds);
     } else {
-      return 'just now';
+      return AppLocalizations.of(context)!.justNow;
     }
   }
 }
