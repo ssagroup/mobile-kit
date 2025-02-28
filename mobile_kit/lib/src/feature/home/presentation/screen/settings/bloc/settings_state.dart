@@ -11,8 +11,8 @@ class SettingsState with _$SettingsState {
 
   factory SettingsState.initial() => SettingsState(
     isLoading: false,
-    email: 'test@gmail.com',
-    username: 'test',
+    email: '',
+    username: '',
     apiStatus: ApiStatusNone(),
   );
 }

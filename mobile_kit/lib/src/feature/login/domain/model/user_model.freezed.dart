@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserModel {
-  String get email => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  String? get pushToken => throw _privateConstructorUsedError;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String email, String userName, String uid});
+  $Res call({String? email, String? userName, String uid, String? pushToken});
 }
 
 /// @nodoc
@@ -50,23 +51,28 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? userName = null,
+    Object? email = freezed,
+    Object? userName = freezed,
     Object? uid = null,
+    Object? pushToken = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      userName: null == userName
+              as String?,
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      pushToken: freezed == pushToken
+          ? _value.pushToken
+          : pushToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -79,7 +85,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String userName, String uid});
+  $Res call({String? email, String? userName, String uid, String? pushToken});
 }
 
 /// @nodoc
@@ -95,23 +101,28 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? userName = null,
+    Object? email = freezed,
+    Object? userName = freezed,
     Object? uid = null,
+    Object? pushToken = freezed,
   }) {
     return _then(_$UserModelImpl(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      userName: null == userName
+              as String?,
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      pushToken: freezed == pushToken
+          ? _value.pushToken
+          : pushToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -120,19 +131,21 @@ class __$$UserModelImplCopyWithImpl<$Res>
 
 class _$UserModelImpl extends _UserModel {
   const _$UserModelImpl(
-      {required this.email, required this.userName, required this.uid})
+      {this.email, this.userName, required this.uid, this.pushToken})
       : super._();
 
   @override
-  final String email;
+  final String? email;
   @override
-  final String userName;
+  final String? userName;
   @override
   final String uid;
+  @override
+  final String? pushToken;
 
   @override
   String toString() {
-    return 'UserModel(email: $email, userName: $userName, uid: $uid)';
+    return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken)';
   }
 
   @override
@@ -143,11 +156,13 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.pushToken, pushToken) ||
+                other.pushToken == pushToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, userName, uid);
+  int get hashCode => Object.hash(runtimeType, email, userName, uid, pushToken);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -160,17 +175,20 @@ class _$UserModelImpl extends _UserModel {
 
 abstract class _UserModel extends UserModel {
   const factory _UserModel(
-      {required final String email,
-      required final String userName,
-      required final String uid}) = _$UserModelImpl;
+      {final String? email,
+      final String? userName,
+      required final String uid,
+      final String? pushToken}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   @override
-  String get email;
+  String? get email;
   @override
-  String get userName;
+  String? get userName;
   @override
   String get uid;
+  @override
+  String? get pushToken;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

@@ -47,5 +47,11 @@
   "weekTitle": "7 d",
   "monthTitle": "30 d",
   "yearTitle": "1 y",
-  "errorLoadingData": "Error loading data!"
+  "errorLoadingData": "Error loading data!",
+  "noNotificationTitle": "You have no notifications yet",
+  "inDays": "{count, plural, =1{1 day} other{{count} days}} ago",
+  "inHours": "{count, plural, =1{1 hour} other{{count} hours}} ago",
+  "inMinutes": "{count, plural, =1{1 minute} other{{count} minutes}} ago",
+  "inSeconds": "{count, plural, =1{1 second} other{{count} seconds}} ago",
+  "justNow": "just now"
 }

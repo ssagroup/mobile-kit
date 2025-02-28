@@ -6,6 +6,6 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 abstract class SettingsRepository {
 
-  Future<Either<Failure, UserModel>> getUser();
+  Future<Either<Failure, UserModel?>> getUser();
 
 }

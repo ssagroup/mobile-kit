@@ -33,8 +33,8 @@ class SettingsCubit extends Cubit<SettingsState> {
         .fold((failure) => ApiStatusFailure(failure.errorDescription), (user) {
       emit(
         state.copyWith(
-          username: user.userName.orEmpty,
-          email: user.email.orEmpty,
+          username: user?.userName.orEmpty,
+          email: user?.email.orEmpty,
         ),
       );
       return ApiStatusSuccess();
