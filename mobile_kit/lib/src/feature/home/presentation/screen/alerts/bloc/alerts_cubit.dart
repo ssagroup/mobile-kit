@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/feature/home/domain/model/notification_model.dart';
-import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_notifications_usecase.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 

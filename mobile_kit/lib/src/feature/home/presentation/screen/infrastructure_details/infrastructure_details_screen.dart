@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/colors.dart';
+import 'package:mobile_kit/src/core/router/router.dart';
 import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
 import 'package:mobile_kit/src/core/widget/app_bar_widget.dart';
 import 'package:mobile_kit/src/core/widget/grid_item_widget.dart';
@@ -11,16 +13,13 @@ import 'package:mobile_kit/src/core/widget/no_data_widget.dart';
 import 'package:mobile_kit/src/core/widget/progress_indicator.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
 import 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
-import 'package:mobile_kit/src/feature/home/domain/model/infrastructure_model.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_infrastructure_details_usecase.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/chart/chart_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure_details/bloc/infrastructure_details_cubit.dart';
 
 class InfrastructureDetailsScreen extends StatefulWidget {
-  InfrastructureDetailsScreen(InfrastructureModel model, {Key? key})
-      : title = model.title,
-        id = model.id,
-        super(key: key);
+  InfrastructureDetailsScreen(this.title, this.id, {Key? key});
 
   final String title;
   final String id;
@@ -82,7 +81,10 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
                               itemBuilder: (BuildContext context, int index) {
                                 final item = state.models[index];
                                 return GestureDetector(
-                                  onTap: () => {},
+                                  onTap: () {
+                                    final settings = ChartScreenSettings(item.chartId, item.title, state.periodFilter);
+                                    context.goNamed(infrastructureChartRouteName, extra: settings);
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: ColorPalette.grayBackground,

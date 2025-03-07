@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/screen/setup_pin_screen.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/screen/verify_pin_screen.dart';
-import 'package:mobile_kit/src/feature/home/domain/model/infrastructure_model.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/chart/chart_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/control/control_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure/infrastructure_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure_details/infrastructure_details_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/kpis/kpis_screen.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/settings/settings_screen.dart';
-import 'package:mobile_kit/src/feature/login/domain/repository/auth_notifier.dart';
 import 'package:mobile_kit/src/feature/login/presentation/screen/login_screen.dart';
 
 // Auth
@@ -24,20 +24,21 @@ const controlRouteName = 'control';
 const kpisRouteName = 'kpis';
 const infrastructureRouteName = 'infrastructure';
 const infrastructureDetailsRouteName = 'infrastructureDetails';
+const kpisChartRouteName = 'kpisChart';
+const infrastructureChartRouteName = 'infrastructureChart';
 
 GoRouter setupRouter(AuthenticationNotifier authNotifier) {
   final GoRouter router = GoRouter(
     refreshListenable: authNotifier,
     debugLogDiagnostics: true,
-    errorPageBuilder: (context, state) =>
-        MaterialPage<void>(
-          key: state.pageKey,
-          child: Scaffold(
-            body: Center(
-              child: Text(state.error.toString()),
-            ),
-          ),
+    errorPageBuilder: (context, state) => MaterialPage<void>(
+      key: state.pageKey,
+      child: Scaffold(
+        body: Center(
+          child: Text(state.error.toString()),
         ),
+      ),
+    ),
     redirect: (context, state) {
       final isLoginScreen = state.fullPath == '/';
       final isLoginState = authNotifier.state == const AuthenticationState.login();
@@ -71,24 +72,21 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
       GoRoute(
         path: '/',
         name: loginRouteName,
-        pageBuilder: (context, state) =>
-        const NoTransitionPage<void>(
+        pageBuilder: (context, state) => const NoTransitionPage<void>(
           child: LoginScreen(),
         ),
       ),
       GoRoute(
         path: '/setup_pin',
         name: setupPinRouteName,
-        pageBuilder: (context, state) =>
-        const NoTransitionPage<void>(
+        pageBuilder: (context, state) => const NoTransitionPage<void>(
           child: SetupPinScreen(),
         ),
       ),
       GoRoute(
         path: '/verify_pin',
         name: verifyPinRouteName,
-        pageBuilder: (context, state) =>
-        const NoTransitionPage<void>(
+        pageBuilder: (context, state) => const NoTransitionPage<void>(
           child: VerifyPinScreen(),
         ),
       ),
@@ -119,23 +117,41 @@ GoRouter setupRouter(AuthenticationNotifier authNotifier) {
             pageBuilder: (context, state) => MaterialPage<void>(
               child: KpisScreen(),
             ),
-          ),
-          GoRoute(
-            path: 'infrastructure',
-            name: infrastructureRouteName,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              child: InfrastructureScreen(),
-            ),
             routes: [
               GoRoute(
-                path: 'infrastructureDetails',
-                name: infrastructureDetailsRouteName,
+                path: 'kpisChart',
+                name: kpisChartRouteName,
                 pageBuilder: (context, state) => MaterialPage<void>(
-                  child: InfrastructureDetailsScreen(state.extra as InfrastructureModel),
+                  child: ChartScreen(state.extra as ChartScreenSettings),
                 ),
               ),
-            ]
+            ],
           ),
+          GoRoute(
+              path: 'infrastructure',
+              name: infrastructureRouteName,
+              pageBuilder: (context, state) => MaterialPage<void>(
+                    child: InfrastructureScreen(),
+                  ),
+              routes: [
+                GoRoute(
+                  path: 'infrastructureDetails',
+                  name: infrastructureDetailsRouteName,
+                  pageBuilder: (context, state) => MaterialPage<void>(
+                    child: InfrastructureDetailsScreen(
+                        state.uri.queryParameters['title'].orEmpty, state.uri.queryParameters['id'].orEmpty),
+                  ),
+                  routes: [
+                    GoRoute(
+                      path: 'infrastructureChart',
+                      name: infrastructureChartRouteName,
+                      pageBuilder: (context, state) => MaterialPage<void>(
+                        child: ChartScreen(state.extra as ChartScreenSettings),
+                      ),
+                    ),
+                  ],
+                ),
+              ]),
         ],
       ),
     ],

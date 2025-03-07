@@ -14,7 +14,6 @@ import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_
 import 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_infrastructure_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/infrastructure/bloc/infrastructure_cubit.dart';
-import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 
 class InfrastructureScreen extends StatefulWidget {
   const InfrastructureScreen({Key? key}) : super(key: key);
@@ -78,7 +77,7 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
                             ),
                             index: index,
                             onTapCallback: (index) {
-                              context.goNamed(infrastructureDetailsRouteName, extra: _bloc.state.models[index]);
+                              context.goNamed(infrastructureDetailsRouteName, queryParameters: {'title': elem.title, 'id': elem.id});
                             },
                           );
                         },

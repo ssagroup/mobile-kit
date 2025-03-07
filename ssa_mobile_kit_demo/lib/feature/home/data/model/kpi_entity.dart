@@ -24,12 +24,12 @@ class KpiEntity {
   ) {
     final data = snapshot.data();
     return KpiEntity(
-    isUp: data?['isUp'],
-    value: data?['value'],
-    order: data?['order'],
-    title: data?['title'],
-    chartId: data?['chartId'],
-    unit: data?['unit'],
+      isUp: data?['isUp'],
+      value: data?['value'],
+      order: data?['order'],
+      title: data?['title'],
+      chartId: data?['chartId'],
+      unit: data?['unit'],
     );
   }
 

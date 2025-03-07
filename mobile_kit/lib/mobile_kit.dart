@@ -23,6 +23,7 @@ export 'package:mobile_kit/src/feature/home/domain/model/kpi_model.dart';
 export 'package:mobile_kit/src/feature/home/domain/model/infrastructure_model.dart';
 export 'package:mobile_kit/src/feature/home/domain/model/infrastructure_details_model.dart';
 export 'package:mobile_kit/src/feature/home/domain/model/notification_model.dart';
+export 'package:mobile_kit/src/feature/home/domain/model/chart_model.dart';
 
 // Repo
 export 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
@@ -33,6 +34,7 @@ export 'package:mobile_kit/src/feature/home/domain/repository/kpi_repository.dar
 export 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_repository.dart';
 export 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 export 'package:mobile_kit/src/feature/home/data/notifications_local_datasource.dart';
+export 'package:mobile_kit/src/feature/home/domain/repository/chart_repository.dart';
 
 // Helpers
 export 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';

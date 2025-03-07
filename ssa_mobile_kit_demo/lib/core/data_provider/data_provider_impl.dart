@@ -3,6 +3,7 @@ import 'package:mobile_kit_demo/feature/biometrics_auth/data/datasource/local/hi
 import 'package:mobile_kit_demo/feature/biometrics_auth/data/repository/biometrics_auth_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/datasource/local/firebase_notifications_local_datasource_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_alerts_repository_impl.dart';
+import 'package:mobile_kit_demo/feature/home/data/repository/firestore_chart_repository.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_control_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_infrastructure_repository_impl.dart';
 import 'package:mobile_kit_demo/feature/home/data/repository/firestore_kpis_repository_impl.dart';
@@ -35,6 +36,8 @@ class DataProviderImpl extends DataProvider {
 
     final notificationsLocalDatasource = FirebaseNotificationsLocalDatasourceImpl();
     alertsRepository = FirestoreAlertsRepositoryImpl(localDatasource: notificationsLocalDatasource);
+
+    chartRepository = FirestoreChartRepositoryImpl();
   }
 
   static Future<DataProviderImpl> create() async {

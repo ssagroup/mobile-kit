@@ -336,25 +336,25 @@ abstract class AppLocalizations {
   /// No description provided for @inDays.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  /// **'{count, plural, =1{1 day} other{{count} days}} ago'**
   String inDays(num count);
 
   /// No description provided for @inHours.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 hour ago} other{{count} hours ago}}'**
+  /// **'{count, plural, =1{1 hour} other{{count} hours}} ago'**
   String inHours(num count);
 
   /// No description provided for @inMinutes.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 minute ago} other{{count} minutes ago}}'**
+  /// **'{count, plural, =1{1 minute} other{{count} minutes}} ago'**
   String inMinutes(num count);
 
   /// No description provided for @inSeconds.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 second ago} other{{count} seconds ago}}'**
+  /// **'{count, plural, =1{1 second} other{{count} seconds}} ago'**
   String inSeconds(num count);
 
   /// No description provided for @justNow.
