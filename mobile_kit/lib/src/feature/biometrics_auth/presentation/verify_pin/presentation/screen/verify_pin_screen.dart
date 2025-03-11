@@ -12,6 +12,7 @@ import 'package:mobile_kit/src/feature/biometrics_auth/domain/repository/biometr
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/domain/usecase/verify_pin_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/verify_pin/presentation/bloc/verify_pin_cubit.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
@@ -31,11 +32,15 @@ class _VerifyPinScreenState extends State<VerifyPinScreen> {
     super.initState();
 
     _bloc = VerifyPinCubit(
-      verifyPinUsecase: VerifyPinUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
-      biometricsUsecase: BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
-      logoutUsecase: LogoutUseCase(GetIt.instance<AuthenticationRepository>()),
-    )
-    ..initialize();
+      verifyPinUsecase:
+          VerifyPinUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
+      biometricsUsecase:
+          BiometricsUsecase(GetIt.instance<BiometricsAuthRepository>(), GetIt.instance<AuthenticationRepository>()),
+      logoutUsecase: LogoutUseCase(
+        GetIt.instance<AuthenticationRepository>(),
+        GetIt.instance<AlertsRepository>(),
+      ),
+    )..initialize();
   }
 
   @override

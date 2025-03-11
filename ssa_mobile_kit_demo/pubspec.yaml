@@ -1,7 +1,7 @@
 name: mobile_kit_demo
 description: "A new Flutter mobile kit demo project powered by SSA Group."
 publish_to: 'none'
-version: 1.0.0+6
+version: 1.0.0+7
 
 environment:
   sdk: ^3.5.2

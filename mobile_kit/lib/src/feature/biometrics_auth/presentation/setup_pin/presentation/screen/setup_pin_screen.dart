@@ -11,6 +11,7 @@ import 'package:mobile_kit/src/feature/biometrics_auth/domain/repository/biometr
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/biometrics_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/domain/usecase/setup_pin_usecase.dart';
 import 'package:mobile_kit/src/feature/biometrics_auth/presentation/setup_pin/presentation/bloc/setup_pin_cubit.dart';
+import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/repository/auth_repository.dart';
 import 'package:mobile_kit/src/feature/login/domain/usecase/logout_usecase.dart';
 
@@ -34,7 +35,10 @@ class _SetupPinScreenState extends State<SetupPinScreen> {
         GetIt.instance<AuthenticationRepository>(),
       ),
       setupPinUsecase: SetupPinUsecase(GetIt.instance<BiometricsAuthRepository>()),
-      logoutUsecase: LogoutUseCase(GetIt.instance<AuthenticationRepository>()),
+      logoutUsecase: LogoutUseCase(
+        GetIt.instance<AuthenticationRepository>(),
+        GetIt.instance<AlertsRepository>(),
+      ),
     );
   }
 

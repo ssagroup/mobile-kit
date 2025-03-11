@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -133,10 +133,10 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count days ago',
-      one: '1 day ago',
+      other: '$count days',
+      one: '1 day',
     );
-    return '$_temp0';
+    return '$_temp0 ago';
   }
 
   @override
@@ -144,10 +144,10 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count hours ago',
-      one: '1 hour ago',
+      other: '$count hours',
+      one: '1 hour',
     );
-    return '$_temp0';
+    return '$_temp0 ago';
   }
 
   @override
@@ -155,10 +155,10 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count minutes ago',
-      one: '1 minute ago',
+      other: '$count minutes',
+      one: '1 minute',
     );
-    return '$_temp0';
+    return '$_temp0 ago';
   }
 
   @override
@@ -166,10 +166,10 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count seconds ago',
-      one: '1 second ago',
+      other: '$count seconds',
+      one: '1 second',
     );
-    return '$_temp0';
+    return '$_temp0 ago';
   }
 
   @override

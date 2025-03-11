@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mobile_kit/mobile_kit.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
 import 'package:mobile_kit/src/core/resources/assets.dart';
 import 'package:mobile_kit/src/core/widget/action_button.dart';
@@ -32,7 +33,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    final logoutUseCase = LogoutUseCase(GetIt.instance<AuthenticationRepository>());
+    final logoutUseCase = LogoutUseCase(
+      GetIt.instance<AuthenticationRepository>(),
+      GetIt.instance<AlertsRepository>(),
+    );
     final getUserInfoUseCase = GetUserInfoUseCase(
       GetIt.instance<SettingsRepository>(),
     );

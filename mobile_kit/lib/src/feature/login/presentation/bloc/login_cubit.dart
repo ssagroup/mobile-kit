@@ -97,10 +97,10 @@ class LoginCubit extends Cubit<LoginState> {
         isLoading: false,
         loginStatus: status,
       ));
-    }
 
-    emit(state.copyWith(
-      loginStatus: AuthStatusNone(),
-    ));
+      emit(state.copyWith(
+        loginStatus: AuthStatusNone(),
+      ));
+    }
   }
 }
