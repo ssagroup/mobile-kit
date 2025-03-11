@@ -15,9 +15,9 @@ class LoginState with _$LoginState {
 
   factory LoginState.initial() => LoginState(
     isLoading: false,
-    email: 'test1@gmail.com',
+    email: '',
     emailError: null,
-    password: 'qwerty',
+    password: '',
     passwordError: null,
     loginStatus: AuthStatusNone(),
     showPassword: true,
