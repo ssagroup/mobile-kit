@@ -46,7 +46,7 @@ class FirestoreAlertsRepositoryImpl implements AlertsRepository {
       final batch = _firebaseStoreInstance.batch();
       final docRef = docSnapshot.reference;
       batch.update(docRef, {"pushToken": pushToken});
-      batch.commit();
+      await batch.commit();
       return const Right<Failure, void>(unit) as Either<Failure, void>;
     }).catchError((e) => Left(Failure.unknown(e)));
     return result;
