@@ -61,7 +61,7 @@ class FirestoreControlRepositoryImpl implements ControlRepository {
           final docRef = docSnapshot.reference;
           batch.update(docRef, {"status": status});
         }
-        batch.commit();
+        await batch.commit();
         return const Right<Failure, void>(unit) as Either<Failure, void>;
       },
     ).catchError((e) => Left(Failure.unknown(e)));
@@ -78,7 +78,7 @@ class FirestoreControlRepositoryImpl implements ControlRepository {
           final docRef = docSnapshot.reference;
           batch.update(docRef, {"status": "Stopped"});
         }
-        batch.commit();
+        await batch.commit();
         return const Right<Failure, void>(unit) as Either<Failure, void>;
       },
     ).catchError((e) => Left(Failure.unknown(e)));

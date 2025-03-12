@@ -13,7 +13,6 @@ class LogoutUseCase {
   Future<void> logout() async {
     await _alertsRepository.updatePushToken('');
     await _authenticationRepository.logout();
-
   }
 
   final AuthenticationRepository _authenticationRepository;
