@@ -1,0 +1,19 @@
+import 'package:ctp_mobile/core/data_provider/data_provider_impl.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mobile_kit/mobile_kit.dart';
+import 'package:mobile_kit/mobile_kit_main.dart';
+
+DataProviderImpl? dataProvider;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Logger.level = Level.debug;
+
+  await Firebase.initializeApp();
+  dataProvider = await DataProviderImpl.create();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+    runApp(SSAMobileKitApp(dataProvider!));
+  });
+}

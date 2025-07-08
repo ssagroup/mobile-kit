@@ -16,6 +16,10 @@ extension ControlStatusExtension on ControlStatus {
     return ControlStatus.undefined;
   }
 
+  static ControlStatus create(bool isRunning) {
+    return isRunning ? ControlStatus.started : ControlStatus.stopped;
+  }
+
   String get assetName => switch (this) {
     ControlStatus.started => Assets.pauseBotIcon,
     ControlStatus.stopped => Assets.runBotIcon,

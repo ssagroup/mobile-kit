@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
@@ -97,4 +98,14 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<void> clear() async {
     await _biometricsLocalDatasource.clear();
   }
+
+  @override
+  Future<Either<Failure, void>> refreshToken() {
+    // TODO: implement refreshToken
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement token
+  Future<String> get token => throw UnimplementedError();
 }

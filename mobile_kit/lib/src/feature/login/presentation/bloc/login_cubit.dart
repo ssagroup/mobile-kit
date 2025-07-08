@@ -57,7 +57,7 @@ class LoginCubit extends Cubit<LoginState> {
       loginStatus: AuthStatusNone(),
     ));
 
-    final emailError = await validateEmail(state.email);
+    final emailError = null;//await validateEmail(state.email);
     final passwordError = await validatePassword(state.password);
 
     if (emailError != null) {

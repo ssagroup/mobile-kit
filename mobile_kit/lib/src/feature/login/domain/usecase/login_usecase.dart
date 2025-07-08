@@ -5,7 +5,7 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 class LoginUseCase {
   LoginUseCase(
-    AuthenticationRepository authRepository,
+      authRepository,
   )   : _authenticationRepository = authRepository,
         super();
 

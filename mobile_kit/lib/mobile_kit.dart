@@ -9,6 +9,8 @@ export 'package:rxdart/rxdart.dart';
 
 // ---- Util ----
 export 'package:mobile_kit/src/core/util/optional.dart';
+export 'package:mobile_kit/src/core/util/either_extension.dart';
+export 'package:mobile_kit/src/core/util/iterable_extension.dart';
 
 // ---- Feature ----
 export 'package:mobile_kit/src/feature/login/domain/repository/auth_notifier.dart';

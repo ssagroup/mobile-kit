@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "358947609747",
+    "project_id": "ctp-id",
+    "storage_bucket": "ctp-id.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358947609747:android:6dab7969b14d39c55d8166",
+        "android_client_info": {
+          "package_name": "com.ssa.ctp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl9mbU6uk5pijIgt92e5pyMFz_fbVxV5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

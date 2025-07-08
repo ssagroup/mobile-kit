@@ -1,0 +1,110 @@
+import 'package:ctp_mobile/core/data_model/api_response.dart';
+import 'package:ctp_mobile/core/data_model/responses.dart';
+import 'package:ctp_mobile/feature/home/data/model/control_info.dart';
+import 'package:ctp_mobile/feature/home/data/model/notification_info.dart';
+import 'package:ctp_mobile/feature/login/data/model/response/auth_info.dart';
+import 'package:dio/dio.dart' hide Headers;
+import 'package:mobile_kit/mobile_kit.dart';
+import 'package:retrofit/error_logger.dart';
+import 'package:retrofit/http.dart';
+
+part 'api_client.g.dart';
+
+@RestApi()
+abstract class ApiClient {
+  factory ApiClient(Dio dio) => _ApiClient(dio);
+
+  // ---------------------------------- AUTH -----------------------------------
+  @POST('/v1.0/auth/SignIn')
+  Future<APIResponse<AuthInfo>> signIn({
+    @Body() required AuthRequest request,
+  });
+
+  @POST('/v1.0/auth/RefreshToken')
+  Future<APIResponse<AuthInfo>> refreshToken({
+    @Field() String? refreshToken,
+  });
+
+  // ---------------------------------- NOTIFICATION -----------------------------
+  @POST('/v1.0/notificationdevice/register')
+  Future<SuccessResponse> registerFCM({
+    @Header('Authorization') required String authorization,
+    @Field() required String token,
+    @Field() required String platform,
+  });
+
+  @POST('/v1.0/notificationdevice/unregister')
+  Future<SuccessResponse> unregisterFCM({
+    @Header('Authorization') required String authorization,
+    @Field() required String token,
+    @Field() required String platform,
+  });
+
+  @GET('/v1.0/notification')
+  Future<APIResponse<NotificationInfo>> getNotifications({
+    @Header('Authorization') required String authorization,
+  });
+
+// ---------------------------------- INFRADASH -----------------------------------
+  @GET('/InfraDash/dashboards/published')
+  Future<SuccessResponse> getInfrastructures({
+    @Header('Authorization') required String authorization,
+  });
+
+  @POST('/InfraDash/dashboards/{dashboardId}')
+  Future<SuccessResponse> getInfrastructureDetails({
+    @Header('Authorization') required String authorization,
+    @Path() required int dashboardId,
+  });
+
+  @POST('/InfraDash/grafana/dashboards/{dashboardUid}/panel/{panelId}')
+  Future<SuccessResponse> getInfraChartData({
+    @Header('Authorization') required String authorization,
+    @Path() required int dashboardUid,
+    @Path() required int panelId,
+  });
+
+// ---------------------------------- KPI -----------------------------------
+  @GET('/v1.0/statistics/dashboard')
+  Future<SuccessResponse> getKpis({
+    @Header('Authorization') required String authorization,
+    @Header('X-CoinForBalance') required String xCoin,
+    @Query('StatisticsForAllBots') required bool statisticsForAllBots,
+    @Query('Period') required String period,
+  });
+
+  @GET('/v1.0/statistics/dashboard/graphs')
+  Future<SuccessResponse> getKpiChartData({
+    @Header('Authorization') required String authorization,
+    @Query('Period') required String period,
+  });
+
+// ---------------------------------- CONTROL -----------------------------------
+  @GET('/v1.0/bots')
+  Future<APIResponse<APIResult<ControlInfo>>> getControls({
+    @Header('Authorization') required String authorization,
+    @Header('X-CoinForBalance') required String xCoin,
+    @Query('Period') required String period,
+    @Query('RunState') required String runState,
+    @Query('ShowArchive') required bool showArchive,
+  });
+
+  @POST('/v1.0/bots/{id}/start')
+  Future<SuccessResponse> startBot({
+    @Header('Authorization') required String authorization,
+    @Path('id') required int botId,
+    @Field('reason') required String reason,
+  });
+
+  @POST('/v1.0/bots/{id}/stop')
+  Future<SuccessResponse> stopBot({
+    @Header('Authorization') required String authorization,
+    @Path('id') required int botId,
+  });
+
+  @POST('/v1.0/bots/stopall')
+  Future<SuccessResponse> stopAll({
+    @Header('Authorization') required String authorization,
+    @Field('instrumentOrCoin') String? instrumentOrCoin,
+  });
+}
