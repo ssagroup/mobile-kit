@@ -1,6 +1,8 @@
 import 'package:ctp_mobile/core/data_model/api_response.dart';
 import 'package:ctp_mobile/core/data_model/responses.dart';
+import 'package:ctp_mobile/feature/home/data/model/kpi_chart_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/control_info.dart';
+import 'package:ctp_mobile/feature/home/data/model/kpi_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/notification_info.dart';
 import 'package:ctp_mobile/feature/login/data/model/response/auth_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -41,7 +43,7 @@ abstract class ApiClient {
   });
 
   @GET('/v1.0/notification')
-  Future<APIResponse<NotificationInfo>> getNotifications({
+  Future<APIResponse<APIResult<NotificationInfo>>> getNotifications({
     @Header('Authorization') required String authorization,
   });
 
@@ -66,7 +68,7 @@ abstract class ApiClient {
 
 // ---------------------------------- KPI -----------------------------------
   @GET('/v1.0/statistics/dashboard')
-  Future<SuccessResponse> getKpis({
+  Future<APIResponse<KpiInfo>> getKpis({
     @Header('Authorization') required String authorization,
     @Header('X-CoinForBalance') required String xCoin,
     @Query('StatisticsForAllBots') required bool statisticsForAllBots,
@@ -74,8 +76,10 @@ abstract class ApiClient {
   });
 
   @GET('/v1.0/statistics/dashboard/graphs')
-  Future<SuccessResponse> getKpiChartData({
+  Future<APIResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
     @Header('Authorization') required String authorization,
+    @Header('X-CoinForBalance') required String xCoin,
+    @Query('StatisticsForAllBots') required bool statisticsForAllBots,
     @Query('Period') required String period,
   });
 

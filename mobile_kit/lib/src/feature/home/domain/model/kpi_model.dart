@@ -2,12 +2,12 @@ import 'package:mobile_kit/src/core/util/sortable.dart';
 
 class KpiModel implements Sortable {
   KpiModel({
-    required this.isUp,
+    this.isUp,
     required this.title,
     required this.value,
     required this.order,
-    required this.unit,
-    required this.chartId,
+    this.unit,
+    this.chartId,
   });
 
   final bool? isUp;

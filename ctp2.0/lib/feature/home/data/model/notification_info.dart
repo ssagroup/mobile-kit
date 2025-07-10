@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'notification_info.freezed.dart';
 part 'notification_info.g.dart';
 
-enum NotificationType { informational, error, warning }
+enum NotificationType { Informational, Error, Warning }
 
 @freezed
 class NotificationInfo with _$NotificationInfo {

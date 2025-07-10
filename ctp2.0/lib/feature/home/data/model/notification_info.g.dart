@@ -31,7 +31,7 @@ Map<String, dynamic> _$$NotificationInfoImplToJson(
     };
 
 const _$NotificationTypeEnumMap = {
-  NotificationType.informational: 'informational',
-  NotificationType.error: 'error',
-  NotificationType.warning: 'warning',
+  NotificationType.Informational: 'Informational',
+  NotificationType.Error: 'Error',
+  NotificationType.Warning: 'Warning',
 };

@@ -323,3 +323,162 @@ abstract class _APIResult<T> implements APIResult<T> {
   _$$APIResultImplCopyWith<T, _$APIResultImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+APIDataResult<T> _$APIDataResultFromJson<T>(
+    Map<String, dynamic> json, T Function(Object?) fromJsonT) {
+  return _APIDataResult<T>.fromJson(json, fromJsonT);
+}
+
+/// @nodoc
+mixin _$APIDataResult<T> {
+  List<T> get data => throw _privateConstructorUsedError;
+
+  /// Serializes this APIDataResult to a JSON map.
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of APIDataResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $APIDataResultCopyWith<T, APIDataResult<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $APIDataResultCopyWith<T, $Res> {
+  factory $APIDataResultCopyWith(
+          APIDataResult<T> value, $Res Function(APIDataResult<T>) then) =
+      _$APIDataResultCopyWithImpl<T, $Res, APIDataResult<T>>;
+  @useResult
+  $Res call({List<T> data});
+}
+
+/// @nodoc
+class _$APIDataResultCopyWithImpl<T, $Res, $Val extends APIDataResult<T>>
+    implements $APIDataResultCopyWith<T, $Res> {
+  _$APIDataResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of APIDataResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$APIDataResultImplCopyWith<T, $Res>
+    implements $APIDataResultCopyWith<T, $Res> {
+  factory _$$APIDataResultImplCopyWith(_$APIDataResultImpl<T> value,
+          $Res Function(_$APIDataResultImpl<T>) then) =
+      __$$APIDataResultImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({List<T> data});
+}
+
+/// @nodoc
+class __$$APIDataResultImplCopyWithImpl<T, $Res>
+    extends _$APIDataResultCopyWithImpl<T, $Res, _$APIDataResultImpl<T>>
+    implements _$$APIDataResultImplCopyWith<T, $Res> {
+  __$$APIDataResultImplCopyWithImpl(_$APIDataResultImpl<T> _value,
+      $Res Function(_$APIDataResultImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of APIDataResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$APIDataResultImpl<T>(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable(genericArgumentFactories: true)
+class _$APIDataResultImpl<T> implements _APIDataResult<T> {
+  const _$APIDataResultImpl({required final List<T> data}) : _data = data;
+
+  factory _$APIDataResultImpl.fromJson(
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$$APIDataResultImplFromJson(json, fromJsonT);
+
+  final List<T> _data;
+  @override
+  List<T> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'APIDataResult<$T>(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$APIDataResultImpl<T> &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of APIDataResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$APIDataResultImplCopyWith<T, _$APIDataResultImpl<T>> get copyWith =>
+      __$$APIDataResultImplCopyWithImpl<T, _$APIDataResultImpl<T>>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
+    return _$$APIDataResultImplToJson<T>(this, toJsonT);
+  }
+}
+
+abstract class _APIDataResult<T> implements APIDataResult<T> {
+  const factory _APIDataResult({required final List<T> data}) =
+      _$APIDataResultImpl<T>;
+
+  factory _APIDataResult.fromJson(
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
+      _$APIDataResultImpl<T>.fromJson;
+
+  @override
+  List<T> get data;
+
+  /// Create a copy of APIDataResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$APIDataResultImplCopyWith<T, _$APIDataResultImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}

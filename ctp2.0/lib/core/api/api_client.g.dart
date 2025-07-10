@@ -179,35 +179,39 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<NotificationInfo>> getNotifications(
+  Future<APIResponse<APIResult<NotificationInfo>>> getNotifications(
       {required String authorization}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<APIResponse<NotificationInfo>>(Options(
+    final _options =
+        _setStreamType<APIResponse<APIResult<NotificationInfo>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/v1.0/notification',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+            .compose(
+              _dio.options,
+              '/v1.0/notification',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<NotificationInfo> _value;
+    late APIResponse<APIResult<NotificationInfo>> _value;
     try {
-      _value = APIResponse<NotificationInfo>.fromJson(
+      _value = APIResponse<APIResult<NotificationInfo>>.fromJson(
         _result.data!,
-        (json) => NotificationInfo.fromJson(json as Map<String, dynamic>),
+        (json) => APIResult<NotificationInfo>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => NotificationInfo.fromJson(json as Map<String, dynamic>),
+        ),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -327,7 +331,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<SuccessResponse> getKpis({
+  Future<APIResponse<KpiInfo>> getKpis({
     required String authorization,
     required String xCoin,
     required bool statisticsForAllBots,
@@ -344,7 +348,7 @@ class _ApiClient implements ApiClient {
     };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
+    final _options = _setStreamType<APIResponse<KpiInfo>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -361,9 +365,12 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SuccessResponse _value;
+    late APIResponse<KpiInfo> _value;
     try {
-      _value = SuccessResponse.fromJson(_result.data!);
+      _value = APIResponse<KpiInfo>.fromJson(
+        _result.data!,
+        (json) => KpiInfo.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -372,35 +379,50 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<SuccessResponse> getKpiChartData({
+  Future<APIResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
     required String authorization,
+    required String xCoin,
+    required bool statisticsForAllBots,
     required String period,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'Period': period};
-    final _headers = <String, dynamic>{r'Authorization': authorization};
+    final queryParameters = <String, dynamic>{
+      r'StatisticsForAllBots': statisticsForAllBots,
+      r'Period': period,
+    };
+    final _headers = <String, dynamic>{
+      r'Authorization': authorization,
+      r'X-CoinForBalance': xCoin,
+    };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
+    final _options =
+        _setStreamType<APIResponse<APIDataResult<KpiChartInfo>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/v1.0/statistics/dashboard/graphs',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+            .compose(
+              _dio.options,
+              '/v1.0/statistics/dashboard/graphs',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SuccessResponse _value;
+    late APIResponse<APIDataResult<KpiChartInfo>> _value;
     try {
-      _value = SuccessResponse.fromJson(_result.data!);
+      _value = APIResponse<APIDataResult<KpiChartInfo>>.fromJson(
+        _result.data!,
+        (json) => APIDataResult<KpiChartInfo>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => KpiChartInfo.fromJson(json as Map<String, dynamic>),
+        ),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

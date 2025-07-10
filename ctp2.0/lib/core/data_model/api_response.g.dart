@@ -37,3 +37,19 @@ Map<String, dynamic> _$$APIResultImplToJson<T>(
     <String, dynamic>{
       'items': instance.items.map(toJsonT).toList(),
     };
+
+_$APIDataResultImpl<T> _$$APIDataResultImplFromJson<T>(
+  Map<String, dynamic> json,
+  T Function(Object? json) fromJsonT,
+) =>
+    _$APIDataResultImpl<T>(
+      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
+    );
+
+Map<String, dynamic> _$$APIDataResultImplToJson<T>(
+  _$APIDataResultImpl<T> instance,
+  Object? Function(T value) toJsonT,
+) =>
+    <String, dynamic>{
+      'data': instance.data.map(toJsonT).toList(),
+    };

@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
@@ -29,7 +28,7 @@ class ChartCubit extends Cubit<ChartState> {
   Future<void> refresh() async {
     final ApiStatus status =
     (await _getChartInfoUseCase.invoke()).fold((l) => ApiStatusFailure(), (chart) {
-      final xPoints = chart?.points?.x.sorted((a, b) => a.compareTo(b));
+      // final xPoints = chart?.points?.x.sorted((a, b) => a.compareTo(b));
       emit(state.copyWith(
         x: chart?.points?.x,
         y: chart?.points?.y,

@@ -43,28 +43,4 @@ class AuthRemoteDataSourceImpl with BaseRemoteDataSourceMixin {
     //   throw ServerException(response.statusCode!, '');//tryCast<String>(response.error) ?? response.bodyString);
     // }
   }
-
-  Future<SuccessResponse> registerFCM(String fcm, String authToken) async {
-    final platform = Platform.isAndroid ? 'Android' : 'Ios';
-    final response = await _client.registerFCM(authorization: 'Bearer $authToken', token: fcm, platform: platform);
-    // if (response.isSuccessful) {
-      return response;
-    // } else if (response.statusCode == 401) {
-    //   throw TokenExpiredException();
-    // } else {
-    //   throw ServerException(response.statusCode!, '');//tryCast<String>(response.error) ?? response.bodyString);
-    // }
-  }
-
-  Future<SuccessResponse> unregisterFCM(String fcm, String authToken) async {
-    final platform = Platform.isAndroid ? 'Android' : 'Ios';
-    final response = await _client.unregisterFCM(authorization: 'Bearer $authToken', token: fcm, platform: platform);
-    // if (response.isSuccessful) {
-      return response;
-    // } else if (response.statusCode == 401) {
-    //   throw TokenExpiredException();
-    // } else {
-    //   throw ServerException(response.statusCode!, '');//tryCast<String>(response.error) ?? response.bodyString);
-    // }
-  }
 }

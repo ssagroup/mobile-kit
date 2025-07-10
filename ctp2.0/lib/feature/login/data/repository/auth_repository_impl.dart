@@ -84,14 +84,15 @@ class AuthenticationRepositoryImpl with BaseRepositoryMixin implements Authentic
 
   @override
   Future<void> logout() async {
+    clear();
     _user.add(null);
-
-    // await _firebaseAuthInstance.signOut();
+    // setState(const AuthenticationState.login());
   }
 
   @override
   Future<void> clear() async {
     await _biometricsLocalDatasource.clear();
+    await _localDataSource.clear();
   }
 
   @override

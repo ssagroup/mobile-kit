@@ -20,3 +20,12 @@ class APIResult<T> with _$APIResult<T> {
 
   factory APIResult.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT) => _$APIResultFromJson(json, fromJsonT);
 }
+
+@Freezed(genericArgumentFactories: true)
+class APIDataResult<T> with _$APIDataResult<T> {
+  const factory APIDataResult({
+    required List<T> data,
+  }) = _APIDataResult;
+
+  factory APIDataResult.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT) => _$APIDataResultFromJson(json, fromJsonT);
+}

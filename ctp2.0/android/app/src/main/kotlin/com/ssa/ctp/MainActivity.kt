@@ -1,4 +1,4 @@
-package com.ssa.ctp.ctp_mobile
+package com.ssa.ctp
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -44,7 +44,8 @@ class _ChartScreenState extends State<ChartScreen> {
     super.initState();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
-    final getChartInfoUseCase = GetChartInfoUseCase(GetIt.instance<ChartRepository>(), widget._chartId);
+    final getChartInfoUseCase =
+        GetChartInfoUseCase(GetIt.instance<ChartRepository>(), widget._chartId, widget._periodFilter);
     _bloc = ChartCubit(
       getChartInfoUseCase,
     )..initialize();
