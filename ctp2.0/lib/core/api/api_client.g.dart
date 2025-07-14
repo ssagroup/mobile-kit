@@ -221,14 +221,14 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<SuccessResponse> getInfrastructures(
+  Future<List<InfrastructureInfo>> getInfrastructures(
       {required String authorization}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
+    final _options = _setStreamType<List<InfrastructureInfo>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -244,10 +244,13 @@ class _ApiClient implements ApiClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SuccessResponse _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<InfrastructureInfo> _value;
     try {
-      _value = SuccessResponse.fromJson(_result.data!);
+      _value = _result.data!
+          .map((dynamic i) =>
+              InfrastructureInfo.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -256,7 +259,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<SuccessResponse> getInfrastructureDetails({
+  Future<InfrastructureDetailsInfo> getInfrastructureDetails({
     required String authorization,
     required int dashboardId,
   }) async {
@@ -265,8 +268,8 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
+    final _options = _setStreamType<InfrastructureDetailsInfo>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
@@ -282,9 +285,9 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SuccessResponse _value;
+    late InfrastructureDetailsInfo _value;
     try {
-      _value = SuccessResponse.fromJson(_result.data!);
+      _value = InfrastructureDetailsInfo.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

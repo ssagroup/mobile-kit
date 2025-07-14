@@ -1,5 +1,7 @@
 import 'package:ctp_mobile/core/data_model/api_response.dart';
 import 'package:ctp_mobile/core/data_model/responses.dart';
+import 'package:ctp_mobile/feature/home/data/model/infrastructure_details_info.dart';
+import 'package:ctp_mobile/feature/home/data/model/infrastructure_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/kpi_chart_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/control_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/kpi_info.dart';
@@ -49,12 +51,12 @@ abstract class ApiClient {
 
 // ---------------------------------- INFRADASH -----------------------------------
   @GET('/InfraDash/dashboards/published')
-  Future<SuccessResponse> getInfrastructures({
+  Future<List<InfrastructureInfo>> getInfrastructures({
     @Header('Authorization') required String authorization,
   });
 
-  @POST('/InfraDash/dashboards/{dashboardId}')
-  Future<SuccessResponse> getInfrastructureDetails({
+  @GET('/InfraDash/dashboards/{dashboardId}')
+  Future<InfrastructureDetailsInfo> getInfrastructureDetails({
     @Header('Authorization') required String authorization,
     @Path() required int dashboardId,
   });

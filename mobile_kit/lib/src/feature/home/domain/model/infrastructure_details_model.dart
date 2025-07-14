@@ -7,15 +7,16 @@ class InfrastructureDetailsModel implements Sortable {
     required this.title,
     required this.value,
     required this.order,
-    required this.unit,
-    required this.chartId,
+    this.unit,
+    this.chartId,
+    this.dashboardUid,
   });
 
   final InfrastructureStatus status;
   final String value;
   @override int order;
   final String title;
-  final String? chartId;
+  final String? chartId; // panelId
   final String? unit;
-
+  final String? dashboardUid;
 }

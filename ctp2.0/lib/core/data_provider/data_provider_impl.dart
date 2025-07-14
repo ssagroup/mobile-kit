@@ -1,11 +1,13 @@
 import 'package:ctp_mobile/core/api/api_client.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/control_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/chart_remote_datasource.dart';
+import 'package:ctp_mobile/feature/home/data/datasource/remote/infrastructure_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/kpi_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/notification_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/repository/alerts_repository_impl.dart';
 import 'package:ctp_mobile/feature/home/data/repository/control_repository_impl.dart';
 import 'package:ctp_mobile/feature/home/data/repository/chart_repository_impl.dart';
+import 'package:ctp_mobile/feature/home/data/repository/infrastructure_repository_impl.dart';
 import 'package:ctp_mobile/feature/home/data/repository/kpi_repository_impl.dart';
 import 'package:ctp_mobile/feature/login/data/datasource/auth_local_datasource.dart';
 import 'package:ctp_mobile/feature/login/data/datasource/auth_remote_datasource.dart';
@@ -15,7 +17,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:ctp_mobile/feature/biometrics_auth/data/datasource/local/hive_biometrics_local_datasource_impl.dart';
 import 'package:ctp_mobile/feature/biometrics_auth/data/repository/biometrics_auth_repository_impl.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/local/firebase_notifications_local_datasource_impl.dart';
-import 'package:ctp_mobile/feature/home/data/repository/firestore_infrastructure_repository_impl.dart';
 import 'package:ctp_mobile/feature/home/data/repository/firestore_settings_repository_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobile_kit/mobile_kit.dart';
@@ -78,10 +79,13 @@ class DataProviderImpl extends DataProvider {
     );
     chartRepository = ChartRepositoryImpl(remoteDatasource: chartRemoteDataSource);
 
+    final infrastructureRemoteDataSource = InfrastructureRemoteDatasource(
+      authentication: authRep, client: client,
+    );
+    infrastructureRepository = InfrastructureRepositoryImpl(remoteDatasource: infrastructureRemoteDataSource);
+
     // TODO: Remove Firebase
     settingsRepository = FirestoreSettingsRepositoryImpl();
-    infrastructureRepository = FirestoreInfrastructureRepositoryImpl();
-
   }
 
   static Future<DataProviderImpl> create() async {
