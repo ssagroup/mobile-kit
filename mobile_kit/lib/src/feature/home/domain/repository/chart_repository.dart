@@ -7,6 +7,6 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 abstract class ChartRepository {
 
-  Future<Either<Failure, ChartModel?>> getChartInfo(String? id, String? period);
+  Future<Either<Failure, ChartModel?>> getChartInfo(String? id, String? dashboardId, String? period);
 
 }

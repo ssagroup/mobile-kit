@@ -13,7 +13,7 @@ class KpiRepositoryImpl with BaseRepositoryMixin implements KpiRepository {
 
   @override
   Future<Either<Failure, List<KpiModel>>> getAll(String filter) async {
-    return await getGenericDataWithCaching<List<KpiModel>>(remote: () async {
+    return await getGenericDataWithoutCaching<List<KpiModel>>(remote: () async {
       final kpi = await _remoteDatasource.getKpis(filter);
       final List<KpiModel> models = [
         KpiModel(title: 'Exchanges', value: kpi.exchangesCount.toString(), order: 0),
@@ -23,16 +23,14 @@ class KpiRepositoryImpl with BaseRepositoryMixin implements KpiRepository {
         KpiModel(title: 'Turnover', value: kpi.turnover, order: 4, unit: 'USDT'),
         KpiModel(title: 'Errors', value: kpi.errorsCount.toString(), order: 5),
         KpiModel(title: 'Commission', value: kpi.commission.toString(), order: 6, unit: 'USDT'),
-        KpiModel(title: 'PNL Trading', value: kpi.pnl.toString(), order: 7, isUp: kpi.pnlUp, unit: 'USDT', chartId: 'pnl'),
-        KpiModel(title: 'PNL investment', value: kpi.pnlInvestment.toString(), order: 8, isUp: kpi.pnlInvestmentUp, unit: 'USDT', chartId: 'pnlInvestment'),
-        KpiModel(title: 'PNL total', value: kpi.pnlTotal.toString(), order: 9, isUp: kpi.pnlTotalUp, unit: 'USDT', chartId: 'pnlTotal'),
+        KpiModel(title: 'PNL Trading', value: kpi.pnl.toString(), order: 7, isUp: kpi.pnlUp, unit: 'USDT', chartId: 'kpi://pnl'),
+        KpiModel(title: 'PNL investment', value: kpi.pnlInvestment.toString(), order: 8, isUp: kpi.pnlInvestmentUp, unit: 'USDT', chartId: 'kpi://pnlInvestment'),
+        KpiModel(title: 'PNL total', value: kpi.pnlTotal.toString(), order: 9, isUp: kpi.pnlTotalUp, unit: 'USDT', chartId: 'kpi://pnlTotal'),
         KpiModel(title: 'ROI trading', value: kpi.roi.toString(), order: 10, unit: '%'),
         KpiModel(title: 'ROI investment', value: kpi.roiInvestment.toString(), order: 11),
         KpiModel(title: 'ROI total', value: kpi.roiTotal.toString(), order: 12, unit: '%'),
       ];
       return models;
-    }, cacheLocal: (response) {
-      return Future.value();
     });
   }
 }

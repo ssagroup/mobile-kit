@@ -8,4 +8,15 @@ extension StringExtension on String {
       _ => 'Custom'
     };
   }
+
+  int? get toInfraApiValue {
+    return switch (this) {
+      '1h' => 0,
+      '6h' => 1,
+      '24h' => 2,
+      '7d' => 3,
+      '30d' => 4,
+      String() => null,
+    };
+  }
 }

@@ -9,11 +9,7 @@ part of 'api_client.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _ApiClient implements ApiClient {
-  _ApiClient(
-    this._dio, {
-    this.baseUrl,
-    this.errorLogger,
-  });
+  _ApiClient(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
 
@@ -22,32 +18,28 @@ class _ApiClient implements ApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<APIResponse<AuthInfo>> signIn({required AuthRequest request}) async {
+  Future<APIResultResponse<AuthInfo>> signIn({
+    required AuthRequest request,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<APIResponse<AuthInfo>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/auth/SignIn',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<APIResultResponse<AuthInfo>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/auth/SignIn',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<AuthInfo> _value;
+    late APIResultResponse<AuthInfo> _value;
     try {
-      _value = APIResponse<AuthInfo>.fromJson(
+      _value = APIResultResponse<AuthInfo>.fromJson(
         _result.data!,
         (json) => AuthInfo.fromJson(json as Map<String, dynamic>),
       );
@@ -59,33 +51,29 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<AuthInfo>> refreshToken({String? refreshToken}) async {
+  Future<APIResultResponse<AuthInfo>> refreshToken({
+    String? refreshToken,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = {'refreshToken': refreshToken};
     _data.removeWhere((k, v) => v == null);
-    final _options = _setStreamType<APIResponse<AuthInfo>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/auth/RefreshToken',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<APIResultResponse<AuthInfo>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/auth/RefreshToken',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<AuthInfo> _value;
+    late APIResultResponse<AuthInfo> _value;
     try {
-      _value = APIResponse<AuthInfo>.fromJson(
+      _value = APIResultResponse<AuthInfo>.fromJson(
         _result.data!,
         (json) => AuthInfo.fromJson(json as Map<String, dynamic>),
       );
@@ -106,26 +94,17 @@ class _ApiClient implements ApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
-    final _data = {
-      'token': token,
-      'platform': platform,
-    };
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/notificationdevice/register',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _data = {'token': token, 'platform': platform};
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/notificationdevice/register',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SuccessResponse _value;
     try {
@@ -147,26 +126,17 @@ class _ApiClient implements ApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
-    final _data = {
-      'token': token,
-      'platform': platform,
-    };
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/notificationdevice/unregister',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _data = {'token': token, 'platform': platform};
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/notificationdevice/unregister',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SuccessResponse _value;
     try {
@@ -179,36 +149,33 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<APIResult<NotificationInfo>>> getNotifications(
-      {required String authorization}) async {
+  Future<APIResultResponse<APIItemsResult<NotificationInfo>>> getNotifications({
+    required String authorization,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<APIResponse<APIResult<NotificationInfo>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/v1.0/notification',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<APIResultResponse<APIItemsResult<NotificationInfo>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/notification',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<APIResult<NotificationInfo>> _value;
+    late APIResultResponse<APIItemsResult<NotificationInfo>> _value;
     try {
-      _value = APIResponse<APIResult<NotificationInfo>>.fromJson(
+      _value = APIResultResponse<APIItemsResult<NotificationInfo>>.fromJson(
         _result.data!,
-        (json) => APIResult<NotificationInfo>.fromJson(
+        (json) => APIItemsResult<NotificationInfo>.fromJson(
           json as Map<String, dynamic>,
           (json) => NotificationInfo.fromJson(json as Map<String, dynamic>),
         ),
@@ -221,35 +188,32 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<InfrastructureInfo>> getInfrastructures(
-      {required String authorization}) async {
+  Future<List<InfrastructureInfo>> getInfrastructures({
+    required String authorization,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<InfrastructureInfo>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/InfraDash/dashboards/published',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<List<InfrastructureInfo>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/InfraDash/dashboards/published',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<InfrastructureInfo> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) =>
-              InfrastructureInfo.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) =>
+                InfrastructureInfo.fromJson(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -268,22 +232,16 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<InfrastructureDetailsInfo>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/InfraDash/dashboards/${dashboardId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<InfrastructureDetailsInfo>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/InfraDash/dashboards/${dashboardId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late InfrastructureDetailsInfo _value;
     try {
@@ -296,36 +254,39 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<SuccessResponse> getInfraChartData({
+  Future<APIDataResponse<APIResultsResponse<dynamic>>> getInfraChartData({
     required String authorization,
-    required int dashboardUid,
+    required String dashboardUid,
     required int panelId,
+    int? period,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'period': period};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/InfraDash/grafana/dashboards/${dashboardUid}/panel/${panelId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options =
+        _setStreamType<APIDataResponse<APIResultsResponse<dynamic>>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/InfraDash/grafana/dashboards/${dashboardUid}/panel/${panelId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SuccessResponse _value;
+    late APIDataResponse<APIResultsResponse<dynamic>> _value;
     try {
-      _value = SuccessResponse.fromJson(_result.data!);
+      _value = APIDataResponse<APIResultsResponse<dynamic>>.fromJson(
+        _result.data!,
+        (json) => APIResultsResponse<dynamic>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => json as dynamic,
+        ),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -334,7 +295,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<KpiInfo>> getKpis({
+  Future<APIResultResponse<KpiInfo>> getKpis({
     required String authorization,
     required String xCoin,
     required bool statisticsForAllBots,
@@ -351,26 +312,20 @@ class _ApiClient implements ApiClient {
     };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<APIResponse<KpiInfo>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/statistics/dashboard',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<APIResultResponse<KpiInfo>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/statistics/dashboard',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<KpiInfo> _value;
+    late APIResultResponse<KpiInfo> _value;
     try {
-      _value = APIResponse<KpiInfo>.fromJson(
+      _value = APIResultResponse<KpiInfo>.fromJson(
         _result.data!,
         (json) => KpiInfo.fromJson(json as Map<String, dynamic>),
       );
@@ -382,7 +337,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
+  Future<APIResultResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
     required String authorization,
     required String xCoin,
     required bool statisticsForAllBots,
@@ -400,26 +355,22 @@ class _ApiClient implements ApiClient {
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<APIResponse<APIDataResult<KpiChartInfo>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/v1.0/statistics/dashboard/graphs',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<APIResultResponse<APIDataResult<KpiChartInfo>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/statistics/dashboard/graphs',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<APIDataResult<KpiChartInfo>> _value;
+    late APIResultResponse<APIDataResult<KpiChartInfo>> _value;
     try {
-      _value = APIResponse<APIDataResult<KpiChartInfo>>.fromJson(
+      _value = APIResultResponse<APIDataResult<KpiChartInfo>>.fromJson(
         _result.data!,
         (json) => APIDataResult<KpiChartInfo>.fromJson(
           json as Map<String, dynamic>,
@@ -434,7 +385,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<APIResponse<APIResult<ControlInfo>>> getControls({
+  Future<APIResultResponse<APIItemsResult<ControlInfo>>> getControls({
     required String authorization,
     required String xCoin,
     required String period,
@@ -454,28 +405,24 @@ class _ApiClient implements ApiClient {
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<APIResponse<APIResult<ControlInfo>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/v1.0/bots',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        _setStreamType<APIResultResponse<APIItemsResult<ControlInfo>>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/bots',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late APIResponse<APIResult<ControlInfo>> _value;
+    late APIResultResponse<APIItemsResult<ControlInfo>> _value;
     try {
-      _value = APIResponse<APIResult<ControlInfo>>.fromJson(
+      _value = APIResultResponse<APIItemsResult<ControlInfo>>.fromJson(
         _result.data!,
-        (json) => APIResult<ControlInfo>.fromJson(
+        (json) => APIItemsResult<ControlInfo>.fromJson(
           json as Map<String, dynamic>,
           (json) => ControlInfo.fromJson(json as Map<String, dynamic>),
         ),
@@ -498,22 +445,16 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     final _data = {'reason': reason};
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/bots/${botId}/start',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/bots/${botId}/start',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SuccessResponse _value;
     try {
@@ -535,22 +476,16 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/bots/${botId}/stop',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/bots/${botId}/stop',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SuccessResponse _value;
     try {
@@ -574,22 +509,16 @@ class _ApiClient implements ApiClient {
     _headers.removeWhere((k, v) => v == null);
     final _data = {'instrumentOrCoin': instrumentOrCoin};
     _data.removeWhere((k, v) => v == null);
-    final _options = _setStreamType<SuccessResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1.0/bots/stopall',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1.0/bots/stopall',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SuccessResponse _value;
     try {
@@ -614,10 +543,7 @@ class _ApiClient implements ApiClient {
     return requestOptions;
   }
 
-  String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

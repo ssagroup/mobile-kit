@@ -1,4 +1,3 @@
-
 import 'package:ctp_mobile/core/api/api_client.dart';
 import 'package:ctp_mobile/core/data_model/api_response.dart';
 import 'package:ctp_mobile/core/datasource/base_remote_datasource.dart';
@@ -6,8 +5,8 @@ import 'package:ctp_mobile/feature/home/data/model/kpi_chart_info.dart';
 import 'package:ctp_mobile/core/extension/string_extension.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
-class ChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
-  ChartRemoteDatasourceImpl({
+class KpiChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
+  KpiChartRemoteDatasourceImpl({
     required ApiClient client,
     required AuthenticationRepository authentication,
   })  : _client = client,
@@ -22,13 +21,10 @@ class ChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
   Future<ChartModel?> getKpiChartData(String? chartId, String? period) async {
     _isFetchingSubject.add(true);
     try {
-      final response = await requestWithAuthentication<APIResponse<APIDataResult<KpiChartInfo>>>(
+      final response = await requestWithAuthentication<APIResultResponse<APIDataResult<KpiChartInfo>>>(
         authenticationRep: _authentication,
         method: (String auth) => _client.getKpiChartData(
-            authorization: auth,
-            xCoin: 'USDT',
-            statisticsForAllBots: true,
-            period: period!.toApiValue),
+            authorization: auth, xCoin: 'USDT', statisticsForAllBots: true, period: period!.toApiValue),
       );
       final data = response.result.data;
       final xPoints = data.map((elem) {
@@ -37,7 +33,11 @@ class ChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
       final yPoints = data.map((elem) {
         return _getYPoint(elem);
       }).toList();
-      final chartModel = ChartModel(chartId: chartId, unit: 'USDT', points: ChartPointModel(x: yPoints, y: xPoints));
+      final chartModel = ChartModel(
+        chartId: chartId,
+        unit: 'USDT',
+        points: ChartPointModel(x: yPoints, y: xPoints),
+      );
       _isFetchingSubject.add(false);
       return chartModel;
     } catch (_) {
@@ -48,9 +48,9 @@ class ChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
 
   double _getXPoint(String chartId, KpiChartInfo elem) {
     return switch (chartId) {
-      'pnl' => elem.pnl,
-      'pnlInvestment' => elem.pnlInvestment,
-      'pnlTotal' => elem.pnlTotal,
+      'kpi://pnl' => elem.pnl,
+      'kpi://pnlInvestment' => elem.pnlInvestment,
+      'kpi://pnlTotal' => elem.pnlTotal,
       _ => throw Error()
     };
   }
@@ -60,24 +60,4 @@ class ChartRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
     double timestampAsDouble = timestampInSeconds.toDouble();
     return timestampAsDouble;
   }
-
-  Future<List<KpiChartInfo>> getInfrastructureChartData(String? period) async {
-    _isFetchingSubject.add(true);
-    try {
-      final response = await requestWithAuthentication<APIResponse<APIDataResult<KpiChartInfo>>>(
-        authenticationRep: _authentication,
-        method: (String auth) => _client.getKpiChartData(
-            authorization: auth,
-            xCoin: 'USDT',
-            statisticsForAllBots: true,
-            period: period!.toApiValue),
-      );
-      _isFetchingSubject.add(false);
-      return response.result.data;
-    } catch (_) {
-      _isFetchingSubject.add(false);
-      rethrow;
-    }
-  }
-
 }

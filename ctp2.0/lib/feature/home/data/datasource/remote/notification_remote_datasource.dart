@@ -23,7 +23,7 @@ class NotificationRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
   Future<List<NotificationInfo>> getNotifications() async {
     _isFetchingSubject.add(true);
     try {
-      final response = await requestWithAuthentication<APIResponse<APIResult<NotificationInfo>>>(
+      final response = await requestWithAuthentication<APIResultResponse<APIItemsResult<NotificationInfo>>>(
         authenticationRep: _authentication,
         method: (String auth) => _client.getNotifications(authorization: auth),
       );

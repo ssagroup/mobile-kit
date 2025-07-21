@@ -12,7 +12,7 @@ class InfrastructureDetailsState with _$InfrastructureDetailsState implements Ap
   factory InfrastructureDetailsState.initial() => InfrastructureDetailsState(
     isLoading: false,
     apiStatus: ApiStatusNone(),
-    periodFilter: StatisticsPeriod.current,
+    periodFilter: StatisticsPeriod.one_hour,
     models: [],
   );
 }

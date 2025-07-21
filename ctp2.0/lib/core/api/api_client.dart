@@ -20,12 +20,12 @@ abstract class ApiClient {
 
   // ---------------------------------- AUTH -----------------------------------
   @POST('/v1.0/auth/SignIn')
-  Future<APIResponse<AuthInfo>> signIn({
+  Future<APIResultResponse<AuthInfo>> signIn({
     @Body() required AuthRequest request,
   });
 
   @POST('/v1.0/auth/RefreshToken')
-  Future<APIResponse<AuthInfo>> refreshToken({
+  Future<APIResultResponse<AuthInfo>> refreshToken({
     @Field() String? refreshToken,
   });
 
@@ -45,7 +45,7 @@ abstract class ApiClient {
   });
 
   @GET('/v1.0/notification')
-  Future<APIResponse<APIResult<NotificationInfo>>> getNotifications({
+  Future<APIResultResponse<APIItemsResult<NotificationInfo>>> getNotifications({
     @Header('Authorization') required String authorization,
   });
 
@@ -62,15 +62,16 @@ abstract class ApiClient {
   });
 
   @POST('/InfraDash/grafana/dashboards/{dashboardUid}/panel/{panelId}')
-  Future<SuccessResponse> getInfraChartData({
+  Future<APIDataResponse<APIResultsResponse>> getInfraChartData({
     @Header('Authorization') required String authorization,
-    @Path() required int dashboardUid,
+    @Path() required String dashboardUid,
     @Path() required int panelId,
+    @Query('period') int? period,
   });
 
 // ---------------------------------- KPI -----------------------------------
   @GET('/v1.0/statistics/dashboard')
-  Future<APIResponse<KpiInfo>> getKpis({
+  Future<APIResultResponse<KpiInfo>> getKpis({
     @Header('Authorization') required String authorization,
     @Header('X-CoinForBalance') required String xCoin,
     @Query('StatisticsForAllBots') required bool statisticsForAllBots,
@@ -78,7 +79,7 @@ abstract class ApiClient {
   });
 
   @GET('/v1.0/statistics/dashboard/graphs')
-  Future<APIResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
+  Future<APIResultResponse<APIDataResult<KpiChartInfo>>> getKpiChartData({
     @Header('Authorization') required String authorization,
     @Header('X-CoinForBalance') required String xCoin,
     @Query('StatisticsForAllBots') required bool statisticsForAllBots,
@@ -87,7 +88,7 @@ abstract class ApiClient {
 
 // ---------------------------------- CONTROL -----------------------------------
   @GET('/v1.0/bots')
-  Future<APIResponse<APIResult<ControlInfo>>> getControls({
+  Future<APIResultResponse<APIItemsResult<ControlInfo>>> getControls({
     @Header('Authorization') required String authorization,
     @Header('X-CoinForBalance') required String xCoin,
     @Query('Period') required String period,

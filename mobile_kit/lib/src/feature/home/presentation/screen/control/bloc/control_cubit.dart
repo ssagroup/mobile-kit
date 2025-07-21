@@ -55,7 +55,15 @@ class ControlCubit extends Cubit<ControlState> {
   }
 
   Future<void> refresh() async {
-    await _getAllControlsUseCase.invoke();
+    final ApiStatus status =
+    (await _getAllControlsUseCase.invoke()).fold((l) => ApiStatusFailure(), (r) => ApiStatusSuccess());
+
+    emit(state.copyWith(
+      apiStatus: status,
+    ));
+    emit(state.copyWith(
+      apiStatus: ApiStatusNone(),
+    ));
   }
 
   Future<void> stopAllAction() async {

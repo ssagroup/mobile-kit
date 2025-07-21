@@ -1,13 +1,12 @@
 
 import 'package:ctp_mobile/core/api/api_client.dart';
-import 'package:ctp_mobile/core/data_model/api_response.dart';
 import 'package:ctp_mobile/core/datasource/base_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/model/infrastructure_details_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/infrastructure_info.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
-class InfrastructureRemoteDatasource with BaseRemoteDataSourceMixin {
-  InfrastructureRemoteDatasource({
+class InfrastructureRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
+  InfrastructureRemoteDatasourceImpl({
     required ApiClient client,
     required AuthenticationRepository authentication,
   })  : _client = client,
@@ -48,5 +47,4 @@ class InfrastructureRemoteDatasource with BaseRemoteDataSourceMixin {
       rethrow;
     }
   }
-
 }

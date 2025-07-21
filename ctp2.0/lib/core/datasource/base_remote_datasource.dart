@@ -1,3 +1,4 @@
+import 'package:ctp_mobile/core/data/dio_error.dart';
 import 'package:dio/dio.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
@@ -27,7 +28,7 @@ mixin BaseRemoteDataSourceMixin {
           },
         );
       }
-      throw ServerException(error.response!.statusCode!, tryCast<String>(error) ?? error.message.orEmpty);
+      throw error.toServerException;
     }
   }
 }

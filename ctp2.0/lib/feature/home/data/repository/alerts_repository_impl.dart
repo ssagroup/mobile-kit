@@ -1,4 +1,5 @@
 import 'package:ctp_mobile/core/repository/base_repository.dart';
+import 'package:ctp_mobile/feature/home/data/datasource/local/firebase_notifications_local_datasource_impl.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/notification_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobile_kit/mobile_kit.dart';
@@ -6,12 +7,12 @@ import 'package:mobile_kit/mobile_kit.dart';
 class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository {
   AlertsRepositoryImpl({
     required NotificationRemoteDatasourceImpl remoteDatasource,
-    required NotificationsLocalDatasource localDatasource,
+    required FirebaseNotificationsLocalDatasourceImpl localDatasource,
   }) : _remoteDatasource = remoteDatasource,
       _localDatasource = localDatasource;
 
   final NotificationRemoteDatasourceImpl _remoteDatasource;
-  final NotificationsLocalDatasource _localDatasource;
+  final FirebaseNotificationsLocalDatasourceImpl _localDatasource;
   final _notificationsSubject = BehaviorSubject<List<NotificationModel>>();
 
   @override
@@ -27,6 +28,8 @@ class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository 
 
   @override
   Future<Either<Failure, List<NotificationModel>>> fetchNotifications() async {
+    _notificationsSubject.add([]);
+
     return await getGenericDataWithCaching<List<NotificationModel>>(remote: () async {
       final notifications = await _remoteDatasource.getNotifications();
       return notifications.map((e){
@@ -44,10 +47,11 @@ class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository 
 
   @override
   Future<Either<Failure, void>> updatePushToken(String? pushToken) async {
+    final fcm = _localDatasource.lastFcmToken;
     final result = await performSuccessOperation(
       remote: pushToken?.isEmpty == false
-        ? () => _remoteDatasource.registerFCM(pushToken!)
-        : () => _remoteDatasource.unregisterFCM(pushToken!),
+        ? () => _remoteDatasource.registerFCM(fcm!)
+        : () => _remoteDatasource.unregisterFCM(fcm!),
     );
     return result;
   }

@@ -38,7 +38,14 @@ class AlertsCubit extends Cubit<AlertsState> {
   }
 
   Future<void> refresh() async {
-    await _getAllNotificationsUseCase.invoke();
+    final ApiStatus status =
+    (await _getAllNotificationsUseCase.invoke()).fold((l) => ApiStatusFailure(), (r) => ApiStatusSuccess());
+    emit(state.copyWith(
+      apiStatus: status,
+    ));
+    emit(state.copyWith(
+      apiStatus: ApiStatusNone(),
+    ));
   }
 
   void _updateNotifications(List<NotificationModel> notifications) {

@@ -28,7 +28,7 @@ extension InfrastructureStatusExtension on InfrastructureStatus {
     InfrastructureStatus.normal => ColorPalette.greenText,
     InfrastructureStatus.warning => ColorPalette.yellowText,
     InfrastructureStatus.error => ColorPalette.redText,
-    InfrastructureStatus.none => Colors.transparent,
+    InfrastructureStatus.none => ColorPalette.grayText,
   };
 
 }

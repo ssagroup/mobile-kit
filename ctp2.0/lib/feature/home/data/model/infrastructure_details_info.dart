@@ -42,7 +42,36 @@ class SourceInfo with _$SourceInfo {
 class PanelSchema with _$PanelSchema {
   const factory PanelSchema({
     required String type,
+    required FieldConfig fieldConfig,
   }) = _PanelSchema;
 
   factory PanelSchema.fromJson(Map<String, dynamic> json) => _$PanelSchemaFromJson(json);
+}
+
+@freezed
+class FieldConfig with _$FieldConfig {
+  const factory FieldConfig({
+    required Defaults defaults,
+  }) = _FieldConfig;
+
+  factory FieldConfig.fromJson(Map<String, dynamic> json) => _$FieldConfigFromJson(json);
+}
+
+@freezed
+class Defaults with _$Defaults {
+  const factory Defaults({
+    String? unit,
+    Custom? custom,
+  }) = _Defaults;
+
+  factory Defaults.fromJson(Map<String, dynamic> json) => _$DefaultsFromJson(json);
+}
+
+@freezed
+class Custom with _$Custom {
+  const factory Custom({
+    String? axisLabel,
+  }) = _Custom;
+
+  factory Custom.fromJson(Map<String, dynamic> json) => _$CustomFromJson(json);
 }

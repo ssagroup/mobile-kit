@@ -664,6 +664,7 @@ PanelSchema _$PanelSchemaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PanelSchema {
   String get type => throw _privateConstructorUsedError;
+  FieldConfig get fieldConfig => throw _privateConstructorUsedError;
 
   /// Serializes this PanelSchema to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -681,7 +682,9 @@ abstract class $PanelSchemaCopyWith<$Res> {
           PanelSchema value, $Res Function(PanelSchema) then) =
       _$PanelSchemaCopyWithImpl<$Res, PanelSchema>;
   @useResult
-  $Res call({String type});
+  $Res call({String type, FieldConfig fieldConfig});
+
+  $FieldConfigCopyWith<$Res> get fieldConfig;
 }
 
 /// @nodoc
@@ -700,13 +703,28 @@ class _$PanelSchemaCopyWithImpl<$Res, $Val extends PanelSchema>
   @override
   $Res call({
     Object? type = null,
+    Object? fieldConfig = null,
   }) {
     return _then(_value.copyWith(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      fieldConfig: null == fieldConfig
+          ? _value.fieldConfig
+          : fieldConfig // ignore: cast_nullable_to_non_nullable
+              as FieldConfig,
     ) as $Val);
+  }
+
+  /// Create a copy of PanelSchema
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldConfigCopyWith<$Res> get fieldConfig {
+    return $FieldConfigCopyWith<$Res>(_value.fieldConfig, (value) {
+      return _then(_value.copyWith(fieldConfig: value) as $Val);
+    });
   }
 }
 
@@ -718,7 +736,10 @@ abstract class _$$PanelSchemaImplCopyWith<$Res>
       __$$PanelSchemaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type});
+  $Res call({String type, FieldConfig fieldConfig});
+
+  @override
+  $FieldConfigCopyWith<$Res> get fieldConfig;
 }
 
 /// @nodoc
@@ -735,12 +756,17 @@ class __$$PanelSchemaImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = null,
+    Object? fieldConfig = null,
   }) {
     return _then(_$PanelSchemaImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      fieldConfig: null == fieldConfig
+          ? _value.fieldConfig
+          : fieldConfig // ignore: cast_nullable_to_non_nullable
+              as FieldConfig,
     ));
   }
 }
@@ -748,17 +774,19 @@ class __$$PanelSchemaImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PanelSchemaImpl implements _PanelSchema {
-  const _$PanelSchemaImpl({required this.type});
+  const _$PanelSchemaImpl({required this.type, required this.fieldConfig});
 
   factory _$PanelSchemaImpl.fromJson(Map<String, dynamic> json) =>
       _$$PanelSchemaImplFromJson(json);
 
   @override
   final String type;
+  @override
+  final FieldConfig fieldConfig;
 
   @override
   String toString() {
-    return 'PanelSchema(type: $type)';
+    return 'PanelSchema(type: $type, fieldConfig: $fieldConfig)';
   }
 
   @override
@@ -766,12 +794,14 @@ class _$PanelSchemaImpl implements _PanelSchema {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PanelSchemaImpl &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.fieldConfig, fieldConfig) ||
+                other.fieldConfig == fieldConfig));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, type);
+  int get hashCode => Object.hash(runtimeType, type, fieldConfig);
 
   /// Create a copy of PanelSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -790,18 +820,518 @@ class _$PanelSchemaImpl implements _PanelSchema {
 }
 
 abstract class _PanelSchema implements PanelSchema {
-  const factory _PanelSchema({required final String type}) = _$PanelSchemaImpl;
+  const factory _PanelSchema(
+      {required final String type,
+      required final FieldConfig fieldConfig}) = _$PanelSchemaImpl;
 
   factory _PanelSchema.fromJson(Map<String, dynamic> json) =
       _$PanelSchemaImpl.fromJson;
 
   @override
   String get type;
+  @override
+  FieldConfig get fieldConfig;
 
   /// Create a copy of PanelSchema
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PanelSchemaImplCopyWith<_$PanelSchemaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FieldConfig _$FieldConfigFromJson(Map<String, dynamic> json) {
+  return _FieldConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FieldConfig {
+  Defaults get defaults => throw _privateConstructorUsedError;
+
+  /// Serializes this FieldConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $FieldConfigCopyWith<FieldConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FieldConfigCopyWith<$Res> {
+  factory $FieldConfigCopyWith(
+          FieldConfig value, $Res Function(FieldConfig) then) =
+      _$FieldConfigCopyWithImpl<$Res, FieldConfig>;
+  @useResult
+  $Res call({Defaults defaults});
+
+  $DefaultsCopyWith<$Res> get defaults;
+}
+
+/// @nodoc
+class _$FieldConfigCopyWithImpl<$Res, $Val extends FieldConfig>
+    implements $FieldConfigCopyWith<$Res> {
+  _$FieldConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? defaults = null,
+  }) {
+    return _then(_value.copyWith(
+      defaults: null == defaults
+          ? _value.defaults
+          : defaults // ignore: cast_nullable_to_non_nullable
+              as Defaults,
+    ) as $Val);
+  }
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DefaultsCopyWith<$Res> get defaults {
+    return $DefaultsCopyWith<$Res>(_value.defaults, (value) {
+      return _then(_value.copyWith(defaults: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$FieldConfigImplCopyWith<$Res>
+    implements $FieldConfigCopyWith<$Res> {
+  factory _$$FieldConfigImplCopyWith(
+          _$FieldConfigImpl value, $Res Function(_$FieldConfigImpl) then) =
+      __$$FieldConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Defaults defaults});
+
+  @override
+  $DefaultsCopyWith<$Res> get defaults;
+}
+
+/// @nodoc
+class __$$FieldConfigImplCopyWithImpl<$Res>
+    extends _$FieldConfigCopyWithImpl<$Res, _$FieldConfigImpl>
+    implements _$$FieldConfigImplCopyWith<$Res> {
+  __$$FieldConfigImplCopyWithImpl(
+      _$FieldConfigImpl _value, $Res Function(_$FieldConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? defaults = null,
+  }) {
+    return _then(_$FieldConfigImpl(
+      defaults: null == defaults
+          ? _value.defaults
+          : defaults // ignore: cast_nullable_to_non_nullable
+              as Defaults,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FieldConfigImpl implements _FieldConfig {
+  const _$FieldConfigImpl({required this.defaults});
+
+  factory _$FieldConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FieldConfigImplFromJson(json);
+
+  @override
+  final Defaults defaults;
+
+  @override
+  String toString() {
+    return 'FieldConfig(defaults: $defaults)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FieldConfigImpl &&
+            (identical(other.defaults, defaults) ||
+                other.defaults == defaults));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, defaults);
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FieldConfigImplCopyWith<_$FieldConfigImpl> get copyWith =>
+      __$$FieldConfigImplCopyWithImpl<_$FieldConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FieldConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FieldConfig implements FieldConfig {
+  const factory _FieldConfig({required final Defaults defaults}) =
+      _$FieldConfigImpl;
+
+  factory _FieldConfig.fromJson(Map<String, dynamic> json) =
+      _$FieldConfigImpl.fromJson;
+
+  @override
+  Defaults get defaults;
+
+  /// Create a copy of FieldConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FieldConfigImplCopyWith<_$FieldConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Defaults _$DefaultsFromJson(Map<String, dynamic> json) {
+  return _Defaults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Defaults {
+  String? get unit => throw _privateConstructorUsedError;
+  Custom? get custom => throw _privateConstructorUsedError;
+
+  /// Serializes this Defaults to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DefaultsCopyWith<Defaults> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DefaultsCopyWith<$Res> {
+  factory $DefaultsCopyWith(Defaults value, $Res Function(Defaults) then) =
+      _$DefaultsCopyWithImpl<$Res, Defaults>;
+  @useResult
+  $Res call({String? unit, Custom? custom});
+
+  $CustomCopyWith<$Res>? get custom;
+}
+
+/// @nodoc
+class _$DefaultsCopyWithImpl<$Res, $Val extends Defaults>
+    implements $DefaultsCopyWith<$Res> {
+  _$DefaultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? unit = freezed,
+    Object? custom = freezed,
+  }) {
+    return _then(_value.copyWith(
+      unit: freezed == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      custom: freezed == custom
+          ? _value.custom
+          : custom // ignore: cast_nullable_to_non_nullable
+              as Custom?,
+    ) as $Val);
+  }
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomCopyWith<$Res>? get custom {
+    if (_value.custom == null) {
+      return null;
+    }
+
+    return $CustomCopyWith<$Res>(_value.custom!, (value) {
+      return _then(_value.copyWith(custom: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DefaultsImplCopyWith<$Res>
+    implements $DefaultsCopyWith<$Res> {
+  factory _$$DefaultsImplCopyWith(
+          _$DefaultsImpl value, $Res Function(_$DefaultsImpl) then) =
+      __$$DefaultsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? unit, Custom? custom});
+
+  @override
+  $CustomCopyWith<$Res>? get custom;
+}
+
+/// @nodoc
+class __$$DefaultsImplCopyWithImpl<$Res>
+    extends _$DefaultsCopyWithImpl<$Res, _$DefaultsImpl>
+    implements _$$DefaultsImplCopyWith<$Res> {
+  __$$DefaultsImplCopyWithImpl(
+      _$DefaultsImpl _value, $Res Function(_$DefaultsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? unit = freezed,
+    Object? custom = freezed,
+  }) {
+    return _then(_$DefaultsImpl(
+      unit: freezed == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      custom: freezed == custom
+          ? _value.custom
+          : custom // ignore: cast_nullable_to_non_nullable
+              as Custom?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DefaultsImpl implements _Defaults {
+  const _$DefaultsImpl({this.unit, this.custom});
+
+  factory _$DefaultsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DefaultsImplFromJson(json);
+
+  @override
+  final String? unit;
+  @override
+  final Custom? custom;
+
+  @override
+  String toString() {
+    return 'Defaults(unit: $unit, custom: $custom)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DefaultsImpl &&
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.custom, custom) || other.custom == custom));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, unit, custom);
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DefaultsImplCopyWith<_$DefaultsImpl> get copyWith =>
+      __$$DefaultsImplCopyWithImpl<_$DefaultsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DefaultsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Defaults implements Defaults {
+  const factory _Defaults({final String? unit, final Custom? custom}) =
+      _$DefaultsImpl;
+
+  factory _Defaults.fromJson(Map<String, dynamic> json) =
+      _$DefaultsImpl.fromJson;
+
+  @override
+  String? get unit;
+  @override
+  Custom? get custom;
+
+  /// Create a copy of Defaults
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DefaultsImplCopyWith<_$DefaultsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Custom _$CustomFromJson(Map<String, dynamic> json) {
+  return _Custom.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Custom {
+  String? get axisLabel => throw _privateConstructorUsedError;
+
+  /// Serializes this Custom to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Custom
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CustomCopyWith<Custom> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomCopyWith<$Res> {
+  factory $CustomCopyWith(Custom value, $Res Function(Custom) then) =
+      _$CustomCopyWithImpl<$Res, Custom>;
+  @useResult
+  $Res call({String? axisLabel});
+}
+
+/// @nodoc
+class _$CustomCopyWithImpl<$Res, $Val extends Custom>
+    implements $CustomCopyWith<$Res> {
+  _$CustomCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Custom
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? axisLabel = freezed,
+  }) {
+    return _then(_value.copyWith(
+      axisLabel: freezed == axisLabel
+          ? _value.axisLabel
+          : axisLabel // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CustomImplCopyWith<$Res> implements $CustomCopyWith<$Res> {
+  factory _$$CustomImplCopyWith(
+          _$CustomImpl value, $Res Function(_$CustomImpl) then) =
+      __$$CustomImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? axisLabel});
+}
+
+/// @nodoc
+class __$$CustomImplCopyWithImpl<$Res>
+    extends _$CustomCopyWithImpl<$Res, _$CustomImpl>
+    implements _$$CustomImplCopyWith<$Res> {
+  __$$CustomImplCopyWithImpl(
+      _$CustomImpl _value, $Res Function(_$CustomImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Custom
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? axisLabel = freezed,
+  }) {
+    return _then(_$CustomImpl(
+      axisLabel: freezed == axisLabel
+          ? _value.axisLabel
+          : axisLabel // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CustomImpl implements _Custom {
+  const _$CustomImpl({this.axisLabel});
+
+  factory _$CustomImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomImplFromJson(json);
+
+  @override
+  final String? axisLabel;
+
+  @override
+  String toString() {
+    return 'Custom(axisLabel: $axisLabel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomImpl &&
+            (identical(other.axisLabel, axisLabel) ||
+                other.axisLabel == axisLabel));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, axisLabel);
+
+  /// Create a copy of Custom
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomImplCopyWith<_$CustomImpl> get copyWith =>
+      __$$CustomImplCopyWithImpl<_$CustomImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Custom implements Custom {
+  const factory _Custom({final String? axisLabel}) = _$CustomImpl;
+
+  factory _Custom.fromJson(Map<String, dynamic> json) = _$CustomImpl.fromJson;
+
+  @override
+  String? get axisLabel;
+
+  /// Create a copy of Custom
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CustomImplCopyWith<_$CustomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

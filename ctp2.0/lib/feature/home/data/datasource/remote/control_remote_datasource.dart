@@ -21,7 +21,7 @@ class ControlRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
   Future<List<ControlInfo>> getControls() async {
     _isFetchingSubject.add(true);
     try {
-      final response = await requestWithAuthentication<APIResponse<APIResult<ControlInfo>>>(
+      final response = await requestWithAuthentication<APIResultResponse<APIItemsResult<ControlInfo>>>(
         authenticationRep: _authentication,
         method: (String auth) => _client.getControls(
             authorization: auth,

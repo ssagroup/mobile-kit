@@ -61,9 +61,45 @@ Map<String, dynamic> _$$SourceInfoImplToJson(_$SourceInfoImpl instance) =>
 _$PanelSchemaImpl _$$PanelSchemaImplFromJson(Map<String, dynamic> json) =>
     _$PanelSchemaImpl(
       type: json['type'] as String,
+      fieldConfig:
+          FieldConfig.fromJson(json['fieldConfig'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PanelSchemaImplToJson(_$PanelSchemaImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
+      'fieldConfig': instance.fieldConfig,
+    };
+
+_$FieldConfigImpl _$$FieldConfigImplFromJson(Map<String, dynamic> json) =>
+    _$FieldConfigImpl(
+      defaults: Defaults.fromJson(json['defaults'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$FieldConfigImplToJson(_$FieldConfigImpl instance) =>
+    <String, dynamic>{
+      'defaults': instance.defaults,
+    };
+
+_$DefaultsImpl _$$DefaultsImplFromJson(Map<String, dynamic> json) =>
+    _$DefaultsImpl(
+      unit: json['unit'] as String?,
+      custom: json['custom'] == null
+          ? null
+          : Custom.fromJson(json['custom'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$DefaultsImplToJson(_$DefaultsImpl instance) =>
+    <String, dynamic>{
+      'unit': instance.unit,
+      'custom': instance.custom,
+    };
+
+_$CustomImpl _$$CustomImplFromJson(Map<String, dynamic> json) => _$CustomImpl(
+      axisLabel: json['axisLabel'] as String?,
+    );
+
+Map<String, dynamic> _$$CustomImplToJson(_$CustomImpl instance) =>
+    <String, dynamic>{
+      'axisLabel': instance.axisLabel,
     };

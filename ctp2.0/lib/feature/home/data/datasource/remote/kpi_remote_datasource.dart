@@ -22,7 +22,7 @@ class KpiRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
   Future<KpiInfo> getKpis(String period) async {
     _isFetchingSubject.add(true);
     try {
-      final response = await requestWithAuthentication<APIResponse<KpiInfo>>(
+      final response = await requestWithAuthentication<APIResultResponse<KpiInfo>>(
         authenticationRep: _authentication,
         method: (String auth) => _client.getKpis(
             authorization: auth,

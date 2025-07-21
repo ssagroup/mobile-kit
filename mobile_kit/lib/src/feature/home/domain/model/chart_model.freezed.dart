@@ -19,6 +19,7 @@ mixin _$ChartModel {
   String? get chartId => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
   ChartPointModel? get points => throw _privateConstructorUsedError;
+  String? get lastValue => throw _privateConstructorUsedError;
 
   /// Create a copy of ChartModel
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,11 @@ abstract class $ChartModelCopyWith<$Res> {
           ChartModel value, $Res Function(ChartModel) then) =
       _$ChartModelCopyWithImpl<$Res, ChartModel>;
   @useResult
-  $Res call({String? chartId, String? unit, ChartPointModel? points});
+  $Res call(
+      {String? chartId,
+      String? unit,
+      ChartPointModel? points,
+      String? lastValue});
 }
 
 /// @nodoc
@@ -54,6 +59,7 @@ class _$ChartModelCopyWithImpl<$Res, $Val extends ChartModel>
     Object? chartId = freezed,
     Object? unit = freezed,
     Object? points = freezed,
+    Object? lastValue = freezed,
   }) {
     return _then(_value.copyWith(
       chartId: freezed == chartId
@@ -68,6 +74,10 @@ class _$ChartModelCopyWithImpl<$Res, $Val extends ChartModel>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as ChartPointModel?,
+      lastValue: freezed == lastValue
+          ? _value.lastValue
+          : lastValue // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -80,7 +90,11 @@ abstract class _$$ChartModelImplCopyWith<$Res>
       __$$ChartModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? chartId, String? unit, ChartPointModel? points});
+  $Res call(
+      {String? chartId,
+      String? unit,
+      ChartPointModel? points,
+      String? lastValue});
 }
 
 /// @nodoc
@@ -99,6 +113,7 @@ class __$$ChartModelImplCopyWithImpl<$Res>
     Object? chartId = freezed,
     Object? unit = freezed,
     Object? points = freezed,
+    Object? lastValue = freezed,
   }) {
     return _then(_$ChartModelImpl(
       chartId: freezed == chartId
@@ -113,14 +128,19 @@ class __$$ChartModelImplCopyWithImpl<$Res>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as ChartPointModel?,
+      lastValue: freezed == lastValue
+          ? _value.lastValue
+          : lastValue // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ChartModelImpl extends _ChartModel {
-  const _$ChartModelImpl({this.chartId, this.unit, this.points}) : super._();
+class _$ChartModelImpl implements _ChartModel {
+  const _$ChartModelImpl(
+      {this.chartId, this.unit, this.points, this.lastValue});
 
   @override
   final String? chartId;
@@ -128,10 +148,12 @@ class _$ChartModelImpl extends _ChartModel {
   final String? unit;
   @override
   final ChartPointModel? points;
+  @override
+  final String? lastValue;
 
   @override
   String toString() {
-    return 'ChartModel(chartId: $chartId, unit: $unit, points: $points)';
+    return 'ChartModel(chartId: $chartId, unit: $unit, points: $points, lastValue: $lastValue)';
   }
 
   @override
@@ -141,11 +163,14 @@ class _$ChartModelImpl extends _ChartModel {
             other is _$ChartModelImpl &&
             (identical(other.chartId, chartId) || other.chartId == chartId) &&
             (identical(other.unit, unit) || other.unit == unit) &&
-            (identical(other.points, points) || other.points == points));
+            (identical(other.points, points) || other.points == points) &&
+            (identical(other.lastValue, lastValue) ||
+                other.lastValue == lastValue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chartId, unit, points);
+  int get hashCode =>
+      Object.hash(runtimeType, chartId, unit, points, lastValue);
 
   /// Create a copy of ChartModel
   /// with the given fields replaced by the non-null parameter values.
@@ -156,12 +181,12 @@ class _$ChartModelImpl extends _ChartModel {
       __$$ChartModelImplCopyWithImpl<_$ChartModelImpl>(this, _$identity);
 }
 
-abstract class _ChartModel extends ChartModel {
+abstract class _ChartModel implements ChartModel {
   const factory _ChartModel(
       {final String? chartId,
       final String? unit,
-      final ChartPointModel? points}) = _$ChartModelImpl;
-  const _ChartModel._() : super._();
+      final ChartPointModel? points,
+      final String? lastValue}) = _$ChartModelImpl;
 
   @override
   String? get chartId;
@@ -169,6 +194,8 @@ abstract class _ChartModel extends ChartModel {
   String? get unit;
   @override
   ChartPointModel? get points;
+  @override
+  String? get lastValue;
 
   /// Create a copy of ChartModel
   /// with the given fields replaced by the non-null parameter values.

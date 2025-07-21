@@ -18,7 +18,7 @@ void main() async {
         options: FirebaseOptions(
           apiKey: 'AIzaSyBl9mbU6uk5pijIgt92e5pyMFz_fbVxV5g',
           appId: '1:358947609747:android:6dab7969b14d39c55d8166',
-          messagingSenderId: '',
+          messagingSenderId: '358947609747',
           projectId: 'ctp-id',
           storageBucket: 'ctp-id.firebasestorage.app',
         )

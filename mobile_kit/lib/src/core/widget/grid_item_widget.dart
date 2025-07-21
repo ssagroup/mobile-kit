@@ -25,53 +25,62 @@ class GridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  itemValue,
-                  style: TextStyle(
-                    color: textColor ?? Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                if (unit != null) ...[
-                  const SizedBox(width: 4),
-                  Text(
-                    unit!,
-                    style: TextStyle(
-                      color: textColor ?? Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      itemValue,
+                      style: TextStyle(
+                        color: textColor ?? Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
+                  if (unit != null) ...[
+                    const SizedBox(width: 4),
+                    Text(
+                      unit!,
+                      style: TextStyle(
+                        color: textColor ?? Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                  if (isUp != null) ...[
+                    const SizedBox(width: 4),
+                    Icon(
+                      isUp! ? Icons.arrow_upward : Icons.arrow_downward,
+                      color: isUp! ? ColorPalette.greenText : ColorPalette.redText,
+                      size: 14,
+                    ),
+                  ]
                 ],
-                if (isUp != null) ...[
-                  const SizedBox(width: 4),
-                  Icon(
-                    isUp! ? Icons.arrow_upward : Icons.arrow_downward,
-                    color: isUp! ? ColorPalette.greenText : ColorPalette.redText,
-                    size: 14,
-                  ),
-                ]
-              ],
-            ),
-            const SizedBox(height: 2),
-            Text(
-              itemTitle,
-              style: TextStyle(
-                color: ColorPalette.grayText,
-                fontWeight: FontWeight.w400,
-                fontSize: 12,
               ),
-            ),
-          ],
+              const SizedBox(height: 2),
+              Expanded(
+                child: Text(
+                  itemTitle,
+                  style: TextStyle(
+                    color: ColorPalette.grayText,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 1,
+                ),
+              ),
+            ],
+          ),
         ),
         if (showChart == true) ...[
-          const Spacer(),
+          const SizedBox(width: 2),
           Container(
             padding: EdgeInsets.all(4),
             decoration: BoxDecoration(

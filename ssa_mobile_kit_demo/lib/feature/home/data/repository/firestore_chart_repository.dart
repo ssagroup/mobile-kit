@@ -11,7 +11,7 @@ class FirestoreChartRepositoryImpl implements ChartRepository {
   final FirebaseFirestore _firebaseStoreInstance;
 
   @override
-  Future<Either<Failure, ChartModel?>> getChartInfo(String? chartId, String? period) async {
+  Future<Either<Failure, ChartModel?>> getChartInfo(String? chartId, String? period, String? dashboardId) async {
     final chartRef = _firebaseStoreInstance.collection("charts").doc(chartId).withConverter(
           fromFirestore: ChartEntity.fromFirestore,
           toFirestore: (ChartEntity entity, _) => entity.toFirestore(),

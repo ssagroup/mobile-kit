@@ -7,7 +7,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class AuthenticationRepository {
 
-  Future<void> signIn({required AuthRequest request});
+  Future<Either<Failure, void>> signIn({required AuthRequest request});
 
   Future<void> logout();
 

@@ -9,14 +9,18 @@ class GetChartInfoUseCase {
     ChartRepository chartRepository,
     String? chartId,
     StatisticsPeriod? period,
+    String? dashboardId,
   )   : _chartRepository = chartRepository,
         _chartId = chartId,
-        _period = period;
+        _period = period,
+        _dashboardId = dashboardId;
 
   /// Get Chart info
-  Future<Either<Failure, ChartModel?>> invoke() async => await _chartRepository.getChartInfo(_chartId, _period?.apiValue);
+  Future<Either<Failure, ChartModel?>> invoke() async =>
+      await _chartRepository.getChartInfo(_chartId, _dashboardId, _period?.apiValue);
 
   final ChartRepository _chartRepository;
   final String? _chartId;
+  final String? _dashboardId;
   final StatisticsPeriod? _period;
 }
