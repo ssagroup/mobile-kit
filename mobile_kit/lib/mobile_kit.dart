@@ -9,6 +9,8 @@ export 'package:rxdart/rxdart.dart';
 
 // ---- Util ----
 export 'package:mobile_kit/src/core/util/optional.dart';
+export 'package:mobile_kit/src/core/util/either_extension.dart';
+export 'package:mobile_kit/src/core/util/iterable_extension.dart';
 
 // ---- Feature ----
 export 'package:mobile_kit/src/feature/login/domain/repository/auth_notifier.dart';
@@ -39,6 +41,7 @@ export 'package:mobile_kit/src/feature/home/domain/repository/chart_repository.d
 // Helpers
 export 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';
 export 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_enum.dart';
+export 'package:mobile_kit/src/feature/home/domain/helper/statistic_period_enum.dart';
 
 // ---- Core ----
 export 'package:mobile_kit/src/core/data/hive/hive_local_storage.dart';

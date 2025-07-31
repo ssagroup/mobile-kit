@@ -86,7 +86,7 @@ class _KpisScreenState extends State<KpisScreen> {
                                       ? null
                                       : () {
                                           final settings =
-                                              ChartScreenSettings(item.chartId, item.title, state.periodFilter);
+                                              ChartScreenSettings(item.chartId, item.title, state.periodFilter, null);
                                           context.goNamed(kpisChartRouteName, extra: settings);
                                         },
                                   child: Container(

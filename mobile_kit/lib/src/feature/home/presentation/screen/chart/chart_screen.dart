@@ -14,11 +14,12 @@ import 'package:mobile_kit/src/core/util/optional.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/chart/bloc/chart_datasource.dart';
 
 class ChartScreenSettings {
-  ChartScreenSettings(this.chartId, this.title, this.periodFilter);
+  ChartScreenSettings(this.chartId, this.title, this.periodFilter, this.dashboardId);
 
   final String? chartId;
   final String title;
   final StatisticsPeriod periodFilter;
+  final String? dashboardId;
 }
 
 class ChartScreen extends StatefulWidget {
@@ -26,9 +27,11 @@ class ChartScreen extends StatefulWidget {
       : _chartId = settings.chartId,
         _title = settings.title,
         _periodFilter = settings.periodFilter,
+        _dashboardId = settings.dashboardId,
         super(key: key);
 
   final String? _chartId;
+  final String? _dashboardId;
   final String _title;
   final StatisticsPeriod _periodFilter;
 
@@ -44,7 +47,12 @@ class _ChartScreenState extends State<ChartScreen> {
     super.initState();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
-    final getChartInfoUseCase = GetChartInfoUseCase(GetIt.instance<ChartRepository>(), widget._chartId);
+    final getChartInfoUseCase = GetChartInfoUseCase(
+      GetIt.instance<ChartRepository>(),
+      widget._chartId,
+      widget._periodFilter,
+      widget._dashboardId,
+    );
     _bloc = ChartCubit(
       getChartInfoUseCase,
     )..initialize();

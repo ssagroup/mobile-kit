@@ -20,6 +20,8 @@ mixin _$UserModel {
   String? get userName => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
   String? get pushToken => throw _privateConstructorUsedError;
+  String? get authToken => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +35,13 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String? email, String? userName, String uid, String? pushToken});
+  $Res call(
+      {String? email,
+      String? userName,
+      String uid,
+      String? pushToken,
+      String? authToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -55,6 +63,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? userName = freezed,
     Object? uid = null,
     Object? pushToken = freezed,
+    Object? authToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -73,6 +83,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.pushToken
           : pushToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      authToken: freezed == authToken
+          ? _value.authToken
+          : authToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -85,7 +103,13 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? email, String? userName, String uid, String? pushToken});
+  $Res call(
+      {String? email,
+      String? userName,
+      String uid,
+      String? pushToken,
+      String? authToken,
+      String? refreshToken});
 }
 
 /// @nodoc
@@ -105,6 +129,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? uid = null,
     Object? pushToken = freezed,
+    Object? authToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_$UserModelImpl(
       email: freezed == email
@@ -123,6 +149,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.pushToken
           : pushToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      authToken: freezed == authToken
+          ? _value.authToken
+          : authToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -131,7 +165,12 @@ class __$$UserModelImplCopyWithImpl<$Res>
 
 class _$UserModelImpl extends _UserModel {
   const _$UserModelImpl(
-      {this.email, this.userName, required this.uid, this.pushToken})
+      {this.email,
+      this.userName,
+      required this.uid,
+      this.pushToken,
+      this.authToken,
+      this.refreshToken})
       : super._();
 
   @override
@@ -142,10 +181,14 @@ class _$UserModelImpl extends _UserModel {
   final String uid;
   @override
   final String? pushToken;
+  @override
+  final String? authToken;
+  @override
+  final String? refreshToken;
 
   @override
   String toString() {
-    return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken)';
+    return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken, authToken: $authToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -158,11 +201,16 @@ class _$UserModelImpl extends _UserModel {
                 other.userName == userName) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.pushToken, pushToken) ||
-                other.pushToken == pushToken));
+                other.pushToken == pushToken) &&
+            (identical(other.authToken, authToken) ||
+                other.authToken == authToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, userName, uid, pushToken);
+  int get hashCode => Object.hash(
+      runtimeType, email, userName, uid, pushToken, authToken, refreshToken);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -178,7 +226,9 @@ abstract class _UserModel extends UserModel {
       {final String? email,
       final String? userName,
       required final String uid,
-      final String? pushToken}) = _$UserModelImpl;
+      final String? pushToken,
+      final String? authToken,
+      final String? refreshToken}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   @override
@@ -189,6 +239,10 @@ abstract class _UserModel extends UserModel {
   String get uid;
   @override
   String? get pushToken;
+  @override
+  String? get authToken;
+  @override
+  String? get refreshToken;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

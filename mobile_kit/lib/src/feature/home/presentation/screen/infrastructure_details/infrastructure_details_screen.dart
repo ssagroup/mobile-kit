@@ -81,10 +81,19 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
                               itemBuilder: (BuildContext context, int index) {
                                 final item = state.models[index];
                                 return GestureDetector(
-                                  onTap: () {
-                                    final settings = ChartScreenSettings(item.chartId, item.title, state.periodFilter);
-                                    context.goNamed(infrastructureChartRouteName, extra: settings);
-                                  },
+                                  onTap: item.chartId == null
+                                      ? null
+                                      : () {
+                                          final settings = ChartScreenSettings(
+                                            item.chartId,
+                                            item.title,
+                                            state.periodFilter,
+                                            item.dashboardUid,
+                                          );
+                                          context.goNamed(infrastructureChartRouteName,
+                                              extra: settings,
+                                              queryParameters: {'title': widget.title, 'id': widget.id});
+                                        },
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: ColorPalette.grayBackground,
@@ -149,12 +158,11 @@ class _InfrastructureDetailsScreenState extends State<InfrastructureDetailsScree
   Map<StatisticsPeriod, Widget> _segmentedWidgetList(BuildContext context, StatisticsPeriod period) {
     final dictionary = <StatisticsPeriod, Widget>{};
     for (final element in [
-      StatisticsPeriod.current,
       StatisticsPeriod.one_hour,
-      StatisticsPeriod.three_hours,
       StatisticsPeriod.six_hours,
-      StatisticsPeriod.twelve_hours,
-      StatisticsPeriod.day
+      StatisticsPeriod.day,
+      StatisticsPeriod.week,
+      StatisticsPeriod.month,
     ]) {
       dictionary[element] = Container(
         padding: const EdgeInsets.symmetric(vertical: 8),

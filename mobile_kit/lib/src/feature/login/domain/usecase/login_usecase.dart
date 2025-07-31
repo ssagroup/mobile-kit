@@ -5,7 +5,7 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 class LoginUseCase {
   LoginUseCase(
-    AuthenticationRepository authRepository,
+      authRepository,
   )   : _authenticationRepository = authRepository,
         super();
 
@@ -14,8 +14,7 @@ class LoginUseCase {
     required AuthRequest request,
   }) async {
     try {
-      await _authenticationRepository.signIn(request: request);
-      return const Right(unit);
+      return _authenticationRepository.signIn(request: request);
     } on CredentialsInvalidException catch (_) {
       return Left<Failure, void>(
         Failure.wrongCredentials(),

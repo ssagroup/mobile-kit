@@ -8,9 +8,8 @@ class ChartModel with _$ChartModel {
     String? chartId,
     String? unit,
     ChartPointModel? points,
+    String? lastValue,
   })= _ChartModel;
-
-  const ChartModel._();
 }
 
 class ChartPointModel {

@@ -35,7 +35,6 @@ class Failure with _$Failure {
 /// Thrown by remote data sources in case server connection failed
 ///
 class ServerException {
-
   ServerException(this.code, this.message);
 
   int code;
@@ -43,18 +42,10 @@ class ServerException {
 }
 
 class UnknownException {
-
   UnknownException(this.error);
 
   Object error;
 }
-
-
-/// Thrown by local data sources in case storage interaction failed
-class StorageException {}
-
-/// Thrown by local data sources in case requested data was not found in storage
-class DataNotFoundException extends StorageException {}
 
 /// Thrown by remote data sources when authentication with the token failed
 class TokenExpiredException extends ServerException {
@@ -62,4 +53,12 @@ class TokenExpiredException extends ServerException {
 }
 
 /// Thrown by remote data sources when provided credentials are invalid
-class CredentialsInvalidException {}
+class CredentialsInvalidException extends ServerException {
+  CredentialsInvalidException() : super(500, 'Login failed! Invalid user name or password');
+}
+
+/// Thrown by local data sources in case storage interaction failed
+class StorageException {}
+
+/// Thrown by local data sources in case requested data was not found in storage
+class DataNotFoundException extends StorageException {}

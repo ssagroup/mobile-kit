@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
@@ -49,26 +50,29 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<void> signIn({required AuthRequest request}) async {
+  Future<Either<Failure, void>> signIn({required AuthRequest request}) async {
     try {
       final credential = await _firebaseAuthInstance.signInWithEmailAndPassword(
         email: request.email,
         password: request.password,
       );
       print(credential);
+      return Right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
-        throw CredentialsInvalidException();
+        return Left(Failure.wrongCredentials());
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
-        throw CredentialsInvalidException();
+        return Left(Failure.wrongCredentials());
       } else if (e.code == 'invalid-credential') {
         print('The supplied auth credential is malformed or has expired.');
-        throw CredentialsInvalidException();
+        return Left(Failure.wrongCredentials());
+      } else {
+        return Left(Failure.wrongCredentials());
       }
     } catch (e) {
-      throw ServerException(-1001, 'Auth error');
+      return Left(Failure.server(-1001, 'Auth error'));
     }
   }
 
@@ -97,4 +101,14 @@ class FirebaseAuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<void> clear() async {
     await _biometricsLocalDatasource.clear();
   }
+
+  @override
+  Future<Either<Failure, void>> refreshToken() {
+    // TODO: implement refreshToken
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement token
+  Future<String> get token => throw UnimplementedError();
 }

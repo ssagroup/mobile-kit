@@ -12,6 +12,15 @@ extension EitherExtension<T> on Either<Failure, T> {
     );
   }
 
+  ifRightAsync(Function(T) function) async {
+    await fold(
+      (_) {
+        return;
+      },
+      await function,
+    );
+  }
+
   void ifLeft(void Function(Failure) function) {
     fold(
       function,
@@ -24,16 +33,15 @@ extension EitherExtension<T> on Either<Failure, T> {
   ApiStatus get foldedApiStatus => fold(
         (failure) => ApiStatusFailure(failure.errorDescription),
         (_) => ApiStatusSuccess(),
-  );
+      );
 
   AuthStatus get foldedAuthStatus => fold(
         (failure) => AuthStatusFailure(failure.errorDescription, failure == Failure.notAuthorized()),
         (_) => AuthStatusSuccess(),
-  );
+      );
 
   ApiStatus get foldedApiStatusWithResult => fold(
         (failure) => ApiStatusFailure(failure.errorDescription),
         (success) => ApiStatusSuccess(success),
-  );
-
+      );
 }

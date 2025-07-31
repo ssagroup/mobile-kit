@@ -91,7 +91,7 @@ class LineChartWidget extends StatelessWidget {
             showTitles: true,
             // interval: 1,
             getTitlesWidget: _leftTitleWidgets,
-            reservedSize: 30,
+            reservedSize: 40,
           ),
         ),
       ),
