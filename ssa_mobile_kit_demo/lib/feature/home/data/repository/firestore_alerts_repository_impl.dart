@@ -20,7 +20,7 @@ class FirestoreAlertsRepositoryImpl implements AlertsRepository {
   final NotificationsLocalDatasource _localDatasource;
 
   @override
-  Future<Either<Failure, List<NotificationModel>>> fetchNotifications() async {
+  Future<Either<Failure, PaginatedNotificationModel>> fetchNotifications({required int skipCount, required int limit}) async {
     final uid = _firebaseAuthInstance.currentUser?.uid;
     final ref = _firebaseStoreInstance.collection("users").doc(uid).collection("alerts").withConverter(
           fromFirestore: NotificationEntity.fromFirestore,
@@ -29,9 +29,9 @@ class FirestoreAlertsRepositoryImpl implements AlertsRepository {
     final result = await ref.get().then(
       (querySnapshot) async {
         final notifications = querySnapshot.docs.map((docSnapshot) => docSnapshot.data().notificationModel).toList();
-        return Right<Failure, List<NotificationModel>>(notifications) as Either<Failure, List<NotificationModel>>;
+        return Right<Failure, PaginatedNotificationModel>(PaginatedNotificationModel(models: notifications, totalCount: notifications.length)) as Either<Failure, PaginatedNotificationModel>;
       },
-    ).catchError((e) => Left<Failure, List<NotificationModel>>(Failure.unknown(e)));
+    ).catchError((e) => Left<Failure, PaginatedNotificationModel>(Failure.unknown(e)));
     return result;
   }
 

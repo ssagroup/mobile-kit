@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_kit/src/core/util/api_status_failure_messenger.dart';
@@ -12,46 +13,67 @@ part 'alerts_state.dart';
 
 class AlertsCubit extends Cubit<AlertsState> {
   AlertsCubit(
-    GetAllNotificationsUseCase getAllNotificationsUseCase,
-  )   : _getAllNotificationsUseCase = getAllNotificationsUseCase,
+      GetNotificationsPageUseCase getNotificationsPageUseCase,
+  )   : _getNotificationsPageUseCase = getNotificationsPageUseCase,
         super(AlertsState.initial()) {
-    subscriptions.add(_getAllNotificationsUseCase.notifications.listen((notifications) {
-      _updateNotifications(notifications);
-    }));
 
-    subscriptions.add(_getAllNotificationsUseCase.pushMessage.listen((unit) {
+    subscriptions.add(_getNotificationsPageUseCase.pushMessage.listen((unit) {
       refresh();
     }));
   }
 
   List<StreamSubscription> subscriptions = [];
-  GetAllNotificationsUseCase _getAllNotificationsUseCase;
+  GetNotificationsPageUseCase _getNotificationsPageUseCase;
+  DateTime? _lastFailureApiCall;
 
   Future<void> initialize() async {
-    emit(state.copyWith(
-      isLoading: true,
-    ));
     await refresh();
-    emit(state.copyWith(
-      isLoading: false,
-    ));
   }
 
   Future<void> refresh() async {
-    final ApiStatus status =
-    (await _getAllNotificationsUseCase.invoke()).fold((l) => ApiStatusFailure(), (r) => ApiStatusSuccess());
+    emit(state.copyWith(
+      skipCount: 0,
+      models: [],
+    ));
+    await loadNextPage();
+  }
+
+  Future<void> loadNextPage() async {
+    if (state.isLoading) {
+      return;
+    }
+
+    if (_lastFailureApiCall != null && DateTime.now().difference(_lastFailureApiCall!).inSeconds < 3) {
+      return;
+    }
+
+    emit(state.copyWith(
+      isLoading: true,
+    ));
+
+    final ApiStatus status = (await _getNotificationsPageUseCase.invoke(skipCount: state.skipCount))
+        .fold((l) => ApiStatusFailure(), (r) => ApiStatusSuccess(r));
+
+    switch (status) {
+      case ApiStatusSuccess(result: Object? result):
+        emit(state.copyWith(
+          skipCount: state.skipCount + (result as PaginatedNotificationModel).models.length,
+          totalCount: result.totalCount,
+          models: state.models + result.models,
+        ));
+        _lastFailureApiCall = null;
+      case ApiStatusFailure():
+        _lastFailureApiCall = DateTime.now();
+      default:
+        break;
+    }
+
     emit(state.copyWith(
       apiStatus: status,
+      isLoading: false,
     ));
     emit(state.copyWith(
       apiStatus: ApiStatusNone(),
-    ));
-  }
-
-  void _updateNotifications(List<NotificationModel> notifications) {
-    emit(state.copyWith(
-      models: notifications,
-      trigger: !state.trigger,
     ));
   }
 

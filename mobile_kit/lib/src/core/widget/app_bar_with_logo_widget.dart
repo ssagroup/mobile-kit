@@ -24,7 +24,7 @@ class AppBarWithLogoWidget extends StatelessWidget implements PreferredSizeWidge
         title: title,
         backgroundColor: ColorPalette.grayBackground,
         actions: actions,
-        leadingWidth: 116,
+        leadingWidth: 37+16,
         shadowColor: Colors.transparent,
       ),
     );

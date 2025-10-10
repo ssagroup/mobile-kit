@@ -1,7 +1,7 @@
 part of 'chart_cubit.dart';
 
 @freezed
-class ChartState with _$ChartState implements ApiStatusState {
+abstract class ChartState with _$ChartState implements ApiStatusState {
   const factory ChartState({
     required bool isLoading,
     required ApiStatus apiStatus,

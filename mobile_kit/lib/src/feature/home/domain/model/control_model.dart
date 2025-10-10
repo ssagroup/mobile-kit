@@ -5,7 +5,7 @@ import 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.da
 part 'control_model.freezed.dart';
 
 @freezed
-class ControlModel  with _$ControlModel implements Sortable {
+abstract class ControlModel  with _$ControlModel implements Sortable {
   const factory ControlModel({
     required int id,
     required String name,

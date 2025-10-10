@@ -8,20 +8,11 @@ enum InfrastructureStatus {
 
 extension InfrastructureStatusExtension on InfrastructureStatus {
 
-  static InfrastructureStatus init(String status) {
-    switch (status) {
-      case 'Normal': return InfrastructureStatus.normal;
-      case 'Warning': return InfrastructureStatus.warning;
-      case 'Error': return InfrastructureStatus.error;
-    }
-    throw 'Undefined type';
-  }
-
   String get assetName => switch (this) {
     InfrastructureStatus.normal => Assets.normalStatusIcon,
     InfrastructureStatus.warning => Assets.warningStatusIcon,
     InfrastructureStatus.error => Assets.errorStatusIcon,
-    InfrastructureStatus.none => '',
+    InfrastructureStatus.none => Assets.noStatusIcon,
   };
 
   Color get color => switch (this) {

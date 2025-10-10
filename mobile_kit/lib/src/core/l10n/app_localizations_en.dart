@@ -18,7 +18,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validationEmailRequired => '*Email is required';
 
   @override
-  String get validationEmailWrongFormat => 'Email must be in the format \\\'name@domain.com';
+  String get validationEmailWrongFormat =>
+      'Email must be in the format \\\'name@domain.com';
 
   @override
   String get emailPlaceholder => 'Email*';
@@ -51,19 +52,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stopAllAlertTitle => 'Stop All Controls';
 
   @override
-  String get stopAllAlertMessage => 'Are you sure you want to stop all running controls?';
+  String get stopAllAlertMessage =>
+      'Are you sure you want to stop all running controls?';
 
   @override
   String get stopControlAlertTitle => 'Stop this control';
 
   @override
-  String get stopControlAlertMessage => 'Are you sure you want to stop this control?';
+  String get stopControlAlertMessage =>
+      'Are you sure you want to stop this control?';
 
   @override
   String get setupPinAlertTitle => 'Enabling biometrical authentication';
 
   @override
-  String get setupPinAlertMessage => 'Do you want to enable biometrical authentication for SSA Mobile Kit?';
+  String get setupPinAlertMessage =>
+      'Do you want to enable biometrical authentication for SSA Mobile Kit?';
 
   @override
   String get homeTitle => 'Home';
