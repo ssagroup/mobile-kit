@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel {
 
- String? get email; String? get userName; String get uid; String? get pushToken; String? get authToken; String? get refreshToken;
+ String? get email; String? get userName; String get uid; String? get pushToken; String? get authToken; String? get refreshToken; UserRole? get userRole;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $UserModelCopyWith<UserModel> get copyWith => _$UserModelCopyWithImpl<UserModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.email, email) || other.email == email)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.uid, uid) || other.uid == uid)&&(identical(other.pushToken, pushToken) || other.pushToken == pushToken)&&(identical(other.authToken, authToken) || other.authToken == authToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.email, email) || other.email == email)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.uid, uid) || other.uid == uid)&&(identical(other.pushToken, pushToken) || other.pushToken == pushToken)&&(identical(other.authToken, authToken) || other.authToken == authToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.userRole, userRole) || other.userRole == userRole));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,userName,uid,pushToken,authToken,refreshToken);
+int get hashCode => Object.hash(runtimeType,email,userName,uid,pushToken,authToken,refreshToken,userRole);
 
 @override
 String toString() {
-  return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken, authToken: $authToken, refreshToken: $refreshToken)';
+  return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken, authToken: $authToken, refreshToken: $refreshToken, userRole: $userRole)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
- String? email, String? userName, String uid, String? pushToken, String? authToken, String? refreshToken
+ String? email, String? userName, String uid, String? pushToken, String? authToken, String? refreshToken, UserRole? userRole
 });
 
 
@@ -62,7 +62,7 @@ class _$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? userName = freezed,Object? uid = null,Object? pushToken = freezed,Object? authToken = freezed,Object? refreshToken = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? userName = freezed,Object? uid = null,Object? pushToken = freezed,Object? authToken = freezed,Object? refreshToken = freezed,Object? userRole = freezed,}) {
   return _then(_self.copyWith(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,8 @@ as String?,uid: null == uid ? _self.uid : uid // ignore: cast_nullable_to_non_nu
 as String,pushToken: freezed == pushToken ? _self.pushToken : pushToken // ignore: cast_nullable_to_non_nullable
 as String?,authToken: freezed == authToken ? _self.authToken : authToken // ignore: cast_nullable_to_non_nullable
 as String?,refreshToken: freezed == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,userRole: freezed == userRole ? _self.userRole : userRole // ignore: cast_nullable_to_non_nullable
+as UserRole?,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken,  UserRole? userRole)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken);case _:
+return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken,_that.userRole);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authT
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken,  UserRole? userRole)  $default,) {final _that = this;
 switch (_that) {
 case _UserModel():
-return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken);case _:
+return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken,_that.userRole);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authT
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  String? userName,  String uid,  String? pushToken,  String? authToken,  String? refreshToken,  UserRole? userRole)?  $default,) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken);case _:
+return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authToken,_that.refreshToken,_that.userRole);case _:
   return null;
 
 }
@@ -211,7 +212,7 @@ return $default(_that.email,_that.userName,_that.uid,_that.pushToken,_that.authT
 
 
 class _UserModel extends UserModel {
-  const _UserModel({this.email, this.userName, required this.uid, this.pushToken, this.authToken, this.refreshToken}): super._();
+  const _UserModel({this.email, this.userName, required this.uid, this.pushToken, this.authToken, this.refreshToken, this.userRole}): super._();
   
 
 @override final  String? email;
@@ -220,6 +221,7 @@ class _UserModel extends UserModel {
 @override final  String? pushToken;
 @override final  String? authToken;
 @override final  String? refreshToken;
+@override final  UserRole? userRole;
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +233,16 @@ _$UserModelCopyWith<_UserModel> get copyWith => __$UserModelCopyWithImpl<_UserMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.email, email) || other.email == email)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.uid, uid) || other.uid == uid)&&(identical(other.pushToken, pushToken) || other.pushToken == pushToken)&&(identical(other.authToken, authToken) || other.authToken == authToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.email, email) || other.email == email)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.uid, uid) || other.uid == uid)&&(identical(other.pushToken, pushToken) || other.pushToken == pushToken)&&(identical(other.authToken, authToken) || other.authToken == authToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.userRole, userRole) || other.userRole == userRole));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,userName,uid,pushToken,authToken,refreshToken);
+int get hashCode => Object.hash(runtimeType,email,userName,uid,pushToken,authToken,refreshToken,userRole);
 
 @override
 String toString() {
-  return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken, authToken: $authToken, refreshToken: $refreshToken)';
+  return 'UserModel(email: $email, userName: $userName, uid: $uid, pushToken: $pushToken, authToken: $authToken, refreshToken: $refreshToken, userRole: $userRole)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? email, String? userName, String uid, String? pushToken, String? authToken, String? refreshToken
+ String? email, String? userName, String uid, String? pushToken, String? authToken, String? refreshToken, UserRole? userRole
 });
 
 
@@ -268,7 +270,7 @@ class __$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? userName = freezed,Object? uid = null,Object? pushToken = freezed,Object? authToken = freezed,Object? refreshToken = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? userName = freezed,Object? uid = null,Object? pushToken = freezed,Object? authToken = freezed,Object? refreshToken = freezed,Object? userRole = freezed,}) {
   return _then(_UserModel(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
@@ -276,7 +278,8 @@ as String?,uid: null == uid ? _self.uid : uid // ignore: cast_nullable_to_non_nu
 as String,pushToken: freezed == pushToken ? _self.pushToken : pushToken // ignore: cast_nullable_to_non_nullable
 as String?,authToken: freezed == authToken ? _self.authToken : authToken // ignore: cast_nullable_to_non_nullable
 as String?,refreshToken: freezed == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,userRole: freezed == userRole ? _self.userRole : userRole // ignore: cast_nullable_to_non_nullable
+as UserRole?,
   ));
 }
 

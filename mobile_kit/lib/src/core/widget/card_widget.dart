@@ -5,13 +5,11 @@ class CardWidget extends StatelessWidget {
   const CardWidget({
     super.key,
     required this.item,
-    required this.index,
     this.onTapCallback,
   });
 
   final Widget item;
-  final int index;
-  final void Function(int)? onTapCallback;
+  final void Function()? onTapCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class CardWidget extends StatelessWidget {
           ),
         ),
       ),
-      onTap: onTapCallback != null ? () => onTapCallback!(index) : null,
+      onTap: onTapCallback != null ? () => onTapCallback!() : null,
     );
   }
 }

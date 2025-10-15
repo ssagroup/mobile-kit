@@ -8,7 +8,7 @@ import 'package:mobile_kit/src/core/widget/bottom_bar_widget.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_notifications_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/alerts/alerts_screen.dart';
-import 'package:mobile_kit/src/feature/home/presentation/screen/home_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/home/home_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 GlobalKey<ScaffoldState> scaffoldState = new GlobalKey();

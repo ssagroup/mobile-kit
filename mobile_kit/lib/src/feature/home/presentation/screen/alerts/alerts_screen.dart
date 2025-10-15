@@ -96,7 +96,6 @@ class _AlertsScreenState extends State<AlertsScreen> {
                               final elem = state.models[index];
                               return CardWidget(
                                 item: AlertWidget(model: elem),
-                                index: index,
                               );
                             },
                             itemCount: state.models.length,
