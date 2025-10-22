@@ -83,7 +83,6 @@ class _ControlScreenState extends State<ControlScreen> {
                                 model: elem,
                                 onPressed: () => _bloc.toggleControlById(elem),
                               ),
-                              index: index,
                             );
                           },
                           itemCount: state.models.length,

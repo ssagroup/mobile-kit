@@ -1,7 +1,7 @@
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="6" cy="6" r="6" fill="url(#paint0_linear_122_1109)"/>
+<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="5.12821" cy="5" rx="5.12821" ry="5" transform="matrix(1.00864e-07 -1 -1 -1.89432e-08 10 10.2563)" fill="url(#paint0_linear_8700_4093)"/>
 <defs>
-<linearGradient id="paint0_linear_122_1109" x1="1.16288e-07" y1="6" x2="11.6893" y2="7.90582" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_8700_4093" x1="9.93918e-08" y1="5" x2="9.97741" y2="6.66843" gradientUnits="userSpaceOnUse">
 <stop stop-color="#F0816B"/>
 <stop offset="0.998643" stop-color="#F99990"/>
 </linearGradient>

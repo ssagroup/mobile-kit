@@ -1,7 +1,7 @@
 part of 'control_cubit.dart';
 
 @freezed
-class ControlState with _$ControlState implements ApiStatusState {
+abstract class ControlState with _$ControlState implements ApiStatusState {
   const factory ControlState({
     required bool isLoading,
     required ApiStatus apiStatus,

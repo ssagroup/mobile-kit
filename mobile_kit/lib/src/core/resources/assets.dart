@@ -26,6 +26,7 @@ class Assets {
   static const String normalStatusIcon = 'assets/icons/normal_status_ic.svg';
   static const String warningStatusIcon = 'assets/icons/warning_status_ic.svg';
   static const String errorStatusIcon = 'assets/icons/error_status_ic.svg';
+  static const String noStatusIcon = 'assets/icons/grey_status_ic.svg';
 }
 
 const assetsPackage = 'mobile_kit';

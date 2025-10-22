@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mobile_kit/src/core/resources/assets.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobile_kit/src/core/widget/app_logo_provider.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({
@@ -9,9 +9,10 @@ class AppLogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      Assets.ssaLogoSmall,
-      package: assetsPackage,
-    );
+    return GetIt.instance<AppLogoProvider>().appLogo();
+    // return SvgPicture.asset(
+    //   Assets.ssaLogoSmall,
+    //   package: assetsPackage,
+    // );
   }
 }

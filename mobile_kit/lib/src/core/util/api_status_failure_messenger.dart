@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_kit/src/core/l10n/app_localizations.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/bottom_tab_screen.dart';
 import 'package:mobile_kit/src/feature/login/domain/model/auth_status.dart';
 
 abstract class ApiStatusState {
@@ -9,14 +10,13 @@ abstract class ApiStatusState {
 void showFailure(BuildContext context, ApiStatusState state) {
   switch (state.apiStatus) {
     case ApiStatusFailure(message: final messsage):
-      final snackBar = SnackBar(
-        content: Text(
-          messsage ?? AppLocalizations.of(context)!.errorLoadingData,
-        ),
-      );
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(snackBar);
-    default: break;
+      final snackBar = SnackBar(content: Text(messsage ?? AppLocalizations.of(context)!.errorLoadingData));
+      if (scaffoldState.currentContext != null) {
+        ScaffoldMessenger.of(scaffoldState.currentContext!)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(snackBar);
+      }
+    default:
+      break;
   }
 }

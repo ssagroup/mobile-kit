@@ -3,16 +3,16 @@ import 'package:mobile_kit/src/feature/home/domain/helper/infrastructure_status_
 
 class InfrastructureDetailsModel implements Sortable {
   InfrastructureDetailsModel({
-    required this.status,
     required this.title,
     required this.value,
     required this.order,
     this.unit,
     this.chartId,
     this.dashboardUid,
+    this.status,
   });
 
-  final InfrastructureStatus status;
+  final InfrastructureStatus? status;
   final String value;
   @override int order;
   final String title;

@@ -1,7 +1,7 @@
 part of 'infrastructure_details_cubit.dart';
 
 @freezed
-class InfrastructureDetailsState with _$InfrastructureDetailsState implements ApiStatusState {
+abstract class InfrastructureDetailsState with _$InfrastructureDetailsState implements ApiStatusState {
   const factory InfrastructureDetailsState({
     required bool isLoading,
     required ApiStatus apiStatus,

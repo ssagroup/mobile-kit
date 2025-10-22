@@ -6,6 +6,7 @@ export 'package:logger/logger.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:hive/hive.dart';
 export 'package:rxdart/rxdart.dart';
+export 'package:flutter_svg/svg.dart';
 
 // ---- Util ----
 export 'package:mobile_kit/src/core/util/optional.dart';
@@ -37,6 +38,9 @@ export 'package:mobile_kit/src/feature/home/domain/repository/infrastructure_rep
 export 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 export 'package:mobile_kit/src/feature/home/data/notifications_local_datasource.dart';
 export 'package:mobile_kit/src/feature/home/domain/repository/chart_repository.dart';
+
+// UI Provider
+export 'package:mobile_kit/src/core/widget/app_logo_provider.dart';
 
 // Helpers
 export 'package:mobile_kit/src/feature/home/domain/helper/control_status_enum.dart';

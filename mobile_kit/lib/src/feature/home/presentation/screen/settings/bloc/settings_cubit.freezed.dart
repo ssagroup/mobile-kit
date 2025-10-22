@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,197 +9,272 @@ part of 'settings_cubit.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$SettingsState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  ApiStatus get apiStatus => throw _privateConstructorUsedError;
 
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SettingsStateCopyWith<SettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get isLoading; String? get email; String? get username; ApiStatus get apiStatus;
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SettingsStateCopyWith<SettingsState> get copyWith => _$SettingsStateCopyWithImpl<SettingsState>(this as SettingsState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.email, email) || other.email == email)&&(identical(other.username, username) || other.username == username)&&(identical(other.apiStatus, apiStatus) || other.apiStatus == apiStatus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,email,username,apiStatus);
+
+@override
+String toString() {
+  return 'SettingsState(isLoading: $isLoading, email: $email, username: $username, apiStatus: $apiStatus)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SettingsStateCopyWith<$Res> {
-  factory $SettingsStateCopyWith(
-          SettingsState value, $Res Function(SettingsState) then) =
-      _$SettingsStateCopyWithImpl<$Res, SettingsState>;
-  @useResult
-  $Res call(
-      {bool isLoading, String? email, String? username, ApiStatus apiStatus});
-}
+abstract mixin class $SettingsStateCopyWith<$Res>  {
+  factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) _then) = _$SettingsStateCopyWithImpl;
+@useResult
+$Res call({
+ bool isLoading, String? email, String? username, ApiStatus apiStatus
+});
 
+
+
+
+}
 /// @nodoc
-class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
+class _$SettingsStateCopyWithImpl<$Res>
     implements $SettingsStateCopyWith<$Res> {
-  _$SettingsStateCopyWithImpl(this._value, this._then);
+  _$SettingsStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SettingsState _self;
+  final $Res Function(SettingsState) _then;
 
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? apiStatus = null,
-  }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apiStatus: null == apiStatus
-          ? _value.apiStatus
-          : apiStatus // ignore: cast_nullable_to_non_nullable
-              as ApiStatus,
-    ) as $Val);
-  }
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? email = freezed,Object? username = freezed,Object? apiStatus = null,}) {
+  return _then(_self.copyWith(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,apiStatus: null == apiStatus ? _self.apiStatus : apiStatus // ignore: cast_nullable_to_non_nullable
+as ApiStatus,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SettingsState].
+extension SettingsStatePatterns on SettingsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SettingsState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SettingsState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SettingsState value)  $default,){
+final _that = this;
+switch (_that) {
+case _SettingsState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SettingsState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SettingsState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  String? email,  String? username,  ApiStatus apiStatus)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SettingsState() when $default != null:
+return $default(_that.isLoading,_that.email,_that.username,_that.apiStatus);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  String? email,  String? username,  ApiStatus apiStatus)  $default,) {final _that = this;
+switch (_that) {
+case _SettingsState():
+return $default(_that.isLoading,_that.email,_that.username,_that.apiStatus);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  String? email,  String? username,  ApiStatus apiStatus)?  $default,) {final _that = this;
+switch (_that) {
+case _SettingsState() when $default != null:
+return $default(_that.isLoading,_that.email,_that.username,_that.apiStatus);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$SettingsStateImplCopyWith<$Res>
-    implements $SettingsStateCopyWith<$Res> {
-  factory _$$SettingsStateImplCopyWith(
-          _$SettingsStateImpl value, $Res Function(_$SettingsStateImpl) then) =
-      __$$SettingsStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool isLoading, String? email, String? username, ApiStatus apiStatus});
+
+
+class _SettingsState implements SettingsState {
+  const _SettingsState({required this.isLoading, required this.email, required this.username, required this.apiStatus});
+  
+
+@override final  bool isLoading;
+@override final  String? email;
+@override final  String? username;
+@override final  ApiStatus apiStatus;
+
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SettingsStateCopyWith<_SettingsState> get copyWith => __$SettingsStateCopyWithImpl<_SettingsState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.email, email) || other.email == email)&&(identical(other.username, username) || other.username == username)&&(identical(other.apiStatus, apiStatus) || other.apiStatus == apiStatus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,email,username,apiStatus);
+
+@override
+String toString() {
+  return 'SettingsState(isLoading: $isLoading, email: $email, username: $username, apiStatus: $apiStatus)';
+}
+
+
 }
 
 /// @nodoc
-class __$$SettingsStateImplCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$SettingsStateImpl>
-    implements _$$SettingsStateImplCopyWith<$Res> {
-  __$$SettingsStateImplCopyWithImpl(
-      _$SettingsStateImpl _value, $Res Function(_$SettingsStateImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$SettingsStateCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
+  factory _$SettingsStateCopyWith(_SettingsState value, $Res Function(_SettingsState) _then) = __$SettingsStateCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isLoading, String? email, String? username, ApiStatus apiStatus
+});
 
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? apiStatus = null,
-  }) {
-    return _then(_$SettingsStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apiStatus: null == apiStatus
-          ? _value.apiStatus
-          : apiStatus // ignore: cast_nullable_to_non_nullable
-              as ApiStatus,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$SettingsStateCopyWithImpl<$Res>
+    implements _$SettingsStateCopyWith<$Res> {
+  __$SettingsStateCopyWithImpl(this._self, this._then);
 
-class _$SettingsStateImpl implements _SettingsState {
-  const _$SettingsStateImpl(
-      {required this.isLoading,
-      required this.email,
-      required this.username,
-      required this.apiStatus});
+  final _SettingsState _self;
+  final $Res Function(_SettingsState) _then;
 
-  @override
-  final bool isLoading;
-  @override
-  final String? email;
-  @override
-  final String? username;
-  @override
-  final ApiStatus apiStatus;
-
-  @override
-  String toString() {
-    return 'SettingsState(isLoading: $isLoading, email: $email, username: $username, apiStatus: $apiStatus)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SettingsStateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.apiStatus, apiStatus) ||
-                other.apiStatus == apiStatus));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, email, username, apiStatus);
-
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
-      __$$SettingsStateImplCopyWithImpl<_$SettingsStateImpl>(this, _$identity);
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? email = freezed,Object? username = freezed,Object? apiStatus = null,}) {
+  return _then(_SettingsState(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,apiStatus: null == apiStatus ? _self.apiStatus : apiStatus // ignore: cast_nullable_to_non_nullable
+as ApiStatus,
+  ));
 }
 
-abstract class _SettingsState implements SettingsState {
-  const factory _SettingsState(
-      {required final bool isLoading,
-      required final String? email,
-      required final String? username,
-      required final ApiStatus apiStatus}) = _$SettingsStateImpl;
 
-  @override
-  bool get isLoading;
-  @override
-  String? get email;
-  @override
-  String? get username;
-  @override
-  ApiStatus get apiStatus;
-
-  /// Create a copy of SettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

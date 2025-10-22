@@ -1,7 +1,7 @@
 part of 'verify_pin_cubit.dart';
 
 @freezed
-class VerifyPinState with _$VerifyPinState {
+abstract class VerifyPinState with _$VerifyPinState {
   const factory VerifyPinState({
     required bool showError,
     required bool isBioEnabled,

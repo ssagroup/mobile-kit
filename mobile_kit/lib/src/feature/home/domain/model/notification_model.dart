@@ -9,3 +9,13 @@ class NotificationModel {
   final String title;
   final DateTime createdDate;
 }
+
+class PaginatedNotificationModel {
+  PaginatedNotificationModel({
+    required this.models,
+    required this.totalCount,
+  });
+
+  final List<NotificationModel> models;
+  final int totalCount;
+}

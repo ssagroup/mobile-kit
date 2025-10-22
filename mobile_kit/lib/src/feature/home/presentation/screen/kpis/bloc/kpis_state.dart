@@ -1,7 +1,7 @@
 part of 'kpis_cubit.dart';
 
 @freezed
-class KpisState with _$KpisState implements ApiStatusState {
+abstract class KpisState with _$KpisState implements ApiStatusState {
   const factory KpisState({
     required bool isLoading,
     required ApiStatus apiStatus,

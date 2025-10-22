@@ -8,8 +8,10 @@ import 'package:mobile_kit/src/core/widget/bottom_bar_widget.dart';
 import 'package:mobile_kit/src/feature/home/domain/repository/alerts_repository.dart';
 import 'package:mobile_kit/src/feature/home/domain/usecase/get_all_notifications_usecase.dart';
 import 'package:mobile_kit/src/feature/home/presentation/screen/alerts/alerts_screen.dart';
-import 'package:mobile_kit/src/feature/home/presentation/screen/home_screen.dart';
+import 'package:mobile_kit/src/feature/home/presentation/screen/home/home_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+
+GlobalKey<ScaffoldState> scaffoldState = new GlobalKey();
 
 class BottomTabScreen extends StatefulWidget {
   const BottomTabScreen({super.key});
@@ -20,7 +22,7 @@ class BottomTabScreen extends StatefulWidget {
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
   late PersistentTabController _controller;
-  final GetAllNotificationsUseCase _useCase = GetAllNotificationsUseCase(GetIt.instance<AlertsRepository>());
+  final GetNotificationsPageUseCase _useCase = GetNotificationsPageUseCase(GetIt.instance<AlertsRepository>());
 
   @override
   void initState() {
@@ -39,37 +41,39 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
     double screenWidth = MediaQuery.sizeOf(context).width;
     final inset = 16.0;
     double tabWidth = screenWidth / 2 - inset * 2;
-    return PersistentTabView.custom(
-      context,
-      controller: _controller,
-      customWidget: Container(
-        color: ColorPalette.grayBackground,
-        child: BottomBarWidget(
-          tabWidth: tabWidth,
-          inset: inset,
-          items: _navBarsItems(),
-          onItemSelected: (final index) {
-            setState(() {
-              _controller.index = index;
-            });
-            if (index == 1) _useCase.invoke();
-          },
-          selectedIndex: _controller.index,
+    return Scaffold(
+      key: scaffoldState,
+      body: PersistentTabView.custom(
+        context,
+        controller: _controller,
+        customWidget: Container(
+          color: ColorPalette.grayBackground,
+          child: BottomBarWidget(
+            tabWidth: tabWidth,
+            inset: inset,
+            items: _navBarsItems(),
+            onItemSelected: (final index) {
+              setState(() {
+                _controller.index = index;
+              });
+            },
+            selectedIndex: _controller.index,
+          ),
         ),
-      ),
-      screens: _buildScreens(),
-      stateManagement: true,
-      hideNavigationBarWhenKeyboardAppears: true,
-      isVisible: true,
-      animationSettings: const NavBarAnimationSettings(
-        navBarItemAnimation: ItemAnimationSettings(
-          duration: Duration(milliseconds: 400),
-          curve: Curves.ease,
+        screens: _buildScreens(),
+        stateManagement: true,
+        hideNavigationBarWhenKeyboardAppears: true,
+        isVisible: true,
+        animationSettings: const NavBarAnimationSettings(
+          navBarItemAnimation: ItemAnimationSettings(
+            duration: Duration(milliseconds: 400),
+            curve: Curves.ease,
+          ),
         ),
+        confineToSafeArea: false,
+        navBarHeight: 102,
+        itemCount: 2,
       ),
-      confineToSafeArea: false,
-      navBarHeight: 102,
-      itemCount: 2,
     );
   }
 

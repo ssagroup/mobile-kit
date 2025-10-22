@@ -4,15 +4,11 @@ import 'package:mobile_kit/src/shared/domain/entity/failure.dart';
 
 abstract class AlertsRepository {
 
-  Future<Either<Failure, List<NotificationModel>>> fetchNotifications();
-
-  Stream<List<NotificationModel>> get notificationStream;
+  Future<Either<Failure, PaginatedNotificationModel>> fetchNotifications({required int skipCount, required int limit});
 
   Stream<Unit> get pushMessageStream;
 
   Stream<String?> get pushTokenStream;
-
-  void updateNotifications(List<NotificationModel> notifications);
 
   Future<void> requestPushNotificationToken();
 

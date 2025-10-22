@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,703 +9,350 @@ part of 'auth_notifier.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AuthenticationState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthenticationState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AuthenticationStateCopyWith<$Res> {
-  factory $AuthenticationStateCopyWith(
-          AuthenticationState value, $Res Function(AuthenticationState) then) =
-      _$AuthenticationStateCopyWithImpl<$Res, AuthenticationState>;
+class $AuthenticationStateCopyWith<$Res>  {
+$AuthenticationStateCopyWith(AuthenticationState _, $Res Function(AuthenticationState) __);
 }
 
-/// @nodoc
-class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
-    implements $AuthenticationStateCopyWith<$Res> {
-  _$AuthenticationStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [AuthenticationState].
+extension AuthenticationStatePatterns on AuthenticationState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initializing value)?  initializing,TResult Function( _LoggingIn value)?  login,TResult Function( _CreatePin value)?  createPin,TResult Function( _VerifyUser value)?  verifyUser,TResult Function( _Authenticated value)?  authenticated,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initializing() when initializing != null:
+return initializing(_that);case _LoggingIn() when login != null:
+return login(_that);case _CreatePin() when createPin != null:
+return createPin(_that);case _VerifyUser() when verifyUser != null:
+return verifyUser(_that);case _Authenticated() when authenticated != null:
+return authenticated(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initializing value)  initializing,required TResult Function( _LoggingIn value)  login,required TResult Function( _CreatePin value)  createPin,required TResult Function( _VerifyUser value)  verifyUser,required TResult Function( _Authenticated value)  authenticated,}){
+final _that = this;
+switch (_that) {
+case _Initializing():
+return initializing(_that);case _LoggingIn():
+return login(_that);case _CreatePin():
+return createPin(_that);case _VerifyUser():
+return verifyUser(_that);case _Authenticated():
+return authenticated(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initializing value)?  initializing,TResult? Function( _LoggingIn value)?  login,TResult? Function( _CreatePin value)?  createPin,TResult? Function( _VerifyUser value)?  verifyUser,TResult? Function( _Authenticated value)?  authenticated,}){
+final _that = this;
+switch (_that) {
+case _Initializing() when initializing != null:
+return initializing(_that);case _LoggingIn() when login != null:
+return login(_that);case _CreatePin() when createPin != null:
+return createPin(_that);case _VerifyUser() when verifyUser != null:
+return verifyUser(_that);case _Authenticated() when authenticated != null:
+return authenticated(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initializing,TResult Function()?  login,TResult Function()?  createPin,TResult Function()?  verifyUser,TResult Function()?  authenticated,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initializing() when initializing != null:
+return initializing();case _LoggingIn() when login != null:
+return login();case _CreatePin() when createPin != null:
+return createPin();case _VerifyUser() when verifyUser != null:
+return verifyUser();case _Authenticated() when authenticated != null:
+return authenticated();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initializing,required TResult Function()  login,required TResult Function()  createPin,required TResult Function()  verifyUser,required TResult Function()  authenticated,}) {final _that = this;
+switch (_that) {
+case _Initializing():
+return initializing();case _LoggingIn():
+return login();case _CreatePin():
+return createPin();case _VerifyUser():
+return verifyUser();case _Authenticated():
+return authenticated();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initializing,TResult? Function()?  login,TResult? Function()?  createPin,TResult? Function()?  verifyUser,TResult? Function()?  authenticated,}) {final _that = this;
+switch (_that) {
+case _Initializing() when initializing != null:
+return initializing();case _LoggingIn() when login != null:
+return login();case _CreatePin() when createPin != null:
+return createPin();case _VerifyUser() when verifyUser != null:
+return verifyUser();case _Authenticated() when authenticated != null:
+return authenticated();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$InitializingImplCopyWith<$Res> {
-  factory _$$InitializingImplCopyWith(
-          _$InitializingImpl value, $Res Function(_$InitializingImpl) then) =
-      __$$InitializingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitializingImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$InitializingImpl>
-    implements _$$InitializingImplCopyWith<$Res> {
-  __$$InitializingImplCopyWithImpl(
-      _$InitializingImpl _value, $Res Function(_$InitializingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitializingImpl implements _Initializing {
-  const _$InitializingImpl();
-
-  @override
-  String toString() {
-    return 'AuthenticationState.initializing()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitializingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) {
-    return initializing();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) {
-    return initializing?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) {
-    return initializing(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) {
-    return initializing?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (initializing != null) {
-      return initializing(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initializing implements AuthenticationState {
-  const factory _Initializing() = _$InitializingImpl;
-}
-
-/// @nodoc
-abstract class _$$LoggingInImplCopyWith<$Res> {
-  factory _$$LoggingInImplCopyWith(
-          _$LoggingInImpl value, $Res Function(_$LoggingInImpl) then) =
-      __$$LoggingInImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoggingInImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$LoggingInImpl>
-    implements _$$LoggingInImplCopyWith<$Res> {
-  __$$LoggingInImplCopyWithImpl(
-      _$LoggingInImpl _value, $Res Function(_$LoggingInImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoggingInImpl implements _LoggingIn {
-  const _$LoggingInImpl();
 
-  @override
-  String toString() {
-    return 'AuthenticationState.login()';
-  }
+class _Initializing implements AuthenticationState {
+  const _Initializing();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoggingInImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) {
-    return login();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) {
-    return login?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) {
-    if (login != null) {
-      return login();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) {
-    return login(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) {
-    return login?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (login != null) {
-      return login(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initializing);
 }
 
-abstract class _LoggingIn implements AuthenticationState {
-  const factory _LoggingIn() = _$LoggingInImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState.initializing()';
 }
 
-/// @nodoc
-abstract class _$$CreatePinImplCopyWith<$Res> {
-  factory _$$CreatePinImplCopyWith(
-          _$CreatePinImpl value, $Res Function(_$CreatePinImpl) then) =
-      __$$CreatePinImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$CreatePinImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$CreatePinImpl>
-    implements _$$CreatePinImplCopyWith<$Res> {
-  __$$CreatePinImplCopyWithImpl(
-      _$CreatePinImpl _value, $Res Function(_$CreatePinImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
-}
+
 
 /// @nodoc
 
-class _$CreatePinImpl implements _CreatePin {
-  const _$CreatePinImpl();
 
-  @override
-  String toString() {
-    return 'AuthenticationState.createPin()';
-  }
+class _LoggingIn implements AuthenticationState {
+  const _LoggingIn();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CreatePinImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) {
-    return createPin();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) {
-    return createPin?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) {
-    if (createPin != null) {
-      return createPin();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) {
-    return createPin(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) {
-    return createPin?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (createPin != null) {
-      return createPin(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoggingIn);
 }
 
-abstract class _CreatePin implements AuthenticationState {
-  const factory _CreatePin() = _$CreatePinImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState.login()';
 }
 
-/// @nodoc
-abstract class _$$VerifyUserImplCopyWith<$Res> {
-  factory _$$VerifyUserImplCopyWith(
-          _$VerifyUserImpl value, $Res Function(_$VerifyUserImpl) then) =
-      __$$VerifyUserImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$VerifyUserImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$VerifyUserImpl>
-    implements _$$VerifyUserImplCopyWith<$Res> {
-  __$$VerifyUserImplCopyWithImpl(
-      _$VerifyUserImpl _value, $Res Function(_$VerifyUserImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
-}
+
 
 /// @nodoc
 
-class _$VerifyUserImpl implements _VerifyUser {
-  const _$VerifyUserImpl();
 
-  @override
-  String toString() {
-    return 'AuthenticationState.verifyUser()';
-  }
+class _CreatePin implements AuthenticationState {
+  const _CreatePin();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$VerifyUserImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) {
-    return verifyUser();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) {
-    return verifyUser?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) {
-    if (verifyUser != null) {
-      return verifyUser();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) {
-    return verifyUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) {
-    return verifyUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (verifyUser != null) {
-      return verifyUser(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreatePin);
 }
 
-abstract class _VerifyUser implements AuthenticationState {
-  const factory _VerifyUser() = _$VerifyUserImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState.createPin()';
 }
 
-/// @nodoc
-abstract class _$$AuthenticatedImplCopyWith<$Res> {
-  factory _$$AuthenticatedImplCopyWith(
-          _$AuthenticatedImpl value, $Res Function(_$AuthenticatedImpl) then) =
-      __$$AuthenticatedImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$AuthenticatedImplCopyWithImpl<$Res>
-    extends _$AuthenticationStateCopyWithImpl<$Res, _$AuthenticatedImpl>
-    implements _$$AuthenticatedImplCopyWith<$Res> {
-  __$$AuthenticatedImplCopyWithImpl(
-      _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AuthenticationState
-  /// with the given fields replaced by the non-null parameter values.
-}
+
 
 /// @nodoc
 
-class _$AuthenticatedImpl implements _Authenticated {
-  const _$AuthenticatedImpl();
 
-  @override
-  String toString() {
-    return 'AuthenticationState.authenticated()';
-  }
+class _VerifyUser implements AuthenticationState {
+  const _VerifyUser();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthenticatedImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initializing,
-    required TResult Function() login,
-    required TResult Function() createPin,
-    required TResult Function() verifyUser,
-    required TResult Function() authenticated,
-  }) {
-    return authenticated();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initializing,
-    TResult? Function()? login,
-    TResult? Function()? createPin,
-    TResult? Function()? verifyUser,
-    TResult? Function()? authenticated,
-  }) {
-    return authenticated?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initializing,
-    TResult Function()? login,
-    TResult Function()? createPin,
-    TResult Function()? verifyUser,
-    TResult Function()? authenticated,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initializing value) initializing,
-    required TResult Function(_LoggingIn value) login,
-    required TResult Function(_CreatePin value) createPin,
-    required TResult Function(_VerifyUser value) verifyUser,
-    required TResult Function(_Authenticated value) authenticated,
-  }) {
-    return authenticated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initializing value)? initializing,
-    TResult? Function(_LoggingIn value)? login,
-    TResult? Function(_CreatePin value)? createPin,
-    TResult? Function(_VerifyUser value)? verifyUser,
-    TResult? Function(_Authenticated value)? authenticated,
-  }) {
-    return authenticated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initializing value)? initializing,
-    TResult Function(_LoggingIn value)? login,
-    TResult Function(_CreatePin value)? createPin,
-    TResult Function(_VerifyUser value)? verifyUser,
-    TResult Function(_Authenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VerifyUser);
 }
 
-abstract class _Authenticated implements AuthenticationState {
-  const factory _Authenticated() = _$AuthenticatedImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState.verifyUser()';
 }
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Authenticated implements AuthenticationState {
+  const _Authenticated();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Authenticated);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthenticationState.authenticated()';
+}
+
+
+}
+
+
+
+
+// dart format on

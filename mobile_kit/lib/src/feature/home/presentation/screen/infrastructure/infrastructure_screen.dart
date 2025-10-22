@@ -75,8 +75,7 @@ class _InfrastructureScreenState extends State<InfrastructureScreen> {
                               itemTitle: elem.title,
                               fontSize: 14,
                             ),
-                            index: index,
-                            onTapCallback: (index) {
+                            onTapCallback: () {
                               context.goNamed(infrastructureDetailsRouteName, queryParameters: {'title': elem.title, 'id': elem.id});
                             },
                           );

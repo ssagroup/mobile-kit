@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'chart_model.freezed.dart';
 
 @freezed
-class ChartModel with _$ChartModel {
+abstract class ChartModel with _$ChartModel {
   const factory ChartModel({
     String? chartId,
     String? unit,

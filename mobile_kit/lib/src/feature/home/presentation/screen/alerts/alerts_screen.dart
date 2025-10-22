@@ -22,19 +22,32 @@ class AlertsScreen extends StatefulWidget {
 class _AlertsScreenState extends State<AlertsScreen> {
   late final AlertsCubit _bloc;
 
+  final _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
-    final getAllNotificationsUseCase = GetAllNotificationsUseCase(GetIt.instance<AlertsRepository>());
+    final getAllNotificationsUseCase = GetNotificationsPageUseCase(GetIt.instance<AlertsRepository>());
     _bloc = AlertsCubit(
       getAllNotificationsUseCase,
     )..initialize();
+
+    _scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
     super.dispose();
     _bloc.close();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 300
+        && !_bloc.state.isLoading
+        && _bloc.state.hasMore) {
+
+      _bloc.loadNextPage();
+    }
   }
 
   @override
@@ -57,36 +70,49 @@ class _AlertsScreenState extends State<AlertsScreen> {
           bloc: _bloc,
           builder: (context, state) {
             return FullScreenProgressIndicator(
-              isLoading: state.isLoading,
+              isLoading: state.isLoading && state.models.isEmpty,
               child: RefreshIndicator(
                 onRefresh: () => _bloc.refresh(),
-                child: CustomScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  slivers: [
-                    if (state.models.isEmpty) ...[
-                      const SliverToBoxAdapter(
-                        child: SizedBox(
-                          height: 100,
+                child: Padding(padding: EdgeInsets.only(bottom: 100), child:  Scrollbar(
+                  controller: _scrollController,
+                  child: CustomScrollView(
+                    controller: _scrollController,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    slivers: [
+                      if (state.models.isEmpty) ...[
+                        const SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: 100,
+                          ),
                         ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: NoDataWidget(title: AppLocalizations.of(context)!.noNotificationTitle),
-                      ),
-                    ] else
-                      SliverPadding(
-                        padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 110.0),
-                        sliver: SliverList.builder(
-                          itemBuilder: (BuildContext context, int index) {
-                            final elem = state.models[index];
-                            return CardWidget(
-                              item: AlertWidget(model: elem),
-                              index: index,
-                            );
-                          },
-                          itemCount: state.models.length,
+                        SliverToBoxAdapter(
+                          child: NoDataWidget(title: AppLocalizations.of(context)!.noNotificationTitle),
                         ),
-                      ),
-                  ],
+                      ] else ...[
+                        SliverPadding(
+                          padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 10.0),
+                          sliver: SliverList.builder(
+                            itemBuilder: (BuildContext context, int index) {
+                              final elem = state.models[index];
+                              return CardWidget(
+                                item: AlertWidget(model: elem),
+                              );
+                            },
+                            itemCount: state.models.length,
+                          ),
+                        ),
+                        if (state.isLoading)
+                          const SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: 50,
+                              child: Align(alignment: Alignment.topCenter, child: CircularProgressIndicator()
+                              ),
+                            ),
+                          )
+                      ],
+                    ],
+                  ),
+                ),
                 ),
               ),
             );

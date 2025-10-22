@@ -8,10 +8,13 @@ class GridItem extends StatelessWidget {
     super.key,
     required this.itemValue,
     required this.itemTitle,
+    this.assetName,
     this.unit,
     this.isUp,
     this.showChart,
     this.textColor,
+    this.iconColor,
+    this.iconSize,
   });
 
   final String itemTitle;
@@ -20,6 +23,9 @@ class GridItem extends StatelessWidget {
   final bool? isUp;
   final bool? showChart;
   final Color? textColor;
+  final String? assetName;
+  final Color? iconColor;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +37,28 @@ class GridItem extends StatelessWidget {
             children: [
               Row(
                 children: [
+                  if (assetName != null) ...[
+                    SvgPicture.asset(
+                      assetName!,
+                      width: iconSize,
+                      height: iconSize,
+                      color: iconColor,
+                      package: assetsPackage,
+                    ),
+                    const SizedBox(width: 4),
+                  ],
                   Expanded(
-                    child: Text(
-                      itemValue,
-                      style: TextStyle(
-                        color: textColor ?? Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        overflow: TextOverflow.ellipsis,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        itemValue,
+                        style: TextStyle(
+                          color: textColor ?? Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                   ),
@@ -46,11 +66,7 @@ class GridItem extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(
                       unit!,
-                      style: TextStyle(
-                        color: textColor ?? Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: TextStyle(color: textColor ?? Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                   ],
                   if (isUp != null) ...[
@@ -60,7 +76,7 @@ class GridItem extends StatelessWidget {
                       color: isUp! ? ColorPalette.greenText : ColorPalette.redText,
                       size: 14,
                     ),
-                  ]
+                  ],
                 ],
               ),
               const SizedBox(height: 2),
@@ -86,16 +102,9 @@ class GridItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
               color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.black26, offset: Offset(3.0, 6.0), blurRadius: 12.0),
-              ],
+              boxShadow: [BoxShadow(color: Colors.black26, offset: Offset(3.0, 6.0), blurRadius: 12.0)],
             ),
-            child: SvgPicture.asset(
-              Assets.chartIcon,
-              width: 16,
-              height: 16,
-              package: assetsPackage,
-            ),
+            child: SvgPicture.asset(Assets.chartIcon, width: 16, height: 16, package: assetsPackage),
           ),
         ],
       ],

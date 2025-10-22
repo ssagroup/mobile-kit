@@ -6,14 +6,13 @@ part of 'auth_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AuthRequestImpl _$$AuthRequestImplFromJson(Map<String, dynamic> json) =>
-    _$AuthRequestImpl(
-      email: json['email'] as String,
-      password: json['password'] as String,
-      rememberMe: json['rememberMe'] as bool,
-    );
+_AuthRequest _$AuthRequestFromJson(Map<String, dynamic> json) => _AuthRequest(
+  email: json['email'] as String,
+  password: json['password'] as String,
+  rememberMe: json['rememberMe'] as bool,
+);
 
-Map<String, dynamic> _$$AuthRequestImplToJson(_$AuthRequestImpl instance) =>
+Map<String, dynamic> _$AuthRequestToJson(_AuthRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
