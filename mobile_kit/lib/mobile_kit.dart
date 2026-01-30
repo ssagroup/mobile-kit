@@ -4,7 +4,7 @@ library mobile_kit;
 export 'package:get_it/get_it.dart';
 export 'package:logger/logger.dart';
 export 'package:path_provider/path_provider.dart';
-export 'package:hive/hive.dart';
+export 'package:hive_ce/hive.dart';
 export 'package:rxdart/rxdart.dart';
 export 'package:flutter_svg/svg.dart';
 

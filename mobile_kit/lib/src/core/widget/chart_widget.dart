@@ -89,6 +89,8 @@ class LineChartWidget extends StatelessWidget {
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
+            maxIncluded: false,
+            minIncluded: false,
             // interval: 1,
             getTitlesWidget: _leftTitleWidgets,
             reservedSize: 40,
