@@ -61,11 +61,13 @@ class ChartDatasource {
 
   double get _smallestY => _filteredY.reduce((curr, next) => curr < next ? curr : next).orZero;
 
+  double get _maxAbsValue => max(_biggestY.abs(), _smallestY.abs());
+
   double get maxX => x.lastOrNull.orZero;
 
   double get minX => maxX - periodFilter.duration;
 
-  double get minY => ((_smallestY * 0.8) / 10).truncateToDouble() * 10;
+  double get minY => _smallestY - _maxAbsValue * 0.15;
 
-  double get maxY => ((_biggestY * 1.2) / 10).floorToDouble() * 10;
+  double get maxY => _biggestY + _maxAbsValue * 0.15;
 }
